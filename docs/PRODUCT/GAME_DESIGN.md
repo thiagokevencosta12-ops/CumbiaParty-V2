@@ -62,6 +62,22 @@ as regras do minigame → campeão → volta ao lobby.
 - [NÃO DECIDIDO] como a dificuldade sobe, duração da onda, nível dos
   bots.
 
+## Música
+- Fonte: faixas geradas no Mureka, plano com licença comercial.
+- Tipo de direito: LICENÇA DE USO, válida SÓ enquanto o plano estiver
+  ativo (não continua após o cancelamento).
+- Consequência: a assinatura é custo contínuo enquanto o jogo estiver
+  publicado; antes de cancelar, remover ou substituir as faixas.
+- Confirmado pelo dono: uso comercial em jogo permitido; cobre faixas
+  geradas antes do plano; sem restrição de plataforma/monetização.
+- [A CONFIRMAR ANTES DE PUBLICAR] o que os termos dizem exatamente
+  sobre áudio de referência e se o método atual os respeita.
+- Trilha final: gerar por descrição de estilo, sem enviar faixas
+  existentes. Faixas atuais só para protótipo.
+- Testes iniciais usam som provisório ou metrônomo.
+- Guardar por faixa: arquivo, prompt, data e plano; cópia dos termos.
+- Trocar a música exige refazer o chart.
+
 ## Fora do escopo por enquanto
 - Minigame 4 (Score Attack da V1 fica como Referência)
 - Loja, roleta e itens cosméticos
@@ -70,5 +86,5 @@ as regras do minigame → campeão → volta ao lobby.
 
 ## Pendências gerais
 - Público e dispositivos-alvo
-- Música: catálogo, origem e direitos de uso
+- Música: ver seção "Música" (direitos pendentes de confirmação)
 - Níveis de habilidade dos bots

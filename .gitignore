@@ -11,5 +11,8 @@ Thumbs.db
 node_modules/
 *.log
 
-# Backups do Studio (guarde fora do repositorio)
+# Places e backups do Studio (guarde fora do repositorio)
+*.rbxl
+*.rbxlx
 *.rbxl.lock
+*.rbxlx.lock

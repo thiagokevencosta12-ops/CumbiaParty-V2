@@ -1,0 +1,15 @@
+# Segredos (nunca no Git)
+.env
+*.key
+*.token
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias e temporarios
+node_modules/
+*.log
+
+# Backups do Studio (guarde fora do repositorio)
+*.rbxl.lock

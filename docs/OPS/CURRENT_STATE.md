@@ -4,16 +4,22 @@
 - MVP: Torneio X1 (batalha 1x1, vence quem zerar o HP do adversário).
 - Três minigames: X1, Dança das Cadeiras, Sobrevivência.
 - Teclas dos minigames de ritmo: A/S/D/F (a V1 usava D/F/J/K).
-- Visual: Underground (base: greybox CumbiaBattleWorld).
+- Visual: Underground (base: greybox CumbiaBattleWorld). O cenário
+  tropical da V1 NÃO faz parte da V2.
 - Fora do escopo por ora: loja, roleta, cosméticos, monetização,
   progresso persistente, espectador, minigame 4.
 - Regras completas em docs/PRODUCT/GAME_DESIGN.md.
 
 ## Estado do repositório V2
-- [CONFIRMADO] Existem docs/PRODUCT (VISION, GAME_DESIGN) e a auditoria
-  da V1 (V1_INVENTORY, V1_DEPENDENCIES, V1_CLASSIFICATION).
+- [CONFIRMADO] Existem docs/PRODUCT (VISION, GAME_DESIGN), a auditoria
+  da V1 (V1_INVENTORY, V1_DEPENDENCIES, V1_CLASSIFICATION), ARCHITECTURE,
+  NETWORK_CONTRACTS e BACKLOG.
 - [NÃO ENCONTRADO] Implementação em src/ e tests/ (pastas vazias).
   A V1 vive no Studio, sem vínculo com commits.
+- V1 congelada (não editar): C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V1_2026-10-22.rbxl
+- Cópia de trabalho: C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Trabalho.rbxl
+- [CONFIRMADO] MCP aponta para a cópia de trabalho (23/10/2026): 12
+  scripts listados em ServerScriptService, batendo com o inventário.
 
 ## O que existe na V1 (segundo a auditoria)
 - [SUPOSIÇÃO] Ritmo solo (RhythmService, NoteValidator), X1 com HP
@@ -23,7 +29,7 @@
   respawn e arenas ao mapa CumbiaBattleWorld. Interface via
   ClientBootstrap e controllers; nove RemoteEvents.
 - [SUPOSIÇÃO] Cenário tropical, ferramentas de autoria e versões antigas
-  estão preservados (Referência, não entram na V2).
+  estão preservados na V1 (não entram na V2).
 
 ## O que parece funcionar (pela estrutura, não testado)
 - [SUPOSIÇÃO] Fluxo entrada → validação → julgamento → dano → avanço da
@@ -49,5 +55,5 @@
 1. Empate no X1: música acaba com os dois vivos (mais HP ou morte súbita?).
 2. Valores de dano, estamina, parada da música e dificuldade dos bots.
 3. Dispositivos-alvo, concorrência e tolerância de latência.
-4. Músicas e assets com direitos de uso confirmados.
-5. Qual é o arquivo/place oficial da V1.
+4. Música: confirmar o que os termos do Mureka dizem sobre áudio de
+   referência (licença só vale com plano ativo; ver GAME_DESIGN.md).

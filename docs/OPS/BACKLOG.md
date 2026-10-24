@@ -1,18 +1,35 @@
 # Backlog inicial — Cumbia Party V2
 
-- [SUPOSIÇÃO] Planejamento baseado em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md), [CURRENT_STATE](CURRENT_STATE.md), [V1_CLASSIFICATION](V1_CLASSIFICATION.md), [ARCHITECTURE](../TECH/ARCHITECTURE.md) e [NETWORK_CONTRACTS](../TECH/NETWORK_CONTRACTS.md). Marcações abrangem cada linha; riscos são estimativas. Esta revisão registra a conclusão documental de CP2-000d, sem atualizar o estado dos demais tickets. Documentos ainda ausentes serão criados nos respectivos tickets.
+- [SUPOSIÇÃO] Planejamento baseado em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md), [CURRENT_STATE](CURRENT_STATE.md), [V1_CLASSIFICATION](V1_CLASSIFICATION.md), [ARCHITECTURE](../TECH/ARCHITECTURE.md) e [NETWORK_CONTRACTS](../TECH/NETWORK_CONTRACTS.md). Marcações abrangem cada linha; riscos são estimativas. Esta revisão mantém a conclusão documental de CP2-000d, registra CP2-000a e CP2-000b como concluídos segundo os documentos locais e mantém CP2-000c sem conclusão; decompõe a execução futura do CP2-000e. Documentos ainda ausentes serão criados nos respectivos tickets.
 - [SUPOSIÇÃO] Testes iniciais (pipeline, A/S/D/F e R1) usam som provisório ou metrônomo. A conferência da auditoria precede qualquer implementação no jogo; a prova isolada do pipeline ocorre em projeto descartável. Nenhum ticket autoriza publicação ou alteração da base histórica.
 
 ## Preparação e prova inicial
 
 | Estado | ID / objetivo | Aceite | Risco | Dependências |
 |---|---|---|---|---|
-| [SUPOSIÇÃO] | CP2-000a — Identificar base V1 | Dono confirma arquivo/place oficial e cópia de trabalho do Studio, local das alterações; registrar identificação e localização de ambos. | baixo | Dono; base oficial [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-000b — Provar pipeline | Em projeto descartável, demonstrar alteração sincronizada Studio/repositório e repetição do procedimento; registrar escolha Rojo ou Script Sync, direção da sincronização e evidências em `decisions/ADR-0001.md`. | médio | CP2-000a. |
-| [SUPOSIÇÃO] | CP2-000c — Conferir auditoria por amostra | Comparar entrada, julgamento/R1, combate, torneio e Remotes com Studio; registrar versão inspecionada, amostra, correspondências e divergências em documento versionado `docs/OPS/V1_AUDIT_SPOTCHECK.md`; resolver divergências impeditivas antes de implementar. | médio | CP2-000a; inspeção na cópia de trabalho. |
-| [CONFIRMADO NO CÓDIGO] | CP2-000d — Planejar a migração — CONCLUÍDO (documental) | Entregue em [MIGRATION_PLAN](../TECH/MIGRATION_PLAN.md): lista dos 24 scripts, exclusões propostas, atributos, extração/fidelidade, backup, prova descartável, reversão e decisões pendentes do dono. Não significa migração executada. | [SUPOSIÇÃO] baixo | [SUPOSIÇÃO] Insumos: CP2-000a, CP2-000b e CP2-000c; aprovação da lista reservada à execução. |
+| [SUPOSIÇÃO] | CP2-000a — Identificar base V1 — CONCLUÍDO (segundo CURRENT_STATE) | Dono confirma arquivo/place oficial e cópia de trabalho do Studio, local das alterações; registrar identificação e localização de ambos. | baixo | Dono; base oficial registrada em [CURRENT_STATE](CURRENT_STATE.md). |
+| [SUPOSIÇÃO] | CP2-000b — Provar pipeline — CONCLUÍDO (segundo ADR-0001) | Em projeto descartável, demonstrar alteração sincronizada Studio/repositório e repetição do procedimento; registrar escolha Rojo ou Script Sync, direção da sincronização e evidências em `decisions/ADR-0001.md`. | médio | CP2-000a. |
+| [SUPOSIÇÃO] | CP2-000c — Conferir auditoria por amostra — PENDENTE | Comparar entrada, julgamento/R1, combate, torneio e Remotes com Studio; registrar versão inspecionada, amostra, correspondências e divergências em documento versionado `docs/OPS/V1_AUDIT_SPOTCHECK.md`; resolver divergências impeditivas antes de implementar. | médio | CP2-000a; inspeção na cópia de trabalho. |
+| [SUPOSIÇÃO] | CP2-000d — Planejar a migração — CONCLUÍDO (documental) | Entregue em [MIGRATION_PLAN](../TECH/MIGRATION_PLAN.md): lista dos 24 scripts, exclusões propostas, atributos, extração/fidelidade, backup, prova descartável, reversão e decisões pendentes do dono. Não significa migração executada. | [SUPOSIÇÃO] baixo | [SUPOSIÇÃO] Insumos: CP2-000a, CP2-000b e CP2-000c; aprovação da lista reservada à execução. |
 | [SUPOSIÇÃO] | CP2-000e — Executar a migração — PENDENTE | Executar o plano aprovado: backup validado, extração fiel dos 24 scripts, prova de atributos e preservação na cópia descartável, sincronização restrita e validação funcional; registrar evidências e NÃO TESTADO. Preservar objetos excluídos; suíte UnitTest em ticket próprio, conforme decisão do dono. | ALTO | CP2-000d e aprovação explícita do dono da lista dos 24 scripts; resolver também as demais Decisões do dono no plano antes de executar. |
 | [SUPOSIÇÃO] | CP2-001 — A/S/D/F ponta a ponta | Na cópia de trabalho, trocar D/F/J/K; testar cada coluna até resultado do servidor, rótulos e ausência de entrada por J/K; registrar evidências e alteração sincronizada no repositório. | médio | CP2-000a, CP2-000b, CP2-000c, CP2-000e. |
+
+- [SUPOSIÇÃO] CP2-000a: [CURRENT_STATE](CURRENT_STATE.md) registra os caminhos da V1 congelada e da cópia de trabalho e a identificação da conexão em 23/10/2026; conclusão baseada nesse registro, sem nova verificação no Studio.
+- [SUPOSIÇÃO] CP2-000b: [ADR-0001](../../decisions/ADR-0001.md) registra decisão aceita por Rojo 7.7.1, alteração disco → Studio e reversão Git acompanhada pelo Studio em projeto descartável; conclusão baseada nesse registro, sem repetir a prova.
+- [SUPOSIÇÃO] CP2-000c permanece sem conclusão: o [spotcheck](V1_AUDIT_SPOTCHECK.md) registra sete correspondências, mas não apresenta combate e torneio como itens próprios de conferência suficientes para demonstrar integralmente o aceite acima.
+- [NÃO ENCONTRADO] Evidência suficiente no spotcheck para encerrar CP2-000c quanto à amostra de combate e torneio; não houve nova inspeção ou teste nesta revisão.
+
+### Subitens do CP2-000e — risco ALTO
+
+- [SUPOSIÇÃO] Cada subitem segue os objetivos, pré-requisitos, ações, critérios de aceite e NÃO TESTADO de [Sequência futura](../TECH/MIGRATION_PLAN.md#sequência-futura-e-critérios-de-parada). Nenhuma etapa começa sem aprovação escrita do resultado da anterior e da própria; a primeira exige aprovação do plano, resolução das três Decisões do dono e aprovação da própria CP2-000e-1. A revisão documental não autoriza execução.
+- [SUPOSIÇÃO] CP2-000e-1 — Preparar: validar referência e backup, registrar inventário e preparar `CumbiaParty_V2_Descartavel.rbxl`. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-2 — Extrair: obter os 24 Sources pelo método MCP atual e registrar manifesto. Depende do aceite de CP2-000e-1. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-3 — Conferir em disco: comparar origem independente, bytes, SHA-256, classes e referências; exigir 24/24 correspondências. Depende do aceite de CP2-000e-2. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-4 — Configurar e provar atributos: criação prévia de `CumbiaParty_V2_Descartavel.rbxl` obrigatória; mapeamento restrito e ensaio de preservação. Depende do aceite de CP2-000e-3. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-5 — Validar sincronização descartável: conferir Source, hierarquia, propriedades, atributos, bootstraps e exclusões. Depende do aceite de CP2-000e-4. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-6 — Validar funcionamento: comparar fluxo e cenários previstos com a base, separando falhas herdadas de regressões. Depende do aceite de CP2-000e-5. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-7 — Transferir à cópia de trabalho: backup e prévia restrita; repetir fidelidade, preservação e validação funcional. Depende do aceite de CP2-000e-6. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-8 — Encerrar documentalmente: consolidar evidências, versões, manifesto, diferenças e NÃO TESTADO nos registros autorizados. Depende do aceite de CP2-000e-7. Aprovação do dono: PENDENTE.
 
 ## Decisões e investigação — bloqueiam combate
 

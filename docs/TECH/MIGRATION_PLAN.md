@@ -3,11 +3,11 @@
 ## Escopo e evidências
 
 - [SUPOSIÇÃO] Plano de execução futura, revisado conforme autorização do dono em 23/10/2026. Esta entrega é documental: somente `docs/TECH/MIGRATION_PLAN.md` e `docs/OPS/BACKLOG.md` podem ser alterados; não autoriza migração, conexão Rojo, syncback, Play, publicação ou alterações no Studio.
-- [CONFIRMADO NO CÓDIGO] Na retomada, este arquivo não existia; `src/` e `tests/` continham somente `.gitkeep`. A busca local não encontrou configuração `*.project.json`.
-- [CONFIRMADO NO CÓDIGO] O [ADR-0001](../../decisions/ADR-0001.md) registra Rojo 7.7.1 via Rokit, prova disco → Studio e reversão Git em projeto descartável; também determina que mapa e objetos visuais permanecem no `.rbxl`. Isso é evidência documental, não repetição da prova nesta sessão.
-- [CONFIRMADO NO CÓDIGO] O [spotcheck](../OPS/V1_AUDIT_SPOTCHECK.md) registra sete itens correspondentes à auditoria na cópia de trabalho, incluindo estrutura, D/F/J/K e dependência de `inputTime`. Nenhum desses resultados foi revalidado no Studio nesta retomada.
-- [SUPOSIÇÃO] Fontes de seleção: [inventário](../OPS/V1_INVENTORY.md), [classificação](../OPS/V1_CLASSIFICATION.md), [dependências](V1_DEPENDENCIES.md), [contratos](NETWORK_CONTRACTS.md), [arquitetura](ARCHITECTURE.md), [design](../PRODUCT/GAME_DESIGN.md) e [estado atual](../OPS/CURRENT_STATE.md). Propostas e requisitos usam [SUPOSIÇÃO], inclusive quando aprovados pelo dono; confirmações locais e relatos documentais são identificados explicitamente.
-- [CONFIRMADO NO CÓDIGO] O [backlog](../OPS/BACKLOG.md) registra CP2-000d como planejamento documental concluído por este documento e separa a execução no CP2-000e, ainda dependente da aprovação da lista pelo dono.
+- [SUPOSIÇÃO] Segundo o registro da retomada anterior, este arquivo não existia; `src/` e `tests/` continham somente `.gitkeep`. A busca local daquela retomada não encontrou configuração `*.project.json`; esse estado histórico não foi revalidado nesta revisão.
+- [SUPOSIÇÃO] O [ADR-0001](../../decisions/ADR-0001.md) registra Rojo 7.7.1 via Rokit, prova disco → Studio e reversão Git em projeto descartável; também determina que mapa e objetos visuais permanecem no `.rbxl`. Isso é evidência documental, não repetição da prova nesta sessão.
+- [SUPOSIÇÃO] O [spotcheck](../OPS/V1_AUDIT_SPOTCHECK.md) registra sete itens correspondentes à auditoria na cópia de trabalho, incluindo estrutura, D/F/J/K e dependência de `inputTime`. Nenhum desses resultados foi revalidado no Studio nesta retomada.
+- [SUPOSIÇÃO] Fontes de seleção: [inventário](../OPS/V1_INVENTORY.md), [classificação](../OPS/V1_CLASSIFICATION.md), [dependências](V1_DEPENDENCIES.md), [contratos](NETWORK_CONTRACTS.md), [arquitetura](ARCHITECTURE.md), [design](../PRODUCT/GAME_DESIGN.md) e [estado atual](../OPS/CURRENT_STATE.md). Propostas e requisitos usam [SUPOSIÇÃO], inclusive quando aprovados pelo dono; leituras locais e relatos documentais usam [SUPOSIÇÃO] e têm sua origem identificada; confirmação no código exige leitura no Studio nesta sessão, que não faz parte desta revisão.
+- [SUPOSIÇÃO] O [backlog](../OPS/BACKLOG.md) registra CP2-000d como planejamento documental concluído por este documento e separa a execução no CP2-000e, ainda dependente da aprovação da lista pelo dono.
 
 ## Premissas, limites e pendências
 
@@ -20,7 +20,7 @@
 
 - [SUPOSIÇÃO] Base histórica intocável: `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V1_2026-10-22.rbxl`; cópia operacional prevista: `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Trabalho.rbxl`, conforme CURRENT_STATE.md.
 - [SUPOSIÇÃO] Pré-requisito obrigatório antes de qualquer migração: `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Trabalho_pre-migracao.rbxl`. Preservar esse arquivo sem conectar Rojo a ele nem sobrescrevê-lo durante o trabalho.
-- [CONFIRMADO NO CÓDIGO] A consulta local encontrou o arquivo pré-migração no caminho acima, com 1.794.879 bytes. Existência e tamanho foram verificados; seu conteúdo não foi aberto no Studio.
+- [SUPOSIÇÃO] O registro da consulta local anterior relata o arquivo pré-migração no caminho acima, com 1.794.879 bytes. Existência e tamanho não foram revalidados nesta revisão; seu conteúdo não foi aberto no Studio.
 - [NÃO ENCONTRADO] Integridade, capacidade de abertura e equivalência desse backup ao estado imediatamente anterior à migração não foram verificadas nesta sessão.
 - [SUPOSIÇÃO] Na execução futura, registrar SHA-256, tamanho, data e identificação da cópia de trabalho; validar a abertura de uma cópia descartável do backup, sem salvar no original. Se houver alterações posteriores ao backup, preservar também uma cópia datada e decidir qual estado será a referência antes de prosseguir.
 - [SUPOSIÇÃO] A extração inicial deve ler a cópia de trabalho confirmada, usando uma lista explícita de scripts ativos. Não extrair recursivamente todo o DataModel nem escolher fontes apenas pelo nome: backups podem conter nomes repetidos e versões divergentes.
@@ -60,9 +60,9 @@
 
 - [SUPOSIÇÃO] Os atributos encontrados nas pastas CumbiaParty, conforme relato do dono, fazem parte do estado a preservar. Conferir `ServerScriptService.CumbiaParty`, `ReplicatedStorage.CumbiaParty` e `StarterPlayer.StarterPlayerScripts.CumbiaParty`, seus ancestrais mapeados e os 24 scripts; não presumir que extrair Source também extrai atributos.
 - [NÃO ENCONTRADO] Nomes, tipos e valores desses atributos não estão registrados nos documentos locais consultados nem foram relidos no Studio nesta revisão. O manifesto da execução deverá registrar `GetAttributes()` por caminho e classe, incluindo conjuntos vazios, sem inventar valores.
-- [CONFIRMADO NO CÓDIGO] Evidência documental externa: a documentação oficial [Properties, linha v7](https://rojo.space/docs/v7/properties/#attributes) declara `Attributes` em qualquer instância e suporte em build, live sync e arquivos de projeto. Portanto, o suporte documentado abrange Folder, Script, LocalScript e ModuleScript; não é exclusivo de scripts. Cada valor de atributo deve ter tipo explícito na representação JSON.
-- [CONFIRMADO NO CÓDIGO] Evidência documental externa: [Sync Details](https://rojo.space/docs/v7/sync-details/#meta-files) descreve propriedades em `.meta.json`, inclusive para scripts, e `init.meta.json` para diretórios. [Project Format](https://rojo.space/docs/v7/project-format/#instance-description) descreve `$properties` por instância. Isso permite planejar `Attributes` nos nós das pastas e scripts via `$properties`, ou em `properties` nos metadados apropriados.
-- [CONFIRMADO NO CÓDIGO] Evidência documental externa: a [release 7.7.1](https://github.com/rojo-rbx/rojo/releases/tag/v7.7.1) confirma a versão fixada e correções de caminhos Windows e de acesso do plugin ao GitHub. As páginas acima são da linha v7, sem identificação exclusiva da revisão 7.7.1; sua leitura não equivale a executar uma prova nessa versão.
+- [SUPOSIÇÃO] Evidência documental externa: a documentação oficial [Properties, linha v7](https://rojo.space/docs/v7/properties/#attributes) declara `Attributes` em qualquer instância e suporte em build, live sync e arquivos de projeto. Portanto, o suporte documentado abrange Folder, Script, LocalScript e ModuleScript; não é exclusivo de scripts. Cada valor de atributo deve ter tipo explícito na representação JSON. A página é da linha v7, sem comprovação específica desta migração na 7.7.1.
+- [SUPOSIÇÃO] Evidência documental externa: [Sync Details](https://rojo.space/docs/v7/sync-details/#meta-files) descreve propriedades em `.meta.json`, inclusive para scripts, e `init.meta.json` para diretórios. [Project Format](https://rojo.space/docs/v7/project-format/#instance-description) descreve `$properties` por instância. Isso permite planejar `Attributes` nos nós das pastas e scripts via `$properties`, ou em `properties` nos metadados apropriados. Ambas as páginas são da linha v7, sem prova executada na 7.7.1.
+- [SUPOSIÇÃO] Evidência documental externa: a [release 7.7.1](https://github.com/rojo-rbx/rojo/releases/tag/v7.7.1) confirma a versão fixada e correções de caminhos Windows e de acesso do plugin ao GitHub. As páginas acima são da linha v7, sem identificação exclusiva da revisão 7.7.1; sua leitura não equivale a executar uma prova nessa versão.
 - [NÃO ENCONTRADO] Essas fontes não confirmam que todos os atributos já existentes serão preservados quando omitidos do mapeamento, nem garantem o resultado desta migração concreta. Não estabelecem uma prova de preservação dos valores e tipos encontrados em CumbiaParty na 7.7.1. `$ignoreUnknownInstances` trata de instâncias desconhecidas, não constitui garantia de preservação de atributos.
 - [SUPOSIÇÃO] Estratégia proposta: registrar e representar explicitamente todos os atributos encontrados nos nós gerenciados, com tipos e valores fiéis, sem declarar simultaneamente duas representações do mesmo conjunto. Qualquer tipo sem representação comprovada bloqueia a migração daquele nó até revisão; não descartar ou converter silenciosamente.
 
@@ -102,16 +102,97 @@
 6. [SUPOSIÇÃO] Após sincronização na cópia descartável, reler Source dos 24 objetos pelo MCP e comparar novamente com os arquivos e manifesto, além de nomes, classes, hierarquia, atributos e propriedades de execução. Exigir 24/24 correspondências, nenhuma ausência, duplicação ou diferença inexplicada. Preservar evidências antes de transferir o procedimento à cópia de trabalho.
 - [NÃO ENCONTRADO] Extração, arquivos Source, manifesto de hashes e comparação disco/Studio ainda não foram produzidos ou executados; esta seção define o método futuro.
 
+## Alternativas para obter o Source — proposta para decisão
+
+- [SUPOSIÇÃO] A documentação oficial da [release 7.7.0 — Syncback](https://github.com/rojo-rbx/rojo/releases/tag/v7.7.0#syncback), da linha v7, descreve importação de um arquivo salvo para o disco, selecionada pelo projeto e por `syncbackRules`. Isso não é prova executada na versão 7.7.1 nem leitura do estado não salvo do Studio. A comparação abaixo combina essa documentação com o procedimento MCP proposto neste plano; riscos e esforço são avaliações propostas.
+
+| Estado / aspecto | (a) MCP em blocos — método atual | (b) Syncback na cópia descartável — alternativa |
+|---|---|---|
+| [SUPOSIÇÃO] Risco | Leitura restrita aos 24 caminhos; controlar truncamento, offsets, lacunas e reconstrução antes de gravar. | Usa o arquivo salvo `CumbiaParty_V2_Descartavel.rbxl`; projeto e saída local isolados para conter exportações ou alterações indevidas no disco. |
+| [SUPOSIÇÃO] Fidelidade verificável | Segunda leitura independente da origem; comparar bytes completos, quantidade de bytes e SHA-256 com o arquivo, incluindo finais de linha e quebra final. | Exigir a mesma comparação independente com o Source da origem correspondente ao arquivo salvo, para os 24 scripts; sucesso da exportação ou hash só do destino não prova identidade. |
+| [SUPOSIÇÃO] Atributos | Extrair manifesto separado de Source, com chaves, tipos e valores dos scripts e pastas. | Auditar representação exportada e filtros de propriedades; comparar com o manifesto, sem presumir preservação integral. O suporte geral documentado a Attributes não garante o resultado do syncback. |
+| [SUPOSIÇÃO] Objetos fora do mapeamento | Não extrair; verificar preservação nas sincronizações futuras. | Revisar descendentes selecionados e exclusões `ignoreTrees`/`ignorePaths`; um ancestral amplo pode incluir objetos extras. Exigir saída restrita ao escopo e preservação das exclusões. |
+| [SUPOSIÇÃO] Esforço | Mais transporte e reconstrução em blocos, com manifesto e conferência explícitos. | Pode reduzir o transporte manual, mas exige configuração isolada e revisão dos arquivos e metadados gerados; não elimina o manifesto nem a comparação independente. |
+
+- [SUPOSIÇÃO] Fontes complementares: [Properties — Attributes](https://rojo.space/docs/v7/properties/#attributes), [Sync Details — Meta Files](https://rojo.space/docs/v7/sync-details/#meta-files) e [Project Format](https://rojo.space/docs/v7/project-format/#instance-description), todas da linha v7. Descrevem atributos, metadados e mapeamento; não demonstram fidelidade desta extração na 7.7.1. As regras de exclusão do syncback são descritas na release acima; não confundir com a preservação de instâncias durante live sync.
+- [NÃO ENCONTRADO] Garantia de identidade byte a byte do Source e preservação integral dos atributos desta migração nas fontes consultadas; comparação de bytes/SHA-256 e ensaio de syncback: NÃO TESTADO.
+- [SUPOSIÇÃO] Recomendação PROPOSTA, para decisão do dono: manter MCP em blocos como método atual; considerar syncback somente após decisão específica e ensaio isolado. Aprovar esta edição documental não escolhe syncback nem altera o método atual; nenhuma execução é autorizada aqui.
+
 ## Sequência futura e critérios de parada
 
-1. [SUPOSIÇÃO] Preparar: obter as aprovações da seção Decisões do dono, revisar o escopo do CP2-000e, conferir base e backup obrigatório, registrar estado Git e inventário da cópia de trabalho. Fixar a versão registrada no ADR no futuro `rokit.toml`; não instalar nem executar ferramentas nesta entrega.
-2. [SUPOSIÇÃO] Extrair: seguir o método MCP → arquivos descrito acima para os 24 candidatos, sem executar módulos. Registrar manifesto com origem, destino, classe, Disabled/Enabled quando aplicável, RunContext, atributos completos de scripts e pastas mapeadas e hash do Source; tratar diferenças de fim de linha explicitamente. Uma dependência ausente exige revisar a lista, não importar backups indiscriminadamente.
-3. [SUPOSIÇÃO] Conferir em disco: comparar cada Source ao original e revisar requires, referências relativas e classes resultantes das extensões de arquivo. Não renomear os objetos do Studio. Separar extração de qualquer melhoria de código em commits pequenos, quando a execução estiver autorizada.
-4. [SUPOSIÇÃO] Configurar em projeto descartável: preparar mapeamento restrito e política de preservação de filhos desconhecidos; executar a prova de atributos descrita acima com cópia do place completo. Conferir prévia antes de aplicar. Se aparecer remoção de mapa, GUI, Remote, backup, ferramenta ou objeto fora da lista, parar e corrigir o mapeamento.
-5. [SUPOSIÇÃO] Aplicar somente à cópia descartável: comparar hierarquia, classes, propriedades e Source antes/depois. Confirmar que existe apenas um bootstrap ativo por lado e que o runner de testes permanece desabilitado; preservar as instâncias externas ao mapeamento.
-6. [SUPOSIÇÃO] Validar em execução autorizada: primeiro inicialização e Output, depois lobby → fila → torneio com bots → resultado → retorno, entrada pelas teclas atuais D/F/J/K, câmera, GUI, saída e respawn. Comparar com a base pré-migração; registrar falhas herdadas separadas das regressões. Migração, revisão do runner e execução da suíte UnitTest ficam para ticket próprio, conforme decisão pendente do dono; não fazem parte do CP2-000e.
-7. [SUPOSIÇÃO] Transferir o procedimento à cópia de trabalho somente depois de evidências satisfatórias na cópia descartável, backup validado e prévia restrita. Conferir a barra de título e a sessão conectada; nunca conectar à V1 congelada nem ao backup pré-migração.
-8. [SUPOSIÇÃO] Encerrar a execução futura: registrar versão, manifesto, diferenças, testes e NÃO TESTADO; atualizar CURRENT_STATE.md e demais registros somente no escopo autorizado para essa etapa. Nenhuma publicação faz parte da migração.
+- [SUPOSIÇÃO] Todas as etapas abaixo são futuras. Nenhuma começa sem aprovação escrita do dono do resultado da etapa anterior e da própria etapa. Para CP2-000e-1, exigir aprovação escrita do plano, resolução das três Decisões do dono e aprovação da própria etapa. Aprovação desta revisão documental não concede nenhuma dessas autorizações de execução.
+
+### CP2-000e-1 — Preparar
+
+- [SUPOSIÇÃO] Objetivo: estabelecer escopo, referência e backup da migração.
+- [SUPOSIÇÃO] Pré-requisitos: aprovações iniciais descritas acima; base histórica e cópia de trabalho identificadas; backup pré-migração disponível para validação.
+- [SUPOSIÇÃO] O que será feito: revisar escopo, conferir base e backup obrigatório, registrar SHA-256, tamanho, data, estado Git e inventário da cópia de trabalho; validar abertura de uma cópia do backup. Fixar a versão registrada no ADR no futuro `rokit.toml`, somente na execução autorizada. Preparar, a partir da referência validada, a cópia completa `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, sem sobrescrever a base, a cópia de trabalho ou o backup; registrar sua origem e identidade.
+- [SUPOSIÇÃO] Critério de aceite: escopo fechado, backup validado, referência identificada e cópia descartável criada e identificada para os ensaios futuros.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: extração dos Sources, sincronização, preservação de atributos pelo Rojo e gameplay.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-2 — Extrair
+
+- [SUPOSIÇÃO] Objetivo: obter os 24 Sources e o manifesto de origem.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-1 e aprovação escrita desta etapa; caminhos aprovados e sessão da cópia de trabalho identificada em modo Edit.
+- [SUPOSIÇÃO] O que será feito: seguir o método MCP → arquivos descrito acima, sem executar módulos. Registrar origem, destino, classe, Disabled/Enabled quando aplicável, RunContext, atributos completos dos scripts e pastas mapeadas, bytes e SHA-256 do Source; tratar finais de linha explicitamente. Dependência ausente exige revisar a lista, não importar backups indiscriminadamente.
+- [SUPOSIÇÃO] Critério de aceite: 24 Sources e registros completos, sem lacunas, sobreposições ou truncamento no transporte.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: sincronização, preservação pelo Rojo e funcionamento do jogo; conferência independente integral do disco pertence à etapa seguinte.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-3 — Conferir em disco
+
+- [SUPOSIÇÃO] Objetivo: comprovar fidelidade dos arquivos à origem.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-2 e aprovação escrita desta etapa; arquivos e manifesto disponíveis.
+- [SUPOSIÇÃO] O que será feito: comparar cada Source com segunda leitura independente da origem, bytes e SHA-256; revisar requires, referências relativas, classes resultantes das extensões e possíveis conversões de finais de linha pelo Git, sem alterar configurações automaticamente. Não renomear objetos. Separar extração de melhorias de código em commits pequenos quando autorizados na execução futura.
+- [SUPOSIÇÃO] Critério de aceite: 24/24 correspondências exatas, classes e referências conferidas, sem diferença inexplicada; divergências bloqueiam o avanço.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: sincronização, preservação no Studio e gameplay.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-4 — Configurar e provar atributos na cópia descartável
+
+- [SUPOSIÇÃO] Objetivo: comprovar mapeamento restrito e preservação de atributos.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-3 e aprovação escrita desta etapa; criação prévia obrigatória de `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, cópia completa da referência validada, com origem e identidade registradas na CP2-000e-1; CLI e plugin na versão registrada no ADR.
+- [SUPOSIÇÃO] O que será feito: preparar mapeamento restrito e política de preservação de filhos desconhecidos; executar a prova de atributos descrita neste plano em cópias descartáveis independentes. Conferir prévia antes de aplicar; remoção de mapa, GUI, Remote, backup, ferramenta ou outro objeto fora da lista exige parar e corrigir o mapeamento.
+- [SUPOSIÇÃO] Critério de aceite: configuração final preserva integralmente chaves, tipos e valores dos atributos e não produz alterações externas não autorizadas; snapshots e diferenças registrados.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: fluxo funcional e transferência à cópia de trabalho.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-5 — Validar sincronização na cópia descartável
+
+- [SUPOSIÇÃO] Objetivo: verificar a migração mecânica com a configuração final.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-4 e aprovação escrita desta etapa; configuração final e prévia restrita revisadas; cópia descartável identificada.
+- [SUPOSIÇÃO] O que será feito: aplicar somente à cópia descartável e comparar hierarquia, classes, propriedades, atributos e Source antes/depois, incluindo bytes e SHA-256. Conferir apenas um bootstrap ativo por lado, runner desabilitado e preservação de instâncias externas ao mapeamento.
+- [SUPOSIÇÃO] Critério de aceite: 24/24 Sources correspondentes ao manifesto, sem ausências, duplicações, mudanças externas ou diferenças inexplicadas; exclusões e propriedades preservadas.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: gameplay e transferência à cópia de trabalho.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-6 — Validar funcionamento
+
+- [SUPOSIÇÃO] Objetivo: identificar regressões funcionais na cópia descartável.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-5 e aprovação escrita desta etapa, incluindo execução do jogo para comparação com a base pré-migração.
+- [SUPOSIÇÃO] O que será feito: conferir inicialização e Output; testar lobby → fila → torneio com bots → resultado → retorno, entrada D/F/J/K, câmera, GUI, saída e respawn. Comparar com a base e separar falhas herdadas de regressões. Migração, revisão do runner e execução da suíte UnitTest ficam para ticket próprio, conforme decisão pendente do dono; não fazem parte do CP2-000e.
+- [SUPOSIÇÃO] Critério de aceite: evidências do fluxo e dos cenários acima, com falhas classificadas e nenhuma regressão de migração não resolvida; resultado submetido ao dono.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: suíte UnitTest, mobile, multiplayer amplo, segurança, desempenho e memória; registrar também qualquer cenário previsto que não puder ser executado.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-7 — Transferir à cópia de trabalho
+
+- [SUPOSIÇÃO] Objetivo: repetir o procedimento validado na cópia operacional.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-6 e aprovação escrita desta etapa; evidências satisfatórias na descartável, backup validado e prévia restrita.
+- [SUPOSIÇÃO] O que será feito: conferir barra de título e sessão conectada; transferir o procedimento e repetir verificações de Source, bytes/SHA-256, hierarquia, classes, atributos, propriedades, exclusões e validação funcional. Nunca conectar à V1 congelada nem ao backup pré-migração.
+- [SUPOSIÇÃO] Critério de aceite: 24/24 correspondências, preservação verificada e validação funcional registrada na cópia de trabalho, sem regressão não resolvida.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: suítes e cenários não executados, incluindo os limites da CP2-000e-6; não extrapolar o resultado para outros dispositivos ou cargas.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+
+### CP2-000e-8 — Encerrar documentalmente
+
+- [SUPOSIÇÃO] Objetivo: consolidar evidências e limites da execução futura.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-7 e aprovação escrita desta etapa, com os documentos que poderão ser atualizados explicitamente definidos.
+- [SUPOSIÇÃO] O que será feito: registrar versão, manifesto, diferenças, testes e NÃO TESTADO; atualizar CURRENT_STATE.md e demais registros somente no escopo autorizado para essa etapa futura. Nenhuma publicação faz parte da migração.
+- [SUPOSIÇÃO] Critério de aceite: relatório completo e coerente com as evidências, sem afirmar execução ou sucesso não demonstrados; encerramento submetido ao dono.
+- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: nenhuma execução adicional; permanecem não testados todos os itens sem evidência nas etapas anteriores.
+- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
 
 - [SUPOSIÇÃO] Parar diante de perda de objeto, diferença de Source não explicada, duplicação de bootstrap, referências quebradas, mudança de comportamento ou dúvida sobre o place conectado. Não usar syncback como tentativa de reparo; após três tentativas sem sucesso do mesmo bug, interromper e propor nova abordagem, conforme AGENTS.md.
 
@@ -127,7 +208,7 @@
 ## Aceite do plano e limites desta entrega
 
 - [SUPOSIÇÃO] Aceite documental: fontes e limites explícitos; lista de scripts e fronteira Rojo/Studio; backups e Phase* fora de src/ por padrão; backup pré-migração obrigatório; sequência com verificações e critérios de parada; reversão por restauração do `.rbxl`; separação entre migração mecânica e implementação da V2.
-- [CONFIRMADO NO CÓDIGO] A elaboração anterior registrou leituras locais e existência/tamanho do backup. Nesta revisão foram lidos CURRENT_STATE.md, GAME_DESIGN.md, AGENTS.md, este plano e o backlog, consultadas as fontes oficiais do Rojo e inspecionado o estado Git. Nenhuma ferramenta do Studio foi chamada nesta revisão; os relatos anteriores não representam novas verificações.
+- [SUPOSIÇÃO] A elaboração anterior registrou leituras locais e existência/tamanho do backup. Nesta revisão foram lidos CURRENT_STATE.md, GAME_DESIGN.md, AGENTS.md, este plano e o backlog, consultadas as fontes oficiais do Rojo e inspecionado o estado Git. Nenhuma ferramenta do Studio foi chamada nesta revisão; os relatos anteriores não representam novas verificações.
 - [NÃO ENCONTRADO] Migração, Rojo, syncback, build, sincronização, Play, testes unitários, multiplayer, mobile, segurança, desempenho, memória e equivalência funcional: NÃO TESTADOS nesta retomada. Este plano não é evidência de migração concluída.
-- [CONFIRMADO NO CÓDIGO] CP2-000d concluído como entrega documental neste plano e registrado no backlog. CP2-000e é a execução futura; sua conclusão não é afirmada aqui.
+- [SUPOSIÇÃO] CP2-000d concluído como entrega documental neste plano e registrado no backlog. CP2-000e é a execução futura; sua conclusão não é afirmada aqui.
 - [SUPOSIÇÃO] Executar CP2-000e exige aprovações da seção Decisões do dono, cumprimento dos pré-requisitos e evidências futuras de fidelidade e preservação. A aprovação da edição destes dois documentos não autoriza executar CP2-000e.

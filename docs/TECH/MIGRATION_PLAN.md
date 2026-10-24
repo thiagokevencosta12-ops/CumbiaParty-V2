@@ -198,12 +198,60 @@
 
 ### CP2-000e-2 — Extrair
 
-- [SUPOSIÇÃO] Objetivo: obter os 24 Sources e o manifesto de origem.
-- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-1 e aprovação escrita desta etapa; caminhos aprovados e sessão da cópia de trabalho identificada em modo Edit.
-- [SUPOSIÇÃO] O que será feito: seguir o método MCP → arquivos descrito acima, sem executar módulos. Registrar origem, destino, classe, Disabled/Enabled quando aplicável, RunContext, atributos completos dos scripts e pastas mapeadas, bytes e SHA-256 do Source; tratar finais de linha explicitamente. Dependência ausente exige revisar a lista, não importar backups indiscriminadamente.
-- [SUPOSIÇÃO] Critério de aceite: 24 Sources e registros completos, sem lacunas, sobreposições ou truncamento no transporte.
-- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: sincronização, preservação pelo Rojo e funcionamento do jogo; conferência independente integral do disco pertence à etapa seguinte.
-- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+- [SUPOSIÇÃO] Execução e plano APROVADOS pelo dono neste ticket em 24/10/2026; CP2-000e-3 a -8 permanecem PENDENTES. Esta autorização substitui exclusivamente o registro histórico de aprovação pendente desta etapa.
+- [CONFIRMADO NO CÓDIGO] Extraídos os 24 Sources da única sessão MCP CumbiaParty_V2_Trabalho.rbxl, ID a84afcec-168b-4427-996c-68a6099df5fb, confirmada em Edit. Caminhos únicos e classes aprovadas conferidos; leitura bruta por Luau somente de leitura, sem script_read.
+- [CONFIRMADO NO CÓDIGO] Gravados 11 arquivos servidor, 4 compartilhados e 9 cliente nos destinos aprovados, total de 162095 bytes. Transporte hexadecimal reversível em blocos de até 4000 bytes com offsets e comprimentos validados; UTF-8 validado antes da gravação binária, sem BOM acrescentado, normalização ou formatação.
+- [CONFIRMADO NO CÓDIGO] Releituras do disco: 24/24 iguais integralmente aos bytes recebidos e respectivos SHA-256. [Manifesto](MIGRATION_MANIFEST.md) contém origem, classe, destino, bytes, hashes recebido/disco, finais de linha, quebra final, Disabled/RunContext, atributos vazios, blocos e verificações por script.
+- [CONFIRMADO NO CÓDIGO] Preservados 3 Sources CRLF, 14 LF e 7 mistos; 7 sem quebra final. WorldBindings possui 1 CR isolado e WorldConfig 107. Nenhuma divergência de fidelidade entre disco e recebido.
+- [CONFIRMADO NO CÓDIGO] Git inicialmente limpo; core.autocrlf=true. Nenhum .gitattributes encontrado no repositório; atributos efetivos text/eol/working-tree-encoding/filter unspecified para os 24 destinos. Configuração e atributos Git não alterados.
+- [SUPOSIÇÃO] core.autocrlf=true pode normalizar texto para LF no índice e usar CRLF em checkout, alterando bytes/hashes futuros; casos mistos/CR isolado dependem da detecção de texto. Conversão por add/checkout NÃO TESTADA; detalhes e origem da configuração no manifesto.
+- [CONFIRMADO NO CÓDIGO] Check adicional dos 24 untracked por git diff --no-index --check encontrou whitespace em 10 arquivos e avisos de conversão LF→CRLF em 19. Bytes herdados preservados, sem correção; diagnósticos individuais no manifesto. O git diff --check comum não abrange arquivos untracked.
+- [CONFIRMADO NO CÓDIGO] Source foi lido apenas pelo MCP; nenhum require, módulo, Play, comando Rojo/Rokit, escrita no Studio, .rbxl, configuração ou commit foi executado.
+- [NÃO ENCONTRADO] NÃO TESTADO: segunda leitura independente pelo MCP e conferência integral da etapa -3, compilação, testes funcionais/UnitTest/gameplay, sincronização e preservação pelo Rojo.
+- [SUPOSIÇÃO] Veredito: pronto para aceite da CP2-000e-2; 24 arquivos gravados, manifesto completo e 24/24 releituras iguais ao recebido. As próximas etapas não estão autorizadas.
+
+#### CP2-000e-2a — Desativar conversão Git em src/
+
+- [SUPOSIÇÃO] Decisão e plano APROVADOS pelo dono neste ticket: preservar os finais de linha dos arquivos migrados; CP2-000e-3 a -8 continuam PENDENTES.
+- [CONFIRMADO NO CÓDIGO] Criado `.gitattributes` na raiz com a única regra `src/** -text`. A regra desativa a conversão de finais de linha pelo mecanismo text do Git sob src/, sem alterar core.autocrlf=true nem qualquer configuração.
+- [SUPOSIÇÃO] A política vale para QUALQUER arquivo futuro em src/, além dos 24 Sources e do .gitkeep existente. Deve ser revista se essa intenção mudar, inclusive caso tipos de arquivos com outra política sejam adicionados a src/.
+- [SUPOSIÇÃO] Manifesto e demais documentos ficam fora da regra: não são cópias de Source cuja identidade binária é exigida. Documentos, ADR e AGENTS.md mantêm o tratamento Git anterior. Criar a regra não reescreve arquivos existentes nem corrige blobs de commits anteriores; nenhuma renormalização será feita neste ticket.
+- [CONFIRMADO NO CÓDIGO] SHA-256 antes/depois: 26/26 iguais (24 Sources, src/.gitkeep e MIGRATION_MANIFEST.md). Nenhum desses arquivos foi alterado; as alterações preexistentes da etapa -2 foram preservadas.
+- [CONFIRMADO NO CÓDIGO] `git add --dry-run` nos 24 destinos: saída 0, listou os 24 como candidatos a add, sem avisos LF/CRLF e sem staging. A primeira tentativa no sandbox falhou ao criar .git/index.lock; a repetição fora do sandbox foi autorizada e concluída. `git check-attr -a` retornou text: unset para todos os 24, conforme saída abaixo.
+- [CONFIRMADO NO CÓDIGO] Comparação complementar `git diff --no-index --check -- /dev/null <caminho-relativo>`: nenhum aviso de conversão para src/. Uma consulta inicial com caminhos absolutos ainda emitiu 19 avisos; ela não foi usada como evidência da aplicação dos atributos. A repetição com caminhos relativos e o dry-run do Git no repositório confirmaram ausência dos avisos.
+- [CONFIRMADO NO CÓDIGO] O aviso de MIGRATION_MANIFEST.md CONTINUA: LF will be replaced by CRLF the next time Git touches it, observado no check no-index. check-attr -a não retornou atributos para o manifesto, plano, backlog, AGENTS.md ou ADR-0001.md; comportamento esperado por estarem fora de src/.
+- [SUPOSIÇÃO] Este .gitattributes é pré-requisito para CP2-000e-3. A etapa -3 continua exigindo igualdade EXATA de bytes e SHA-256 com segunda leitura independente pelo MCP; a regra Git não substitui essa prova.
+- [SUPOSIÇÃO] Prova futura após commit, somente mediante nova aprovação: registrar SHA-256 dos 24 arquivos atuais; confirmar que o mesmo commit inclui .gitattributes e Sources; ler os blobs desse commit por git cat-file com captura binária e comparar bytes/SHA-256 com o disco e manifesto; fazer checkout desse commit em cópia de teste separada e repetir as comparações. Não usar redirecionamento textual do PowerShell para os blobs; usar buffers binários. Exigir 24/24 iguais e registrar commit e resultados. Um hash antes/depois só no disco, sem conferir os blobs, não demonstra sozinho o conteúdo armazenado.
+- [NÃO ENCONTRADO] NÃO TESTADO: commit, leitura/comparação de blobs de um commit futuro, checkout em cópia de teste, segunda leitura MCP da etapa -3, execução dos scripts e sincronização. Nenhum Rojo, Studio, .rbxl, configuração Git, staging efetivo ou commit foi realizado neste ticket.
+
+Saída observada de git check-attr -a — [CONFIRMADO NO CÓDIGO]:
+
+```text
+src/client/ClientBootstrap.client.luau: text: unset
+src/client/Controllers/ArenaController.luau: text: unset
+src/client/Controllers/BattleHUD.luau: text: unset
+src/client/Controllers/BattlePresentationView.luau: text: unset
+src/client/Controllers/CompetitorPortrait.luau: text: unset
+src/client/Controllers/InputController.luau: text: unset
+src/client/Controllers/LobbyController.luau: text: unset
+src/client/Controllers/TournamentController.luau: text: unset
+src/client/Controllers/UIController.luau: text: unset
+src/server/ServerBootstrap.server.luau: text: unset
+src/server/Services/ArenaService.luau: text: unset
+src/server/Services/BattleService.luau: text: unset
+src/server/Services/BotService.luau: text: unset
+src/server/Services/CompetitorService.luau: text: unset
+src/server/Services/LobbyService.luau: text: unset
+src/server/Services/RhythmService.luau: text: unset
+src/server/Services/TournamentService.luau: text: unset
+src/server/Services/WaveGenerator.luau: text: unset
+src/server/Services/WorldBindings.luau: text: unset
+src/server/Validation/NoteValidator.luau: text: unset
+src/shared/BattlePresentationConfig.luau: text: unset
+src/shared/GameConfig.luau: text: unset
+src/shared/NetworkTypes.luau: text: unset
+src/shared/WorldConfig.luau: text: unset
+```
 
 ### CP2-000e-3 — Conferir em disco
 

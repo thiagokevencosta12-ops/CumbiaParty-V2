@@ -36,7 +36,13 @@
   - [CONFIRMADO NO CÓDIGO] 24/24 destinos com `text: unset`; git add --dry-run concluído sem avisos LF/CRLF ou staging, após repetição autorizada fora do sandbox. Check no-index com caminhos relativos também sem avisos para src/. Aviso LF→CRLF do manifesto continua, como esperado. SHA-256 antes/depois iguais nos 24 Sources, .gitkeep e manifesto; core.autocrlf=true preservado.
   - [SUPOSIÇÃO] .gitattributes é pré-requisito da etapa -3, que exige igualdade exata de bytes/SHA-256 com leitura independente pelo MCP. Prova futura de blobs e checkout em cópia de teste descrita no plano, sem autorização de execução neste ticket. CP2-000e-3 a -8 permanecem PENDENTES.
   - [NÃO ENCONTRADO] NÃO TESTADO: prova pós-commit, checkout de teste e conferência independente da etapa -3; nenhum commit, Rojo ou Studio executado.
-- [SUPOSIÇÃO] CP2-000e-3 — Conferir em disco: comparar origem independente, bytes, SHA-256, classes e referências; exigir 24/24 correspondências. Depende do aceite de CP2-000e-2. Aprovação do dono: PENDENTE.
+- [SUPOSIÇÃO] CP2-000e-3 — Conferir em disco: execução/plano/item 7 APROVADOS; conferência interrompida em divergência de referências, sem aceite integral.
+  - [SUPOSIÇÃO] Execução, plano e item 7 APROVADOS pelo dono em 24/10/2026. Conferência interrompida em divergência de referências; aceite integral não declarado. CP2-000e-4 a -8 continuam PENDENTES.
+  - [CONFIRMADO NO CÓDIGO] Sessão MCP única CumbiaParty_V2_Trabalho.rbxl em Edit; segunda leitura independente: 24/24 iguais em bytes e SHA-256 ao disco e manifesto, 162095 bytes; classes/extensões 24/24. Relatório completo em [conferência CP2-000e-3](../TECH/MIGRATION_MANIFEST.md#cp2-000e-3--conferência-independente-em-disco-24102026).
+  - [CONFIRMADO NO CÓDIGO] Item 7: 24/24 blobs do commit 7969b6a6fc2a273148bf06a4310575ef1ebc377f iguais ao disco em bytes e SHA-256, via git cat-file e buffers binários em memória. Mesmo commit contém src/** -text. Sem checkout, cópia de teste ou commit.
+  - [CONFIRMADO NO CÓDIGO] Revisão textual: 50 requires (48 internos existentes, 2 externos de controles Roblox) e 30 WaitForChild/FindFirstChild/variantes listados no manifesto; Remotes, GUI e referências de mapa discriminados. CR CR LF explica os dois -text: 1 CR isolado em WorldBindings e 107 em WorldConfig; reconciliados 3 crlf, 14 lf, 5 mixed, 2 -text com 3 CRLF, 14 LF, 7 mistos.
+  - [NÃO ENCONTRADO] Divergência: perfil inativo Tropical referencia Workspace.CumbiaPartyLobby, oito marcadores e terminal OpenTournament ausentes em Edit. Underground é o perfil ativo e seus 19 RequiredPaths existem. Investigação interrompida ao encontrar as ausências; nada corrigido.
+  - [NÃO ENCONTRADO] NÃO TESTADO: checkout futuro (item 7 prova somente os blobs), dependências e GUI/personagens em runtime, compilação/execução, require, Play/gameplay/UnitTest, Rojo/sincronização/preservação e equivalência Studio/.rbxl salvo.
 - [SUPOSIÇÃO] CP2-000e-4 — Configurar e provar atributos: criação prévia de `CumbiaParty_V2_Descartavel.rbxl` obrigatória; mapeamento restrito e ensaio de preservação. Depende do aceite de CP2-000e-3. Aprovação do dono: PENDENTE.
 - [SUPOSIÇÃO] CP2-000e-5 — Validar sincronização descartável: conferir Source, hierarquia, propriedades, atributos, bootstraps e exclusões. Depende do aceite de CP2-000e-4. Aprovação do dono: PENDENTE.
 - [SUPOSIÇÃO] CP2-000e-6 — Validar funcionamento: comparar fluxo e cenários previstos com a referência de 23/10/2026 11:44 e a linha de base herdada relatada pelo dono, separando falhas herdadas de regressões. Depende do aceite de CP2-000e-5. Aprovação do dono: PENDENTE.
@@ -80,3 +86,23 @@
 |---|---|---|---|---|
 | [SUPOSIÇÃO] | CP2-014 — Dança das Cadeiras | Decompor corrida/estamina, música, ocupação no servidor e eliminação; listar decisões pendentes. | alto | CP2-013 e priorização do dono; parâmetros [NÃO ENCONTRADO]. |
 | [SUPOSIÇÃO] | CP2-015 — Sobrevivência | Decompor chart comum A/S/D/F, pontuação por onda, erros/desempate e eliminação no servidor. | alto | CP2-013 e priorização do dono; progressão/duração/bots [NÃO ENCONTRADO]. |
+
+## CP2-000e-3a — Registro complementar (24/10/2026)
+
+- [SUPOSIÇÃO] Execução somente de leitura e plano de registro nos três documentos APROVADOS pelo dono. [Relatório CP2-000e-3a](../TECH/MIGRATION_MANIFEST.md#cp2-000e-3a--seleção-do-perfil-tropical-24102026). Sem aceitar ou rejeitar -3; decisão do dono. CP2-000e-4 a -8 PENDENTES.
+- [CONFIRMADO NO CÓDIGO] src/shared/WorldConfig.luau:4 seleciona Underground; Tropical e Underground são os dois perfis espaciais. GameConfig:97 consome o ativo. LobbyService:89 chama Resolve sem perfil; WorldBindings:107 usa o ativo e resolve seus caminhos com assert (6,19,109,116,134). Com Underground, a raiz é CumbiaBattleWorld, não CumbiaPartyLobby. Referências e chamadores constam com arquivo/linha no relatório.
+- [NÃO ENCONTRADO] Nenhuma seleção explícita ou troca runtime para Tropical nas buscas dos 24 Sources.
+- [SUPOSIÇÃO] O dono contesta a hipótese "referências do perfil inativo, inofensivas": NÃO se sustenta como conclusão de inocuidade em execução ou fundamento de aceite. Registrada como pendência a esclarecer a contradição apontada pelo dono com seu relato de que a descartável inicia e funciona; não foi reproduzida.
+- [CONFIRMADO NO CÓDIGO] Ressalva: o caminho normal só resolveria CumbiaPartyLobby e seus marcadores se Tropical fosse usado; os asserts não tornam obrigatórias as referências do perfil inativo. A leitura atual não demonstra essa contradição com o relato.
+- [SUPOSIÇÃO] Reconciliação entre Sources/perfil da descartável e evidências da cópia de trabalho pendente de escopo futuro autorizado, sem decisão sobre -3.
+- [NÃO ENCONTRADO] NÃO TESTADO: execução, require, Play, inicialização/gameplay, UnitTest, estado atual do Studio, equivalência disco/Studio/.rbxl e Rojo. Inspeção textual apenas; sem commit.
+
+## CP2-000e-3b — Conferência estrutural em Edit (24/10/2026)
+
+- [SUPOSIÇÃO] Execução e plano aprovados pelo dono; [evidências CP2-000e-3b](../TECH/MIGRATION_MANIFEST.md#cp2-000e-3b--objetos-dos-perfis-em-edit-24102026). Sem aceite da etapa -3: decisão do dono. CP2-000e-4 a -8 PENDENTES.
+- [CONFIRMADO NO CÓDIGO] Leitura atual de WorldConfig:4 confirma Underground ativo. Sessão MCP única CumbiaParty_V2_Trabalho.rbxl em Edit; 85 caminhos distintos conferidos por enumeração de instâncias, Name e ClassName: presentes, únicos e com classes compatíveis. Contagens previstas/observadas: 13/13 retornos, 19/19 RequiredPaths e 5/5 arenas; diferenças zero. As arenas já integram os RequiredPaths. Tabela completa, intermediários, arquivo/linha e distinção entre assert e nil/fallback no manifesto.
+- [NÃO ENCONTRADO] Tropical: CumbiaPartyLobby, oito retornos e terminal ausentes nos caminhos configurados, reconferidos nesta sessão. A ausência da raiz implica ausência desses caminhos descendentes; não é busca global por nomes.
+- [CONFIRMADO NO CÓDIGO] SpawnLocation e Terrain de Workspace existem e são únicos; não se afirma ausência de todos os objetos Tropical. As ausências do perfil inativo não são ausências do contrato Underground.
+- [CONFIRMADO NO CÓDIGO] A conferência prova presença, classe e unicidade; não prova posição, suporte físico nem funcionamento. Nenhum obrigatório Underground ausente ou ambíguo foi observado.
+- [SUPOSIÇÃO] Funcionamento relatado pelo dono continua relato do dono, NÃO TESTADO por agente; sem conclusão de funcionamento ou aceite de -3.
+- [NÃO ENCONTRADO] NÃO TESTADO: posição, suporte físico/raycast, propriedades físicas, funcionamento, Play, require, execução/compilação de módulos, UnitTest, equivalência atual disco/Studio/.rbxl salvo e Rojo/sincronização. Nenhum commit.

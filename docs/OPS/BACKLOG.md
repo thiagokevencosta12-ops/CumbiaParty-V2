@@ -36,8 +36,8 @@
   - [CONFIRMADO NO CÓDIGO] 24/24 destinos com `text: unset`; git add --dry-run concluído sem avisos LF/CRLF ou staging, após repetição autorizada fora do sandbox. Check no-index com caminhos relativos também sem avisos para src/. Aviso LF→CRLF do manifesto continua, como esperado. SHA-256 antes/depois iguais nos 24 Sources, .gitkeep e manifesto; core.autocrlf=true preservado.
   - [SUPOSIÇÃO] .gitattributes é pré-requisito da etapa -3, que exige igualdade exata de bytes/SHA-256 com leitura independente pelo MCP. Prova futura de blobs e checkout em cópia de teste descrita no plano, sem autorização de execução neste ticket. CP2-000e-3 a -8 permanecem PENDENTES.
   - [NÃO ENCONTRADO] NÃO TESTADO: prova pós-commit, checkout de teste e conferência independente da etapa -3; nenhum commit, Rojo ou Studio executado.
-- [SUPOSIÇÃO] CP2-000e-3 — Conferir em disco: execução/plano/item 7 APROVADOS; conferência interrompida em divergência de referências, sem aceite integral.
-  - [SUPOSIÇÃO] Execução, plano e item 7 APROVADOS pelo dono em 24/10/2026. Conferência interrompida em divergência de referências; aceite integral não declarado. CP2-000e-4 a -8 continuam PENDENTES.
+- [SUPOSIÇÃO] CP2-000e-3 — Conferir em disco: ACEITA PELO DONO em 24/10/2026, com ressalva ("decisão do dono: aceito"), conforme CP2-000e-3c abaixo. Restrição vigente nas etapas seguintes: não trocar ActiveProfileId para Tropical. CP2-000e-4 permanece com aprovação PENDENTE e não é iniciada por este aceite.
+  - [SUPOSIÇÃO] Registro histórico da execução: execução, plano e item 7 APROVADOS pelo dono em 24/10/2026. Conferência interrompida em divergência de referências; naquele momento, aceite integral não declarado. Aceite posterior com ressalva registrado em CP2-000e-3c abaixo. CP2-000e-4 a -8 continuam PENDENTES.
   - [CONFIRMADO NO CÓDIGO] Sessão MCP única CumbiaParty_V2_Trabalho.rbxl em Edit; segunda leitura independente: 24/24 iguais em bytes e SHA-256 ao disco e manifesto, 162095 bytes; classes/extensões 24/24. Relatório completo em [conferência CP2-000e-3](../TECH/MIGRATION_MANIFEST.md#cp2-000e-3--conferência-independente-em-disco-24102026).
   - [CONFIRMADO NO CÓDIGO] Item 7: 24/24 blobs do commit 7969b6a6fc2a273148bf06a4310575ef1ebc377f iguais ao disco em bytes e SHA-256, via git cat-file e buffers binários em memória. Mesmo commit contém src/** -text. Sem checkout, cópia de teste ou commit.
   - [CONFIRMADO NO CÓDIGO] Revisão textual: 50 requires (48 internos existentes, 2 externos de controles Roblox) e 30 WaitForChild/FindFirstChild/variantes listados no manifesto; Remotes, GUI e referências de mapa discriminados. CR CR LF explica os dois -text: 1 CR isolado em WorldBindings e 107 em WorldConfig; reconciliados 3 crlf, 14 lf, 5 mixed, 2 -text com 3 CRLF, 14 LF, 7 mistos.
@@ -106,3 +106,13 @@
 - [CONFIRMADO NO CÓDIGO] A conferência prova presença, classe e unicidade; não prova posição, suporte físico nem funcionamento. Nenhum obrigatório Underground ausente ou ambíguo foi observado.
 - [SUPOSIÇÃO] Funcionamento relatado pelo dono continua relato do dono, NÃO TESTADO por agente; sem conclusão de funcionamento ou aceite de -3.
 - [NÃO ENCONTRADO] NÃO TESTADO: posição, suporte físico/raycast, propriedades físicas, funcionamento, Play, require, execução/compilação de módulos, UnitTest, equivalência atual disco/Studio/.rbxl salvo e Rojo/sincronização. Nenhum commit.
+
+## CP2-000e-3c — Aceite da etapa -3 (24/10/2026)
+
+- [SUPOSIÇÃO] Decisão expressa do dono em 24/10/2026: CP2-000e-3 **ACEITA PELO DONO, com ressalva** — "decisão do dono: aceito". Este registro substitui as pendências históricas de decisão de aceite da etapa -3 nos relatos de -3, -3a e -3b, preservando as evidências e os limites daqueles relatos.
+- [SUPOSIÇÃO] Resumo das evidências anteriores aceitas pelo dono, sem nova validação neste ticket: fidelidade 24/24 em bytes e SHA-256 entre MCP, disco, manifesto e blobs do commit 7969b6a6fc2a273148bf06a4310575ef1ebc377f.
+- [SUPOSIÇÃO] Referências ausentes do perfil Tropical (raiz, marcadores e terminal): conhecidas, inativas e herdadas; por decisão do dono, a limpeza fica para a V2.
+- [SUPOSIÇÃO] Ressalva 3 — restrição vigente para as etapas seguintes: **não trocar ActiveProfileId para Tropical**, pois causaria assert no servidor pelas referências ausentes, conforme a análise registrada em CP2-000e-3a. O aceite não autoriza essa troca.
+- [NÃO ENCONTRADO] NÃO TESTADO: checkout futuro, posição, suporte físico, funcionamento e gameplay.
+- [SUPOSIÇÃO] O funcionamento é relato do dono; não constitui teste executado pelo agente.
+- [SUPOSIÇÃO] CP2-000e-4 continua com aprovação **PENDENTE**; aceitar a -3 não inicia nem autoriza a -4. As aprovações de -5 a -8 também permanecem PENDENTES.

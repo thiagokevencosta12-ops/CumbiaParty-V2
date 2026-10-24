@@ -7,13 +7,13 @@
 - [SUPOSIÇÃO] O [ADR-0001](../../decisions/ADR-0001.md) registra Rojo 7.7.1 via Rokit, prova disco → Studio e reversão Git em projeto descartável; também determina que mapa e objetos visuais permanecem no `.rbxl`. Isso é evidência documental, não repetição da prova nesta sessão.
 - [SUPOSIÇÃO] O [spotcheck](../OPS/V1_AUDIT_SPOTCHECK.md) registra sete itens correspondentes à auditoria na cópia de trabalho, incluindo estrutura, D/F/J/K e dependência de `inputTime`. Nenhum desses resultados foi revalidado no Studio nesta retomada.
 - [SUPOSIÇÃO] Fontes de seleção: [inventário](../OPS/V1_INVENTORY.md), [classificação](../OPS/V1_CLASSIFICATION.md), [dependências](V1_DEPENDENCIES.md), [contratos](NETWORK_CONTRACTS.md), [arquitetura](ARCHITECTURE.md), [design](../PRODUCT/GAME_DESIGN.md) e [estado atual](../OPS/CURRENT_STATE.md). Propostas e requisitos usam [SUPOSIÇÃO], inclusive quando aprovados pelo dono; leituras locais e relatos documentais usam [SUPOSIÇÃO] e têm sua origem identificada; confirmação no código exige leitura no Studio nesta sessão, que não faz parte desta revisão.
-- [SUPOSIÇÃO] O [backlog](../OPS/BACKLOG.md) registra CP2-000d como planejamento documental concluído por este documento e separa a execução no CP2-000e, ainda dependente da aprovação da lista pelo dono.
+- [SUPOSIÇÃO] O [backlog](../OPS/BACKLOG.md) registra CP2-000d como planejamento documental concluído e separa a execução no CP2-000e: as três decisões do dono foram aprovadas em 24/10/2026; as aprovações das etapas de execução continuam PENDENTES.
 
 ## Premissas, limites e pendências
 
 - [SUPOSIÇÃO] A migração inicial será mecânica: preservar Source, nomes, classes, hierarquia e propriedades relevantes; não refatorar nem converter regras da V1 para V2 no mesmo lote. Copiar uma base para versionamento não significa aprová-la para o MVP.
 - [SUPOSIÇÃO] A/S/D/F, correções de R1–R7, dano, empate, holds, Great e dificuldade dos bots pertencem a tickets próprios. O servidor continuará responsável por notas, pontos, dano e resultados; a migração não deve transferir autoridade ao cliente.
-- [SUPOSIÇÃO] Não há pergunta impeditiva para escrever este plano. Antes de executar, será necessário conferir a identidade do place, integridade do backup, inventário atual e prévia de sincronização; qualquer divergência bloqueia a conexão até revisão.
+- [SUPOSIÇÃO] Não há pergunta impeditiva para escrever este plano. Antes de executar, será necessário conferir a identidade do place, estado do backup com as dispensas e riscos aceitos pelo dono, inventário atual e prévia de sincronização; qualquer divergência bloqueia a conexão até revisão.
 - [SUPOSIÇÃO] O escopo explícito desta revisão substitui a regra geral de atualizar CURRENT_STATE.md: somente este plano e o backlog serão alterados. CURRENT_STATE.md, ADR, `src/`, `tests/`, configurações e Studio permanecerão intactos.
 
 ## Backup obrigatório e fonte inicial
@@ -22,7 +22,11 @@
 - [SUPOSIÇÃO] Pré-requisito obrigatório antes de qualquer migração: `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Trabalho_pre-migracao.rbxl`. Preservar esse arquivo sem conectar Rojo a ele nem sobrescrevê-lo durante o trabalho.
 - [SUPOSIÇÃO] O registro da consulta local anterior relata o arquivo pré-migração no caminho acima, com 1.794.879 bytes. Existência e tamanho não foram revalidados nesta revisão; seu conteúdo não foi aberto no Studio.
 - [NÃO ENCONTRADO] Integridade, capacidade de abertura e equivalência desse backup ao estado imediatamente anterior à migração não foram verificadas nesta sessão.
-- [SUPOSIÇÃO] Na execução futura, registrar SHA-256, tamanho, data e identificação da cópia de trabalho; validar a abertura de uma cópia descartável do backup, sem salvar no original. Se houver alterações posteriores ao backup, preservar também uma cópia datada e decidir qual estado será a referência antes de prosseguir.
+- [SUPOSIÇÃO] Decisões do dono em 24/10/2026: segunda cópia do backup da V1 em outro local DISPENSADA; teste de abertura de `CumbiaParty_V2_Trabalho_pre-migracao.rbxl` DISPENSADO. Riscos aceitos pelo dono. O pré-migração continua NÃO TESTADO e, enquanto não for testado, não deve ser descrito como ponto de restauração confiável.
+- [SUPOSIÇÃO] Relato do dono em 24/10/2026, não verificado por agente: criou `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, copiada de `CumbiaParty_V2_Trabalho.rbxl` (modificado em 23/10/2026 11:44), com o Studio fechado. Relata que as duas cópias são iguais, que abriu e testou a descartável e que mecânicas e demais itens funcionam.
+- [SUPOSIÇÃO] Estado de referência relatado pelo dono: `CumbiaParty_V2_Trabalho.rbxl` de 23/10/2026 11:44, posterior ao pré-migração de 23/10/2026 02:00. O relato de funcionamento da descartável serve de linha de base herdada para CP2-000e-6, sem constituir teste executado pelo agente.
+- [NÃO ENCONTRADO] Hashes e tamanhos exatos da referência e da descartável não foram registrados em documento; as alterações entre 23/10/2026 02:00 e 11:44 não foram documentadas.
+- [SUPOSIÇÃO] Na execução futura autorizada, registrar SHA-256, tamanho, data e identificação da cópia de trabalho e da descartável; conferir origem e identidade e preservar os arquivos de referência. As dispensas não eliminam as demais verificações de fidelidade e preservação.
 - [SUPOSIÇÃO] A extração inicial deve ler a cópia de trabalho confirmada, usando uma lista explícita de scripts ativos. Não extrair recursivamente todo o DataModel nem escolher fontes apenas pelo nome: backups podem conter nomes repetidos e versões divergentes.
 
 ## Fronteira de responsabilidade do Rojo
@@ -76,7 +80,7 @@
 
 ## Decisões do dono
 
-- [SUPOSIÇÃO] Solicitar aprovação explícita da lista fechada abaixo antes do CP2-000e. Aprovar esta revisão documental não aprova automaticamente a lista nem autoriza executar a migração. Cada nome da tabela representa um script no caminho indicado; não inclui descendentes adicionais.
+- [SUPOSIÇÃO] Lista fechada abaixo aprovada por decisão do dono em 24/10/2026. A aprovação das três decisões não inicia nenhuma etapa nem autoriza executar a migração. Cada nome da tabela representa um script no caminho indicado; não inclui descendentes adicionais.
 
 | Estado | Caminho pai no Studio | Scripts candidatos | Quantidade |
 |---|---|---|---|
@@ -87,10 +91,10 @@
 | [SUPOSIÇÃO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty` | `ClientBootstrap` | 1 |
 | [SUPOSIÇÃO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers` | `UIController`, `InputController`, `CompetitorPortrait`, `TournamentController`, `LobbyController`, `ArenaController`, `BattleHUD`, `BattlePresentationView` | 8 |
 
-- [SUPOSIÇÃO] Decisão 1 — Aprovar os 24 candidatos (11 servidor + 4 compartilhados + 9 cliente), com os caminhos e destinos descritos neste plano? Estado: PENDENTE.
-- [SUPOSIÇÃO] Decisão 2 — Aprovar a exclusão de `ServerStorage.UnitTest`, `ServerScriptService.UnitTestRunner` e `StarterPlayer.StarterPlayerScripts.CumbiaPartyFestivalFX` da migração inicial? Exclusão significa não exportar/mapear; preservar os objetos e seu estado no `.rbxl`, sem apagar ou ativar nada. Estado: PENDENTE.
-- [SUPOSIÇÃO] Decisão 3 — Aprovar que a migração, revisão e execução da suíte UnitTest fiquem para ticket próprio, ainda a definir? As verificações de fidelidade, atributos, preservação e funcionamento da migração continuam obrigatórias no CP2-000e. Estado: PENDENTE.
-- [NÃO ENCONTRADO] Aprovação dessas três decisões para execução não está registrada nesta entrega. Registrar a resposta do dono antes de iniciar CP2-000e; divergências do inventário exigem nova revisão da lista.
+- [SUPOSIÇÃO] Decisão 1 — Aprovar os 24 candidatos (11 servidor + 4 compartilhados + 9 cliente), com os caminhos e destinos descritos neste plano? Estado: APROVADA em 24/10/2026 — decisão do dono ("sim").
+- [SUPOSIÇÃO] Decisão 2 — Aprovar a exclusão de `ServerStorage.UnitTest`, `ServerScriptService.UnitTestRunner` e `StarterPlayer.StarterPlayerScripts.CumbiaPartyFestivalFX` da migração inicial? Exclusão significa não exportar/mapear; preservar os objetos e seu estado no `.rbxl`, sem apagar ou ativar nada. Estado: APROVADA em 24/10/2026 — decisão do dono ("concordo").
+- [SUPOSIÇÃO] Decisão 3 — Aprovar que a migração, revisão e execução da suíte UnitTest fiquem para ticket próprio, ainda a definir? As verificações de fidelidade, atributos, preservação e funcionamento da migração continuam obrigatórias no CP2-000e. Estado: APROVADA em 24/10/2026 — decisão do dono ("deixe para depois").
+- [SUPOSIÇÃO] As três decisões foram aprovadas pelo dono em 24/10/2026; CP2-000e-1 e as demais etapas continuam com aprovação PENDENTE. Divergências do inventário exigem nova revisão da lista.
 
 ## Extração do Source pelo MCP e verificação de fidelidade
 
@@ -120,14 +124,14 @@
 
 ## Sequência futura e critérios de parada
 
-- [SUPOSIÇÃO] Todas as etapas abaixo são futuras. Nenhuma começa sem aprovação escrita do dono do resultado da etapa anterior e da própria etapa. Para CP2-000e-1, exigir aprovação escrita do plano, resolução das três Decisões do dono e aprovação da própria etapa. Aprovação desta revisão documental não concede nenhuma dessas autorizações de execução.
+- [SUPOSIÇÃO] Todas as etapas abaixo são futuras. Nenhuma começa sem aprovação escrita do dono do resultado da etapa anterior e da própria etapa. Para CP2-000e-1, exigir aprovação escrita do plano e da própria etapa; as três Decisões do dono estão aprovadas em 24/10/2026. Aprovação desta revisão documental não concede nenhuma dessas autorizações de execução.
 
 ### CP2-000e-1 — Preparar
 
 - [SUPOSIÇÃO] Objetivo: estabelecer escopo, referência e backup da migração.
-- [SUPOSIÇÃO] Pré-requisitos: aprovações iniciais descritas acima; base histórica e cópia de trabalho identificadas; backup pré-migração disponível para validação.
-- [SUPOSIÇÃO] O que será feito: revisar escopo, conferir base e backup obrigatório, registrar SHA-256, tamanho, data, estado Git e inventário da cópia de trabalho; validar abertura de uma cópia do backup. Fixar a versão registrada no ADR no futuro `rokit.toml`, somente na execução autorizada. Preparar, a partir da referência validada, a cópia completa `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, sem sobrescrever a base, a cópia de trabalho ou o backup; registrar sua origem e identidade.
-- [SUPOSIÇÃO] Critério de aceite: escopo fechado, backup validado, referência identificada e cópia descartável criada e identificada para os ensaios futuros.
+- [SUPOSIÇÃO] Pré-requisitos: aprovações iniciais descritas acima; base histórica e cópia de trabalho identificadas; backup pré-migração preservado. Segunda cópia da V1 e teste de abertura do pré-migração dispensados pelo dono em 24/10/2026, com riscos aceitos; pré-migração NÃO TESTADO, sem confiabilidade de restauração demonstrada.
+- [SUPOSIÇÃO] O que será feito: revisar escopo, conferir base e backup obrigatório com as dispensas registradas, registrar SHA-256, tamanho, data, estado Git e inventário da cópia de trabalho. Fixar a versão registrada no ADR no futuro `rokit.toml`, somente na execução autorizada. Conferir origem e identidade da cópia completa `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, já criada segundo relato do dono a partir da referência de 23/10/2026 11:44, sem sobrescrever a base, a cópia de trabalho ou o backup.
+- [SUPOSIÇÃO] Critério de aceite: escopo fechado, backup preservado com dispensas e riscos registrados, referência identificada e origem/identidade da descartável conferidas para os ensaios futuros. O relato de criação não comprova equivalência por agente nem valida o pré-migração.
 - [SUPOSIÇÃO] NÃO TESTADO nesta etapa: extração dos Sources, sincronização, preservação de atributos pelo Rojo e gameplay.
 - [SUPOSIÇÃO] Aprovação do dono: PENDENTE
 
@@ -170,8 +174,8 @@
 ### CP2-000e-6 — Validar funcionamento
 
 - [SUPOSIÇÃO] Objetivo: identificar regressões funcionais na cópia descartável.
-- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-5 e aprovação escrita desta etapa, incluindo execução do jogo para comparação com a base pré-migração.
-- [SUPOSIÇÃO] O que será feito: conferir inicialização e Output; testar lobby → fila → torneio com bots → resultado → retorno, entrada D/F/J/K, câmera, GUI, saída e respawn. Comparar com a base e separar falhas herdadas de regressões. Migração, revisão do runner e execução da suíte UnitTest ficam para ticket próprio, conforme decisão pendente do dono; não fazem parte do CP2-000e.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-5 e aprovação escrita desta etapa, incluindo execução do jogo para comparação com a referência V2_Trabalho de 23/10/2026 11:44. O funcionamento da descartável relatado pelo dono em 24/10/2026 é a linha de base herdada, não verificada por agente; não demonstra o estado do pré-migração de 02:00.
+- [SUPOSIÇÃO] O que será feito: conferir inicialização e Output; testar lobby → fila → torneio com bots → resultado → retorno, entrada D/F/J/K, câmera, GUI, saída e respawn. Comparar com a base e separar falhas herdadas de regressões. Migração, revisão do runner e execução da suíte UnitTest ficam para ticket próprio, conforme decisão do dono aprovada em 24/10/2026; não fazem parte do CP2-000e.
 - [SUPOSIÇÃO] Critério de aceite: evidências do fluxo e dos cenários acima, com falhas classificadas e nenhuma regressão de migração não resolvida; resultado submetido ao dono.
 - [SUPOSIÇÃO] NÃO TESTADO nesta etapa: suíte UnitTest, mobile, multiplayer amplo, segurança, desempenho e memória; registrar também qualquer cenário previsto que não puder ser executado.
 - [SUPOSIÇÃO] Aprovação do dono: PENDENTE
@@ -179,7 +183,7 @@
 ### CP2-000e-7 — Transferir à cópia de trabalho
 
 - [SUPOSIÇÃO] Objetivo: repetir o procedimento validado na cópia operacional.
-- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-6 e aprovação escrita desta etapa; evidências satisfatórias na descartável, backup validado e prévia restrita.
+- [SUPOSIÇÃO] Pré-requisitos: aceite escrito da CP2-000e-6 e aprovação escrita desta etapa; evidências satisfatórias na descartável, backup preservado com as dispensas e prévia restrita. O teste de abertura do pré-migração foi dispensado pelo dono em 24/10/2026: continua NÃO TESTADO e não é ponto de restauração confiável enquanto não testado. Por ser anterior ao V2_Trabalho de 23/10/2026 11:44 e o intervalo desde 02:00 não ter sido documentado, restaurar por ele pode perder alterações desse intervalo — risco aceito pelo dono.
 - [SUPOSIÇÃO] O que será feito: conferir barra de título e sessão conectada; transferir o procedimento e repetir verificações de Source, bytes/SHA-256, hierarquia, classes, atributos, propriedades, exclusões e validação funcional. Nunca conectar à V1 congelada nem ao backup pré-migração.
 - [SUPOSIÇÃO] Critério de aceite: 24/24 correspondências, preservação verificada e validação funcional registrada na cópia de trabalho, sem regressão não resolvida.
 - [SUPOSIÇÃO] NÃO TESTADO nesta etapa: suítes e cenários não executados, incluindo os limites da CP2-000e-6; não extrapolar o resultado para outros dispositivos ou cargas.
@@ -199,7 +203,7 @@
 ## Reversão por restauração do arquivo
 
 1. [SUPOSIÇÃO] Em caso de falha, interromper a sincronização e desconectar o plugin antes de restaurar; encerrar Play se houver. Registrar a falha e preservar separadamente a cópia defeituosa se necessário, sem sobrescrever o backup.
-2. [SUPOSIÇÃO] Restaurar a cópia operacional a partir de `CumbiaParty_V2_Trabalho_pre-migracao.rbxl`, mantendo o arquivo original de backup intacto. Fazer a restauração em uma nova cópia e confirmar a abertura, identidade, hierarquia e scripts com Rojo desconectado; substituição de arquivo relevante exige autorização explícita.
+2. [SUPOSIÇÃO] Restaurar a cópia operacional a partir de `CumbiaParty_V2_Trabalho_pre-migracao.rbxl`, mantendo o arquivo original de backup intacto. Seu teste de abertura foi dispensado pelo dono em 24/10/2026: permanece NÃO TESTADO e não deve ser descrito como ponto de restauração confiável enquanto não testado. Como é de 23/10/2026 02:00, anterior ao V2_Trabalho de 11:44, restaurar por ele pode perder alterações do intervalo não documentado — risco aceito pelo dono. Fazer a restauração em uma nova cópia e confirmar a abertura, identidade, hierarquia e scripts com Rojo desconectado; substituição de arquivo relevante exige autorização explícita.
 3. [SUPOSIÇÃO] Voltar os arquivos de código/configuração ao ponto anterior à migração por reversão Git revisada, preservando alterações independentes. Git sozinho não restaura mapa, Terrain, GUI, Remotes ou objetos do `.rbxl`.
 4. [SUPOSIÇÃO] Não reconectar enquanto código e configuração não forem compatíveis com o estado restaurado e a prévia não estiver aprovada. Repetir as verificações de inicialização e fluxo na cópia restaurada antes de retomar a migração.
 - [SUPOSIÇÃO] As ferramentas `PhaseCRestore`, `PhaseDRestore` ou `GreyboxMigration` não são o mecanismo de reversão deste plano. A reversão depende da restauração do arquivo pré-migração completo.
@@ -211,4 +215,4 @@
 - [SUPOSIÇÃO] A elaboração anterior registrou leituras locais e existência/tamanho do backup. Nesta revisão foram lidos CURRENT_STATE.md, GAME_DESIGN.md, AGENTS.md, este plano e o backlog, consultadas as fontes oficiais do Rojo e inspecionado o estado Git. Nenhuma ferramenta do Studio foi chamada nesta revisão; os relatos anteriores não representam novas verificações.
 - [NÃO ENCONTRADO] Migração, Rojo, syncback, build, sincronização, Play, testes unitários, multiplayer, mobile, segurança, desempenho, memória e equivalência funcional: NÃO TESTADOS nesta retomada. Este plano não é evidência de migração concluída.
 - [SUPOSIÇÃO] CP2-000d concluído como entrega documental neste plano e registrado no backlog. CP2-000e é a execução futura; sua conclusão não é afirmada aqui.
-- [SUPOSIÇÃO] Executar CP2-000e exige aprovações da seção Decisões do dono, cumprimento dos pré-requisitos e evidências futuras de fidelidade e preservação. A aprovação da edição destes dois documentos não autoriza executar CP2-000e.
+- [SUPOSIÇÃO] As três decisões da seção Decisões do dono estão aprovadas em 24/10/2026. Executar CP2-000e exige aprovações específicas das etapas, ainda PENDENTES, cumprimento dos pré-requisitos com as dispensas registradas e evidências futuras de fidelidade e preservação. A aprovação da edição destes dois documentos não autoriza executar CP2-000e.

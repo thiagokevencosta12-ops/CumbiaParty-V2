@@ -362,3 +362,21 @@ src/shared/WorldConfig.luau: text: unset
 - [NÃO ENCONTRADO] NÃO TESTADO: checkout futuro, posição, suporte físico, funcionamento e gameplay.
 - [SUPOSIÇÃO] O funcionamento é relato do dono; não constitui teste executado pelo agente.
 - [SUPOSIÇÃO] CP2-000e-4 continua com aprovação **PENDENTE**; aceitar a -3 não inicia nem autoriza a -4. As aprovações de -5 a -8 também permanecem PENDENTES.
+
+## CP2-000e-4+5 — Execução parcial interrompida (24/10/2026)
+
+- [SUPOSIÇÃO] Aprovação vigente do dono: -4 e -5 APROVADAS para execução somente na descartável, inclusive plano e reabertura sem salvar entre ensaios. Este registro substitui pendências históricas de autorização de -4/-5; não concede aceite de resultado. -6 a -8 continuam PENDENTES. Alteração de Source e atributos preexistentes em scripts ficam NÃO TESTADOS por decisão do dono.
+- [CONFIRMADO NO CÓDIGO] Sessão única MCP CumbiaParty_V2_Descartavel.rbxl em Edit. Snapshot inicial: 24/24 Sources iguais ao disco em bytes e SHA-256; atributos vazios nos scripts e ArchitectureVersion number 3 nas três pastas CumbiaParty. Classes, execução, filhos dos ancestrais e referência estrutural de 10736 objetos registrados no manifesto.
+- [CONFIRMADO NO CÓDIGO] default.project.json preparado com somente 24 folhas e ancestrais, filhos desconhecidos preservados por configuração e atributos tipados. CLI/plugin 7.7.1; CLI por caminho completo, sem PATH. Servidor iniciou após correção da declaração de classe das folhas e foi encerrado por Ctrl+C. rokit.toml não necessário nem criado.
+- [CONFIRMADO NO CÓDIGO] Execução interrompida antes de aceitar prévia: automação da interface apresentou layouts inconsistentes e bloqueio de clique por janela diferente. Painel observado desconectado após erro de conexão. Nenhuma sincronização aceita pelo agente, escrita MCP no DataModel, alteração de Source, Play, require, syncback, gravação .rbxl ou commit.
+- [NÃO ENCONTRADO] -4 e -5 NÃO CONCLUÍDAS. Ensaios de atributos, reabertura entre ensaios, prévia e comparação pós-sync NÃO TESTADOS. Configuração candidata, sem comprovação de preservação. Gameplay e etapas -6 a -8 NÃO TESTADOS.
+- [SUPOSIÇÃO] Próximo passo: interface estável ou condução manual do painel pelo dono, repetindo identidade/Edit e snapshot antes da conexão. Evidências, versões, comandos, hashes, limites e bloqueio no registro CP2-000e-4+5 de MIGRATION_MANIFEST.md. CURRENT_STATE.md fora do escopo específico.
+
+## CP2-000e-5a — Status atual e critério revisado (24/10/2026)
+
+- [SUPOSIÇÃO] Decisão do dono: etapa -4 em **prova parcial concluída; aceite integral pendente**. ArchitectureVersion declarado permaneceu number 3 nas três pastas; ensaios de omissão, alteração de Source e atributos preexistentes em scripts continuam NÃO TESTADOS.
+- [CONFIRMADO NO CÓDIGO] Comparação posterior: 14/24 Sources com SHA-256 exato; dez diferiram somente pela remoção de CR. Classes, caminhos, atributos, Disabled/RunContext, 11 ancestrais e 10.736 objetos coincidiram. O critério original 24/24 SHA-256 exatos NÃO foi atendido. Lista fechada e hashes no [manifesto](MIGRATION_MANIFEST.md#cp2-000e-5a--resultado-da-sincronização-e-decisão-sobre-cr-24102026).
+- [SUPOSIÇÃO] Causa provável, não comprovada por documentação ou ensaio isolado: Rojo normaliza CRLF para LF. Decisão do dono em 24/10/2026, opção 1: etapa -5 **ACEITA PELO DONO** com SHA-256 exato nos 14 sem CR e igualdade de bytes após remover CR nos dez caminhos fechados do manifesto. Qualquer diferença adicional continua divergência.
+- [SUPOSIÇÃO] Relato do dono: viu prévia e clicou Accept; depois desconectou e fechou a descartável sem salvar. [NÃO ENCONTRADO] Conteúdo da prévia e persistência no .rbxl salvo: NÃO TESTADOS por agente.
+- [SUPOSIÇÃO] Para -7, considerar explicitamente que os dez Sources podem ficar sem CR no Studio enquanto src/ mantém CR; default.project.json ainda é candidato, sujeito à prévia e validações da cópia de trabalho. Etapas -6 a -8 PENDENTES.
+- [CONFIRMADO NO CÓDIGO] Processo rojo serve PID 48224, com executável e início conferidos, encerrado nesta etapa documental. Nenhum comando Rojo novo foi executado.

@@ -1,0 +1,271 @@
+{
+  "name": "CumbiaParty_V2_Descartavel",
+  "emitLegacyScripts": true,
+  "serveAddress": "127.0.0.1",
+  "servePort": 34872,
+  "tree": {
+    "$className": "DataModel",
+    "$ignoreUnknownInstances": true,
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "$ignoreUnknownInstances": true,
+      "$properties": {
+        "Attributes": {}
+      },
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "$ignoreUnknownInstances": true,
+        "$properties": {
+          "Attributes": {}
+        },
+        "CumbiaParty": {
+          "$className": "Folder",
+          "$ignoreUnknownInstances": true,
+          "$properties": {
+            "Attributes": {
+              "ArchitectureVersion": {
+                "Float64": 3
+              }
+            }
+          },
+          "Controllers": {
+            "$className": "Folder",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            },
+            "ArenaController": {
+              "$path": "src/client/Controllers/ArenaController.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "BattleHUD": {
+              "$path": "src/client/Controllers/BattleHUD.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "BattlePresentationView": {
+              "$path": "src/client/Controllers/BattlePresentationView.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "CompetitorPortrait": {
+              "$path": "src/client/Controllers/CompetitorPortrait.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "InputController": {
+              "$path": "src/client/Controllers/InputController.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "LobbyController": {
+              "$path": "src/client/Controllers/LobbyController.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "TournamentController": {
+              "$path": "src/client/Controllers/TournamentController.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            },
+            "UIController": {
+              "$path": "src/client/Controllers/UIController.luau",
+              "$ignoreUnknownInstances": true,
+              "$properties": {
+                "Attributes": {}
+              }
+            }
+          },
+          "ClientBootstrap": {
+            "$path": "src/client/ClientBootstrap.client.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {},
+              "Disabled": false,
+              "RunContext": "Legacy"
+            }
+          }
+        }
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "$ignoreUnknownInstances": true,
+      "$properties": {
+        "Attributes": {}
+      },
+      "CumbiaParty": {
+        "$className": "Folder",
+        "$ignoreUnknownInstances": true,
+        "$properties": {
+          "Attributes": {
+            "ArchitectureVersion": {
+              "Float64": 3
+            }
+          }
+        },
+        "Services": {
+          "$className": "Folder",
+          "$ignoreUnknownInstances": true,
+          "$properties": {
+            "Attributes": {}
+          },
+          "ArenaService": {
+            "$path": "src/server/Services/ArenaService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "BattleService": {
+            "$path": "src/server/Services/BattleService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "BotService": {
+            "$path": "src/server/Services/BotService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "CompetitorService": {
+            "$path": "src/server/Services/CompetitorService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "LobbyService": {
+            "$path": "src/server/Services/LobbyService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "RhythmService": {
+            "$path": "src/server/Services/RhythmService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "TournamentService": {
+            "$path": "src/server/Services/TournamentService.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "WaveGenerator": {
+            "$path": "src/server/Services/WaveGenerator.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "WorldBindings": {
+            "$path": "src/server/Services/WorldBindings.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          }
+        },
+        "Validation": {
+          "$className": "Folder",
+          "$ignoreUnknownInstances": true,
+          "$properties": {
+            "Attributes": {}
+          },
+          "NoteValidator": {
+            "$path": "src/server/Validation/NoteValidator.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          }
+        },
+        "ServerBootstrap": {
+          "$path": "src/server/ServerBootstrap.server.luau",
+          "$ignoreUnknownInstances": true,
+          "$properties": {
+            "Attributes": {},
+            "Disabled": false,
+            "RunContext": "Legacy"
+          }
+        }
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "$ignoreUnknownInstances": true,
+      "$properties": {
+        "Attributes": {}
+      },
+      "CumbiaParty": {
+        "$className": "Folder",
+        "$ignoreUnknownInstances": true,
+        "$properties": {
+          "Attributes": {
+            "ArchitectureVersion": {
+              "Float64": 3
+            }
+          }
+        },
+        "Shared": {
+          "$className": "Folder",
+          "$ignoreUnknownInstances": true,
+          "$properties": {
+            "Attributes": {}
+          },
+          "BattlePresentationConfig": {
+            "$path": "src/shared/BattlePresentationConfig.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "GameConfig": {
+            "$path": "src/shared/GameConfig.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "NetworkTypes": {
+            "$path": "src/shared/NetworkTypes.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          },
+          "WorldConfig": {
+            "$path": "src/shared/WorldConfig.luau",
+            "$ignoreUnknownInstances": true,
+            "$properties": {
+              "Attributes": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

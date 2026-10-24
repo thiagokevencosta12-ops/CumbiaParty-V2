@@ -604,3 +604,112 @@
 - [NÃO ENCONTRADO] NÃO TESTADO: checkout futuro, posição, suporte físico, funcionamento e gameplay.
 - [SUPOSIÇÃO] O funcionamento é relato do dono; não constitui teste executado pelo agente.
 - [SUPOSIÇÃO] CP2-000e-4 continua com aprovação **PENDENTE**; aceitar a -3 não inicia nem autoriza a -4. As aprovações de -5 a -8 também permanecem PENDENTES.
+
+## CP2-000e-4+5 — Preparação e interrupção antes da sincronização (24/10/2026)
+
+- [SUPOSIÇÃO] Dono aprovou execução e plano das etapas -4 e -5 somente em CumbiaParty_V2_Descartavel.rbxl, reabertura da mesma descartável sem salvar entre ensaios e reconferência do snapshot. Alteração de Source e atributos preexistentes em scripts dispensados da prova e mantidos NÃO TESTADOS. Etapas -6 a -8 PENDENTES.
+- [CONFIRMADO NO CÓDIGO] MCP list_roblox_studios retornou uma única sessão bffcdf69-33c3-4f23-8ace-a71fa4ec0206, CumbiaParty_V2_Descartavel.rbxl; get_studio_state confirmou modo, DataModel e foco Edit. O título da janela exibiu C:/Users/Thiago-PC1/CumbiaParty-Arquivos/CumbiaParty_V2_Descartavel.rbxl.
+- [CONFIRMADO NO CÓDIGO] Os 24 caminhos foram resolvidos por correspondência única em cada segmento. Sources lidos via execute_luau em hexadecimal, sem require, e comparados por bytes e SHA-256 com disco: 24/24 iguais, 162095 bytes. A resposta da tentativa conjunta foi truncada; descartada e refeita em lotes de três scripts. O envio conjunto ao cálculo local excedeu 64000 bytes; refeito por script, sem escrita de arquivos auxiliares.
+- [CONFIRMADO NO CÓDIGO] Atributos dos 24 scripts: conjunto vazio; cada script tem zero filhos. ServerBootstrap é Script, ClientBootstrap é LocalScript; ambos Disabled=false e RunContext=Enum.RunContext.Legacy. Os outros 22 são ModuleScript, sem propriedades de execução aplicáveis. UnitTestRunner e CumbiaPartyFestivalFX: Disabled=true, RunContext.Legacy. A enumeração de BaseScripts em ServerScriptService e StarterPlayer encontrou somente esses quatro, um bootstrap ativo por lado.
+- [CONFIRMADO NO CÓDIGO] default.project.json criado com 24 folhas $path individuais e ancestrais necessários, emitLegacyScripts=true, $ignoreUnknownInstances=true em todos os nós. Attributes explicitamente vazios nos 24 scripts e nos ancestrais sem atributos; ArchitectureVersion={Float64:3} nas três pastas CumbiaParty. Raiz DataModel sem $properties. Não foram criados rokit.toml ou metadados auxiliares.
+- [SUPOSIÇÃO] A representação numérica explícita segue [Properties v7](https://rojo.space/docs/v7/properties/#attributes); a fronteira de mapeamento segue [Project Format v7](https://rojo.space/docs/v7/project-format/). Documentação não prova preservação nesta sessão; $ignoreUnknownInstances não garante preservação de atributos.
+- [CONFIRMADO NO CÓDIGO] CLI retornou Rojo 7.7.1; menu e painel do plugin exibiram Rojo 7.7.1. Todos os comandos CLI usaram o executável completo C:/Users/Thiago-PC1/.rokit/tool-storage/rojo-rbx/rojo/7.7.1/rojo.exe, sem mudar PATH.
+- [CONFIRMADO NO CÓDIGO] Comandos CLI executados: --version; serve --help; serve default.project.json --address 127.0.0.1 --port 34872 (duas execuções). A primeira rejeitou $className junto de $path de arquivo, mesmo com classes iguais. Somente o JSON foi corrigido para inferir classes pelas extensões .luau/.server.luau/.client.luau. A segunda iniciou o servidor em localhost:34872. Processo encerrado por Ctrl+C na sessão 31607, retorno exit_code=1.
+- [CONFIRMADO NO CÓDIGO] Bloqueio operacional: automação retornou layouts inconsistentes ao ativar/clicar no Studio; clique do submenu Rojo foi bloqueado por atingir janela RobloxStudio diferente do alvo. Houve também aviso de interação do usuário. Em nova observação o painel mostrava erro de conexão com servidor indisponível e estado desconectado. Nenhuma prévia foi aceita pelo agente.
+- [NÃO ENCONTRADO] Não foi obtida prévia confiável nem evidência de sincronização bem-sucedida. Os três ensaios (declarado, atributo omitido e propriedade Attributes omitida), reabertura entre ensaios, comparação pós-sync e configuração final comprovada permanecem NÃO TESTADOS. A configuração atual é candidata, não aceite de -4 ou conclusão de -5.
+- [CONFIRMADO NO CÓDIGO] Nenhuma escrita MCP no DataModel, alteração de Source, syncback, Play, require, publicação, commit ou gravação de .rbxl foi executada pelo agente. Escopo escrito: default.project.json e os três registros autorizados. CURRENT_STATE.md preservado pela restrição específica deste ticket.
+- [SUPOSIÇÃO] Retomada proposta: obter interface estável ou condução manual do painel pelo dono; repetir identidade/Edit e snapshot antes de iniciar servidor ou conectar. Não aceitar remoções/substituições externas. Interromper diante de perda ou divergência, sem corrigir objetos.
+
+### Snapshot inicial — Sources
+
+| Estado | Caminho | Classe | Bytes | SHA-256 |
+|---|---|---|---:|---|
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.ClientBootstrap | LocalScript | 6188 | 67568128d427f254e4dc30a40d979b550d33bbf4473820e27bc818929941dd21 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.ArenaController | ModuleScript | 5663 | 4848a77f8cc666fac73f912dcec04c05e7f7267a357455581db0d31ef3694fa5 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattleHUD | ModuleScript | 10500 | 11ec855fb26b6f2182cbd7de180b50a6582f5c63c683e5a4b9595072a0290019 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattlePresentationView | ModuleScript | 10430 | 743535107a5a906784b9e5a94eb2348e566e2d4feace4644542f9d3db5dd22d6 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.CompetitorPortrait | ModuleScript | 1605 | 5bce4720c123a800d2ecb52b6dfe271ae49b858877fb83ef9eaae3e70f3f7adc |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.InputController | ModuleScript | 6263 | 0933aaa503e55abd7e0938b3d0925f4e78100f952d4d7dcda56b1f50320140e8 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.LobbyController | ModuleScript | 4329 | cdc30647bcfc85a7ee4f59aeaf50308f716f6218d847f422ff20b68da7c8d1f7 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.TournamentController | ModuleScript | 8500 | 3db4187efd8e172795c7121ebcad077a37329203762df6665de3dcb2d0caf28f |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.UIController | ModuleScript | 14409 | 19dda8ca889b241c230c971fac8da728758ee8e47178c0af252477be09d0a1e4 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.ServerBootstrap | Script | 4375 | 1baa4e9f146362bd92fbe38c9e77fabb260acdf3a7a99a6acf6d90c84bd60771 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.ArenaService | ModuleScript | 12216 | 7f6629b1b9529189e8ab9ed0163be43405ea39e5983364863066e81587a2e142 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.BattleService | ModuleScript | 10446 | b2384aa78986b30f26443c933e4112d26300b92b90a929c1baf98eb18dd039ca |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.BotService | ModuleScript | 2779 | c8542295c0f28d08a1c17d0af1741a844edd8e3d0c01e8f5667b4dc0e1a58c47 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.CompetitorService | ModuleScript | 2029 | d58bfb6bf98266dd9c02f087757ecdfcb81cb9adc53df6834eb21de5d829eba8 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.LobbyService | ModuleScript | 6171 | 73c5b253ef261abd6c51085f4f75601fd81d5a40685db540608465d0c00de272 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.RhythmService | ModuleScript | 9122 | 5fc8494c77a5178ce2735c8d901b6bbf39be20e8401eaaff2cae72a2bbf95f86 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.TournamentService | ModuleScript | 14884 | 650eb4ca3294ef8bdfcfdf5e30e920bd537fdcd788406fcd24098e5ba7dac23d |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.WaveGenerator | ModuleScript | 2227 | 3670f60acbc001852c7f3c860d87c52ab121fe4e50962764c901eff4e6031093 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.WorldBindings | ModuleScript | 10877 | edd7233145490ef190041c7516aef14d0d21357861a3f122ee3e2537ce0857bc |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Validation.NoteValidator | ModuleScript | 1978 | 5399120305f12d3ca7673802101635204860c2242c5b8d289734bf3cf8696b3e |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.BattlePresentationConfig | ModuleScript | 1414 | f9276d6ed30d91fb79bce7844d1964bfbc7c36cdd421556e81ef8b33e03e1ae3 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.GameConfig | ModuleScript | 4449 | 7e55816a5e52454aeb339a12812e963765114d9116f1be593761a03d133fca09 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.NetworkTypes | ModuleScript | 2430 | 3d1b601b16332855d11807054c05c8da5cbdf8eeb2f988d30782a74c3d4d8ba6 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.WorldConfig | ModuleScript | 8811 | 242b3caee54351343f174163d588ca8283a132317131b6448bf1d5f36225fd69 |
+
+### Snapshot inicial — ancestrais mapeados
+
+| Estado | Caminho | Classe | Filhos diretos | Atributos completos | Filhos (nome:classe) |
+|---|---|---|---:|---|---|
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer | StarterPlayer | 2 | {} | StarterCharacterScripts:StarterCharacterScripts; StarterPlayerScripts:StarterPlayerScripts |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts | StarterPlayerScripts | 2 | {} | CumbiaParty:Folder; CumbiaPartyFestivalFX:LocalScript |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty | Folder | 2 | ArchitectureVersion: number 3 | ClientBootstrap:LocalScript; Controllers:Folder |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers | Folder | 8 | {} | ArenaController:ModuleScript; BattleHUD:ModuleScript; BattlePresentationView:ModuleScript; CompetitorPortrait:ModuleScript; InputController:ModuleScript; LobbyController:ModuleScript; TournamentController:ModuleScript; UIController:ModuleScript |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService | ServerScriptService | 2 | {} | CumbiaParty:Folder; UnitTestRunner:Script |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty | Folder | 3 | ArchitectureVersion: number 3 | ServerBootstrap:Script; Services:Folder; Validation:Folder |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services | Folder | 9 | {} | ArenaService:ModuleScript; BattleService:ModuleScript; BotService:ModuleScript; CompetitorService:ModuleScript; LobbyService:ModuleScript; RhythmService:ModuleScript; TournamentService:ModuleScript; WaveGenerator:ModuleScript; WorldBindings:ModuleScript |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Validation | Folder | 1 | {} | NoteValidator:ModuleScript |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage | ReplicatedStorage | 1 | {} | CumbiaParty:Folder |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty | Folder | 2 | ArchitectureVersion: number 3 | Remotes:Folder; Shared:Folder |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared | Folder | 4 | {} | BattlePresentationConfig:ModuleScript; GameConfig:ModuleScript; NetworkTypes:ModuleScript; WorldConfig:ModuleScript |
+
+### Referência estrutural dos objetos externos
+
+- [CONFIRMADO NO CÓDIGO] Enumerados 10736 registros incluindo raízes, ancestrais e scripts gerenciados: caminho, classe e quantidade de filhos. A tabela conserva contagens e hashes por raiz; lista detalhada ficou em memória da sessão. Hash calculado sobre JSON.stringify dos registros recebidos, ordenados no Studio por caminho/classe, não é hash do arquivo .rbxl.
+- [NÃO ENCONTRADO] Propriedades visuais/físicas e Sources dos objetos externos não foram capturados integralmente. Serviços internos do Studio não integram esta referência. Não há comparação pós-sync nem prova de preservação integral de todas as propriedades externas. Antes de retomar em outra sessão, reconstruir o snapshot detalhado.
+
+| Estado | Raiz | Registros incluindo raiz | SHA-256 estrutural |
+|---|---|---:|---|
+| [CONFIRMADO NO CÓDIGO] | Lighting | 7 | c7151b8ba43a6e79fae8f174c2028a4fbc0613a85306ce795e2956c268bb5da7 |
+| [CONFIRMADO NO CÓDIGO] | MaterialService | 1 | 28d29dec74dd5efa3f11f0030880c70fbfadba3ef794cd603f52e48fbd57fd6a |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedFirst | 1 | 12f4af8dfde6faffc34752a20f2f97a43504547f55059fb9929f31680c2f2cfa |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage | 17 | bafbf108a18c62bd7839098f121eeb054df62cfcb94b628c0acd228788754b7b |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService | 16 | f4daa44f1e9ae63e6ffd6020b66f95c8cf7cb4986edf9b1ddba25aa716d9a20e |
+| [CONFIRMADO NO CÓDIGO] | ServerStorage | 9094 | d6f9dab51f3bc3e0985aa4a09c923ba610d4a699336ef58df993488b1d7acb68 |
+| [CONFIRMADO NO CÓDIGO] | SoundService | 1 | 29f732e7aa19617765796d3c0d6c69c33371759b1d145b7311b47695baf944b2 |
+| [CONFIRMADO NO CÓDIGO] | StarterGui | 76 | 4a6696bf8918b99cc7c6a44e58991f5d6d31cb70e0490da1e1c01c9029531743 |
+| [CONFIRMADO NO CÓDIGO] | StarterPack | 1 | d06401d1b97f2da3664469d57de0265855e79711fd934864d45e3b9d484a7e8d |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer | 15 | 812854fc504bb15e79a753c89a312cdf8839b27084a1a0086654991751b67d78 |
+| [CONFIRMADO NO CÓDIGO] | Teams | 1 | 9ad388974bf453685f3b10b98f723ae37c60f7163b26861cd9fc7c343cb3b6f6 |
+| [CONFIRMADO NO CÓDIGO] | TextChatService | 9 | 969eacd318e96c401400f75c1dab745c209f3443a91c889e9647a149385e0342 |
+| [CONFIRMADO NO CÓDIGO] | Workspace | 1497 | 732a9956782acd7ac8f77a6f6cf246bf3df9fcd656a97031da739de7b265840d |
+
+- [NÃO ENCONTRADO] NÃO TESTADO adicional: gameplay, UnitTest, multiplayer, mobile, segurança, desempenho, memória, compilação/execução dos scripts, equivalência do .rbxl salvo, teste de abertura do pré-migração e etapas -6 a -8.
+
+## CP2-000e-5a — Resultado da sincronização e decisão sobre CR (24/10/2026)
+
+- [CONFIRMADO NO CÓDIGO] Após a conexão relatada pelo dono, a leitura MCP em Edit encontrou 14/24 Sources com SHA-256 idêntico ao snapshot inicial/disco e 10/24 com SHA-256 diferente. A comparação dos bytes dos dez mostrou somente remoção de CR (\r): removendo CR do Source inicial, os bytes coincidem integralmente com o Source posterior. O critério original de 24/24 SHA-256 exatos **NÃO foi atendido**. Nenhum Source foi corrigido.
+- [SUPOSIÇÃO] Causa provável: Rojo normaliza CRLF para LF ao sincronizar scripts. A atribuição causal ao Rojo não foi comprovada na documentação nem por ensaio isolado; o fato observado é somente a remoção de CR após a conexão.
+- [SUPOSIÇÃO] Decisão expressa do dono em 24/10/2026, opção 1: aceitar a remoção de CR como diferença conhecida desta sincronização. Critério revisado da etapa -5: SHA-256 exato nos 14 scripts sem diferença; nos dez caminhos fechados da tabela abaixo, igualdade de bytes após remover CR do Source inicial. Qualquer outra diferença continua divergência. **Etapa -5 ACEITA PELO DONO com esse critério**, sem transformar os dez hashes brutos em iguais.
+- [CONFIRMADO NO CÓDIGO] Classes, caminhos, hierarquia, atributos (chave, tipo e valor), Disabled/RunContext e contagens de filhos dos 11 ancestrais coincidiram com o snapshot. As três pastas CumbiaParty mantiveram ArchitectureVersion do tipo number, valor 3; os 24 scripts mantiveram atributos vazios. UnitTestRunner e CumbiaPartyFestivalFX continuaram desabilitados; ServerBootstrap e ClientBootstrap continuaram habilitados, um por lado. A enumeração estrutural de 10.736 objetos preservou caminhos, classes e contagens de filhos, incluindo Remotes, GUI, UnitTest e backups.
+- [SUPOSIÇÃO] Relato do dono, não verificado por agente: viu a prévia, clicou Accept, desconectou o Rojo e fechou CumbiaParty_V2_Descartavel.rbxl **sem salvar**. A declaração “não salvei” substitui a pendência de informação do dono sobre o fechamento, mas não equivale a verificação independente do arquivo em disco.
+- [NÃO ENCONTRADO] Conteúdo da prévia não foi fornecido: NÃO TESTADO se propôs remoções ou substituições. Persistência no .rbxl salvo, gameplay e funcionamento também NÃO TESTADOS.
+- [SUPOSIÇÃO] Status aprovado pelo dono para a etapa -4: **prova parcial concluída; aceite integral pendente**. O caso declarado preservou ArchitectureVersion = number 3 nas três pastas após a conexão. Ensaios de atributo omitido, de toda a propriedade Attributes omitida, alteração de Source e atributos preexistentes em scripts: NÃO TESTADOS.
+- [SUPOSIÇÃO] Consequência para -7: se o mesmo comportamento ocorrer na cópia de trabalho, os dez scripts da tabela ficarão sem CR no Studio, enquanto os arquivos src/ manterão CR. default.project.json continua candidato até -7; não foi validado no place de trabalho.
+- [CONFIRMADO NO CÓDIGO] Nesta etapa documental, o processo iniciado para rojo serve foi reconfirmado como PID 48224, executável C:/Users/Thiago-PC1/.rokit/tool-storage/rojo-rbx/rojo/7.7.1/rojo.exe, início 2026-10-24 14:25:09 (horário local), e encerrado somente por Stop-Process -Id 48224; consulta posterior não encontrou esse PID. Nenhum outro processo foi alvo.
+- [SUPOSIÇÃO] Etapas -6 a -8 permanecem PENDENTES. As afirmações históricas de -4/-5 pendentes acima descrevem o momento anterior e são substituídas, quanto ao status atual, por esta decisão.
+
+| Estado | Source (caminho Studio) | SHA-256 inicial/disco | SHA-256 posterior no Studio |
+|---|---|---|---|
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.ClientBootstrap | 67568128d427f254e4dc30a40d979b550d33bbf4473820e27bc818929941dd21 | 46ae61050bbcf38feb78c62861b3399fb3df096f6d27cddfb1dc949952721c41 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.ArenaController | 4848a77f8cc666fac73f912dcec04c05e7f7267a357455581db0d31ef3694fa5 | 01bd555a35b80c463989935013c2968fece19e349cd435fb6f987a2b8c9c920d |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattleHUD | 11ec855fb26b6f2182cbd7de180b50a6582f5c63c683e5a4b9595072a0290019 | a97035931a6715be9693ee1be018ade0693dfba8ba3cee4a48270ca56c2e1de8 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.ServerBootstrap | 1baa4e9f146362bd92fbe38c9e77fabb260acdf3a7a99a6acf6d90c84bd60771 | 5b99966d4956602c48aab484f8684dfcf24a054dedbb741a98de63d1f8fb6528 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.ArenaService | 7f6629b1b9529189e8ab9ed0163be43405ea39e5983364863066e81587a2e142 | ac43050443af55f2aea859860cb6a8904e8a7d21ab9daf52a46e0a00adbd1e48 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.LobbyService | 73c5b253ef261abd6c51085f4f75601fd81d5a40685db540608465d0c00de272 | 8a44ed450f504ff4c569be8bb97f7a0d4589a116ea2adaaddf706145a6ee4e6b |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.TournamentService | 650eb4ca3294ef8bdfcfdf5e30e920bd537fdcd788406fcd24098e5ba7dac23d | 853437a364575a032d3ea67f36c6519ccf763b9d1f69eaf7b4a395f90c360bbf |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.WorldBindings | edd7233145490ef190041c7516aef14d0d21357861a3f122ee3e2537ce0857bc | f540e3b7064fa6a62174a8a37aa2ce7a3fc9f40c6a55bcc0eda53cffa7fbacc2 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.NetworkTypes | 3d1b601b16332855d11807054c05c8da5cbdf8eeb2f988d30782a74c3d4d8ba6 | 19a4f59153189a20f72a7001570664ba97fe685f1e51e20b0405969aaf0267ae |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.WorldConfig | 242b3caee54351343f174163d588ca8283a132317131b6448bf1d5f36225fd69 | 53dd4209c385f4e324cf120c085f433b871f2178cdff25126c1a0b6cd57bd1ff |

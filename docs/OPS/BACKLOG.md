@@ -116,3 +116,20 @@
 - [NÃO ENCONTRADO] NÃO TESTADO: checkout futuro, posição, suporte físico, funcionamento e gameplay.
 - [SUPOSIÇÃO] O funcionamento é relato do dono; não constitui teste executado pelo agente.
 - [SUPOSIÇÃO] CP2-000e-4 continua com aprovação **PENDENTE**; aceitar a -3 não inicia nem autoriza a -4. As aprovações de -5 a -8 também permanecem PENDENTES.
+
+## CP2-000e-4+5 — Execução parcial interrompida (24/10/2026)
+
+- [SUPOSIÇÃO] Aprovação vigente do dono: -4 e -5 APROVADAS para execução somente na descartável, inclusive plano e reabertura sem salvar entre ensaios. Este registro substitui pendências históricas de autorização de -4/-5; não concede aceite de resultado. -6 a -8 continuam PENDENTES. Alteração de Source e atributos preexistentes em scripts ficam NÃO TESTADOS por decisão do dono.
+- [CONFIRMADO NO CÓDIGO] Sessão única MCP CumbiaParty_V2_Descartavel.rbxl em Edit. Snapshot inicial: 24/24 Sources iguais ao disco em bytes e SHA-256; atributos vazios nos scripts e ArchitectureVersion number 3 nas três pastas CumbiaParty. Classes, execução, filhos dos ancestrais e referência estrutural de 10736 objetos registrados no manifesto.
+- [CONFIRMADO NO CÓDIGO] default.project.json preparado com somente 24 folhas e ancestrais, filhos desconhecidos preservados por configuração e atributos tipados. CLI/plugin 7.7.1; CLI por caminho completo, sem PATH. Servidor iniciou após correção da declaração de classe das folhas e foi encerrado por Ctrl+C. rokit.toml não necessário nem criado.
+- [CONFIRMADO NO CÓDIGO] Execução interrompida antes de aceitar prévia: automação da interface apresentou layouts inconsistentes e bloqueio de clique por janela diferente. Painel observado desconectado após erro de conexão. Nenhuma sincronização aceita pelo agente, escrita MCP no DataModel, alteração de Source, Play, require, syncback, gravação .rbxl ou commit.
+- [NÃO ENCONTRADO] -4 e -5 NÃO CONCLUÍDAS. Ensaios de atributos, reabertura entre ensaios, prévia e comparação pós-sync NÃO TESTADOS. Configuração candidata, sem comprovação de preservação. Gameplay e etapas -6 a -8 NÃO TESTADOS.
+- [SUPOSIÇÃO] Próximo passo: interface estável ou condução manual do painel pelo dono, repetindo identidade/Edit e snapshot antes da conexão. Evidências, versões, comandos, hashes, limites e bloqueio no registro CP2-000e-4+5 de MIGRATION_MANIFEST.md. CURRENT_STATE.md fora do escopo específico.
+
+## CP2-000e-5a — Decisão do dono e pendências (24/10/2026)
+
+- [SUPOSIÇÃO] -4: **prova parcial concluída; aceite integral pendente**. ArchitectureVersion declarado preservado; omissões, alteração de Source e atributos preexistentes em scripts NÃO TESTADOS.
+- [CONFIRMADO NO CÓDIGO] -5: 14/24 SHA-256 exatos; dez Sources diferiram somente pela remoção de CR. Classes, caminhos, atributos, propriedades de execução, ancestrais e 10.736 objetos coincidiram. Critério original 24/24 SHA-256 NÃO atendido. Lista e hashes no [manifesto](../TECH/MIGRATION_MANIFEST.md#cp2-000e-5a--resultado-da-sincronização-e-decisão-sobre-cr-24102026).
+- [SUPOSIÇÃO] Decisão do dono: -5 **ACEITA** pelo critério revisado: 14 hashes exatos e igualdade após remover CR nos dez caminhos fechados. Qualquer outra diferença permanece divergência. Causa atribuída ao Rojo somente como hipótese, sem comprovação documental ou ensaio.
+- [SUPOSIÇÃO] Relato do dono: prévia vista e aceita; Rojo desconectado; descartável fechada sem salvar. [NÃO ENCONTRADO] Conteúdo da prévia e .rbxl salvo NÃO TESTADOS por agente.
+- [SUPOSIÇÃO] -6 a -8 PENDENTES. Na -7, considerar diferença de CR entre Studio e src/; default.project.json permanece candidato. Processo rojo serve PID 48224 encerrado após conferir identidade.

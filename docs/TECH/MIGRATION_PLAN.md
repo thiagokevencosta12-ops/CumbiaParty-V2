@@ -128,12 +128,73 @@
 
 ### CP2-000e-1 — Preparar
 
-- [SUPOSIÇÃO] Objetivo: estabelecer escopo, referência e backup da migração.
-- [SUPOSIÇÃO] Pré-requisitos: aprovações iniciais descritas acima; base histórica e cópia de trabalho identificadas; backup pré-migração preservado. Segunda cópia da V1 e teste de abertura do pré-migração dispensados pelo dono em 24/10/2026, com riscos aceitos; pré-migração NÃO TESTADO, sem confiabilidade de restauração demonstrada.
-- [SUPOSIÇÃO] O que será feito: revisar escopo, conferir base e backup obrigatório com as dispensas registradas, registrar SHA-256, tamanho, data, estado Git e inventário da cópia de trabalho. Fixar a versão registrada no ADR no futuro `rokit.toml`, somente na execução autorizada. Conferir origem e identidade da cópia completa `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Descartavel.rbxl`, já criada segundo relato do dono a partir da referência de 23/10/2026 11:44, sem sobrescrever a base, a cópia de trabalho ou o backup.
-- [SUPOSIÇÃO] Critério de aceite: escopo fechado, backup preservado com dispensas e riscos registrados, referência identificada e origem/identidade da descartável conferidas para os ensaios futuros. O relato de criação não comprova equivalência por agente nem valida o pré-migração.
-- [SUPOSIÇÃO] NÃO TESTADO nesta etapa: extração dos Sources, sincronização, preservação de atributos pelo Rojo e gameplay.
-- [SUPOSIÇÃO] Aprovação do dono: PENDENTE
+- [SUPOSIÇÃO] Aprovação do dono: APROVADA neste ticket em 24/10/2026, seguida da aprovação explícita do plano e das consultas `rojo --version` e `rokit --version`. Origem: instruções do dono nesta conversa; não é uma propriedade do código.
+- [SUPOSIÇÃO] Escopo autorizado: inspeção somente de leitura e relatório neste documento e no registro CP2-000e-1 do backlog. As instruções deste ticket prevalecem sobre os requisitos históricos de hashes/tamanhos de `.rbxl`, configuração e atualização de CURRENT_STATE. CP2-000e-2 a -8 permanecem PENDENTES; este relatório não autoriza iniciá-las.
+
+#### Relatório de 24/10/2026 — sete itens
+
+1. [CONFIRMADO NO CÓDIGO] Decisões: a leitura deste arquivo nesta sessão confirmou as decisões 1, 2 e 3 registradas como APROVADAS em 24/10/2026: lista dos 24 scripts; exclusão de UnitTest, UnitTestRunner e CumbiaPartyFestivalFX; suíte UnitTest em ticket próprio. Esta confirmação é do registro no repositório.
+2. [CONFIRMADO NO CÓDIGO] Git inicial: `git status --short` retornou vazio, árvore limpa. `git log -1`: `c50c9951d7c01652018b4bae81daa7b82c9fe7ab`, Thiago, 24/10/2026 07:24:45 -04:00, mensagem `docs: CP2-000d-rev3 decisões do dono e estado dos pré-requisitos`.
+3. [CONFIRMADO NO CÓDIGO] Arquivos: listagem local nesta sessão em `C:\Users\Thiago-PC1\CumbiaParty-Arquivos\`, somente nomes e datas de modificação, apresentada abaixo. Não foram calculados hashes nem tamanhos exatos dos `.rbxl`, conforme dispensa do dono.
+4. [CONFIRMADO NO CÓDIGO] Identidade e modo: `list_roblox_studios` retornou uma única sessão, ID `a84afcec-168b-4427-996c-68a6099df5fb`, nome `CumbiaParty_V2_Trabalho.rbxl`; `get_studio_state` confirmou modo Edit, DataModel disponível Edit e foco Edit. Todas as consultas ao inventário usaram esse ID e `datamodel_type: Edit`. A identificação é a informada pelo MCP; não é prova de equivalência entre o conteúdo em memória e o arquivo salvo.
+5. [CONFIRMADO NO CÓDIGO] Inventário: 24/24 caminhos aprovados resolvidos, com nomes e classes esperados (11 servidor, 4 compartilhados, 9 cliente). Cada segmento foi conferido enumerando filhos e contando correspondências exatas: uma por segmento, sem duplicatas nos caminhos aprovados. `GetAttributes()` foi consultado nos 24 scripts e nas pastas abaixo; conjuntos vazios estão explícitos. Não foi feita uma busca global por homônimos em backups ou outras árvores fora do escopo.
+6. [CONFIRMADO NO CÓDIGO] Exclusões existentes e únicas nos respectivos caminhos: `ServerStorage.UnitTest` = Folder; `ServerScriptService.UnitTestRunner` = Script; `StarterPlayer.StarterPlayerScripts.CumbiaPartyFestivalFX` = LocalScript. Não foram modificados nem executados.
+   - [SUPOSIÇÃO] UnitTest, UnitTestRunner e CumbiaPartyFestivalFX não serão tocados ou mapeados na migração inicial, conforme decisão 2; suíte UnitTest permanece em ticket próprio.
+7. [CONFIRMADO NO CÓDIGO] Versões executadas: `C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe --version` retornou `Rojo 7.7.1`, consistente com o ADR-0001 lido nesta sessão; `C:\Users\Thiago-PC1\.rokit\bin\rokit.exe --version` retornou `rokit 1.2.0`. Nenhum outro comando dessas ferramentas foi executado e nada foi instalado.
+
+| Evidência | Nome do arquivo | Modificação (UTC-04:00) |
+|---|---|---|
+| [CONFIRMADO NO CÓDIGO] | CumbiaParty_V1_2026-10-22.rbxl | 2026-10-22 19:21:51 |
+| [CONFIRMADO NO CÓDIGO] | CumbiaParty_V2_Trabalho.rbxl | 2026-10-23 11:44:36 |
+| [CONFIRMADO NO CÓDIGO] | CumbiaParty_V2_Descartavel.rbxl | 2026-10-23 11:44:36 |
+| [CONFIRMADO NO CÓDIGO] | CumbiaParty_V2_Trabalho_pre-migracao.rbxl | 2026-10-23 02:00:31 |
+
+| Evidência | Caminho aprovado | Nome | Classe | Unicidade | Atributos |
+|---|---|---|---|---|---|
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.ServerBootstrap` | ServerBootstrap | Script | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.ArenaService` | ArenaService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.BattleService` | BattleService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.BotService` | BotService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.CompetitorService` | CompetitorService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.LobbyService` | LobbyService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.RhythmService` | RhythmService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.TournamentService` | TournamentService | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.WaveGenerator` | WaveGenerator | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services.WorldBindings` | WorldBindings | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Validation.NoteValidator` | NoteValidator | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty.Shared.GameConfig` | GameConfig | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty.Shared.NetworkTypes` | NetworkTypes | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty.Shared.WorldConfig` | WorldConfig | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty.Shared.BattlePresentationConfig` | BattlePresentationConfig | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.ClientBootstrap` | ClientBootstrap | LocalScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.UIController` | UIController | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.InputController` | InputController | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.CompetitorPortrait` | CompetitorPortrait | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.TournamentController` | TournamentController | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.LobbyController` | LobbyController | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.ArenaController` | ArenaController | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattleHUD` | BattleHUD | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattlePresentationView` | BattlePresentationView | ModuleScript | 1 por segmento; sem duplicatas | `{}` (vazio) |
+
+| Evidência | Pasta | Classe | Atributos: nome, tipo e valor |
+|---|---|---|---|
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty` | Folder | `ArchitectureVersion`: `number` = `3` |
+| [CONFIRMADO NO CÓDIGO] | `ReplicatedStorage.CumbiaParty.Shared` | Folder | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty` | Folder | `ArchitectureVersion`: `number` = `3` |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Services` | Folder | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `ServerScriptService.CumbiaParty.Validation` | Folder | `{}` (vazio) |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty` | Folder | `ArchitectureVersion`: `number` = `3` |
+| [CONFIRMADO NO CÓDIGO] | `StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers` | Folder | `{}` (vazio) |
+
+#### Divergências, limites e veredito
+
+- [CONFIRMADO NO CÓDIGO] Nenhuma divergência de nome, classe, ausência ou duplicata no inventário dos 24 caminhos aprovados. As pastas CumbiaParty possuem `ArchitectureVersion`, tipo `number`, valor `3`; todos os 24 scripts possuem atributos vazios. Não havia valores anteriores documentados para comparar; esta é a linha de base observada.
+- [CONFIRMADO NO CÓDIGO] Divergências operacionais: `rojo --version` e `rokit --version` por nome falharam porque os comandos não foram encontrados no PATH desta sessão. O intermediário `.rokit\bin\rojo.exe --version` retornou `ERROR home directory not found`. A consulta direta ao executável instalado confirmou Rojo 7.7.1; não houve alteração de PATH, configuração ou instalação.
+- [CONFIRMADO NO CÓDIGO] Divergências documentais históricas: o plano anterior dizia que a aprovação de CP2-000e-1 estava pendente e exigia hashes/tamanhos dos `.rbxl`. Para esta etapa, valem a aprovação e a dispensa expressas neste ticket, registradas acima; os registros das etapas -2 a -8 não foram alterados.
+- [CONFIRMADO NO CÓDIGO] Source não foi lido e nenhum require foi executado. As consultas Luau apenas enumeraram instâncias e leram Name, ClassName e GetAttributes; não escreveram propriedades, atributos ou instâncias. Não houve Play, gravação no Studio, criação/sobrescrita de `.rbxl`, sincronização, publicação ou commit.
+- [NÃO ENCONTRADO] NÃO TESTADO: abertura, integridade, restauração e equivalência de conteúdo dos arquivos `.rbxl`; equivalência do arquivo salvo com o Studio; origem da cópia descartável verificada independentemente do relato do dono. Nomes e datas iguais não comprovam equivalência. Hashes e tamanhos exatos foram dispensados, não calculados.
+- [NÃO ENCONTRADO] NÃO TESTADO: Source, require, extração e fidelidade, Rojo build/serve/syncback/sincronização, versão do plugin, preservação de atributos após sincronização, gameplay, UnitTest, multiplayer, mobile, segurança, desempenho e memória. As dispensas anteriores de segunda cópia da V1 e abertura do pré-migração permanecem; a confiabilidade do pré-migração para restauração não foi demonstrada.
+- [SUPOSIÇÃO] Veredito: **pronto** para o aceite da CP2-000e-1, considerando os sete itens conferidos, as dispensas expressas e a ausência de divergências do inventário. Não significa migração realizada nem autorização para CP2-000e-2 a -8.
 
 ### CP2-000e-2 — Extrair
 

@@ -133,3 +133,11 @@
 - [SUPOSIÇÃO] Decisão do dono: -5 **ACEITA** pelo critério revisado: 14 hashes exatos e igualdade após remover CR nos dez caminhos fechados. Qualquer outra diferença permanece divergência. Causa atribuída ao Rojo somente como hipótese, sem comprovação documental ou ensaio.
 - [SUPOSIÇÃO] Relato do dono: prévia vista e aceita; Rojo desconectado; descartável fechada sem salvar. [NÃO ENCONTRADO] Conteúdo da prévia e .rbxl salvo NÃO TESTADOS por agente.
 - [SUPOSIÇÃO] -6 a -8 PENDENTES. Na -7, considerar diferença de CR entre Studio e src/; default.project.json permanece candidato. Processo rojo serve PID 48224 encerrado após conferir identidade.
+
+## CP2-000e-6 — Validação funcional na descartável (25/10/2026)
+
+- [SUPOSIÇÃO] Execução aprovada pelo dono somente na descartável. Ele relatou desconexão e fechamento sem salvar após a rodada B; .rbxl fechado não foi verificado por agente.
+- [CONFIRMADO NO CÓDIGO] Rodadas A/B em Play executadas e paradas. Ambas mostraram inicialização, fila, batalha D/F/J/K, torneio concluído com KO e retorno ao lobby/câmera Custom. Output consultado: mesmas duas mensagens dos bootstraps e três avisos do asset em cada rodada, sem novo erro observado. A terminou na onda 7, B na 8; diferença inconclusiva. Snapshot pós-sync atendeu ao critério revisado da -5. [Evidências e limites](../TECH/MIGRATION_MANIFEST.md#cp2-000e-6--rodadas-funcionais-a-e-b-na-descartável-25102026).
+- [NÃO ENCONTRADO] Respawn efetivo, saída da fila, múltiplos humanos, estado interno do resultado/bots, conteúdo detalhado da prévia, suíte UnitTest, mobile, multiplayer, segurança, desempenho e memória: NÃO TESTADOS ou inconclusivos. Nenhuma regressão observada no roteiro executado, sem extrapolar aos cenários pendentes.
+- [CONFIRMADO NO CÓDIGO] Rojo serve PID 36732 encerrado depois de conferir caminho e início; Play parado. Nenhum commit.
+- [SUPOSIÇÃO] Aceite final da -6 pendente da decisão do dono. -7 e -8 PENDENTES.

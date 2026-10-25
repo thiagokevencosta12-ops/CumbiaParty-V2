@@ -380,3 +380,12 @@ src/shared/WorldConfig.luau: text: unset
 - [SUPOSIÇÃO] Relato do dono: viu prévia e clicou Accept; depois desconectou e fechou a descartável sem salvar. [NÃO ENCONTRADO] Conteúdo da prévia e persistência no .rbxl salvo: NÃO TESTADOS por agente.
 - [SUPOSIÇÃO] Para -7, considerar explicitamente que os dez Sources podem ficar sem CR no Studio enquanto src/ mantém CR; default.project.json ainda é candidato, sujeito à prévia e validações da cópia de trabalho. Etapas -6 a -8 PENDENTES.
 - [CONFIRMADO NO CÓDIGO] Processo rojo serve PID 48224, com executável e início conferidos, encerrado nesta etapa documental. Nenhum comando Rojo novo foi executado.
+
+## CP2-000e-6 — Execução na descartável (25/10/2026)
+
+- [SUPOSIÇÃO] Dono aprovou a execução apenas na descartável. Relatou abertura do estado original antes da rodada A e fechamento sem salvar após a B; não há verificação independente do .rbxl fechado. -7 e -8 PENDENTES.
+- [CONFIRMADO NO CÓDIGO] Antes do Play A, sessão MCP única da descartável em Edit, 24/24 Sources com hashes originais e 10.736 objetos nas raízes inventariadas. Após a prévia aceita pelo dono, a leitura confirmou o critério revisado da -5: 14 Sources exatos, dez iguais após remover CR, atributos/classes/execução e hashes estruturais das raízes preservados.
+- [CONFIRMADO NO CÓDIGO] Rodadas A e B executadas com Play separado: bootstraps prontos; fila 1/8; batalha com teclas D/F/J/K; conclusão do torneio informada na GUI com 8 competidores e KO; retorno ao lobby/câmera Custom. A encerrou na onda 7, B na 8. Output consultado igual nas duas, com três avisos do mesmo asset e nenhum outro erro observado. Detalhes e classificação no [manifesto](MIGRATION_MANIFEST.md#cp2-000e-6--rodadas-funcionais-a-e-b-na-descartável-25102026).
+- [NÃO ENCONTRADO] Respawn efetivo, saída da fila, múltiplos humanos, estado interno do resultado/bots, conteúdo detalhado da prévia, suíte UnitTest, mobile, multiplayer, segurança, desempenho e memória: NÃO TESTADOS ou inconclusivos conforme manifesto.
+- [CONFIRMADO NO CÓDIGO] Processo rojo serve PID 36732, executável e horário de início conferidos, encerrado após relato de desconexão do dono. Nenhuma gravação .rbxl ou commit pelo agente.
+- [SUPOSIÇÃO] Nenhuma regressão observada no roteiro executado. Aceite final de -6 pendente da decisão do dono. -7 e -8 continuam PENDENTES.

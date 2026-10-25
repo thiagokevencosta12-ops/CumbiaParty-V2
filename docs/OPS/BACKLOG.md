@@ -141,3 +141,42 @@
 - [NÃO ENCONTRADO] Respawn efetivo, saída da fila, múltiplos humanos, estado interno do resultado/bots, conteúdo detalhado da prévia, suíte UnitTest, mobile, multiplayer, segurança, desempenho e memória: NÃO TESTADOS ou inconclusivos. Nenhuma regressão observada no roteiro executado, sem extrapolar aos cenários pendentes.
 - [CONFIRMADO NO CÓDIGO] Rojo serve PID 36732 encerrado depois de conferir caminho e início; Play parado. Nenhum commit.
 - [SUPOSIÇÃO] Aceite final da -6 pendente da decisão do dono. -7 e -8 PENDENTES.
+
+
+## CP2-000e-7 — Transferência à cópia de trabalho (25/10/2026)
+
+- [SUPOSIÇÃO] Dono aprovou execução e plano exclusivamente na CumbiaParty_V2_Trabalho.rbxl. Aceitou a CP2-000e-6 em 25/10/2026 com respawn, saída da fila, múltiplos humanos, UnitTest, mobile, segurança e desempenho NÃO TESTADOS. A CP2-000e-8 continua PENDENTE.
+- [SUPOSIÇÃO] Decisão expressa do dono: não criar cópia pre-rojo; ponto de retorno é o pre-migracao, NÃO TESTADO e anterior ao V2_Trabalho. Risco de perda das alterações do intervalo ao restaurar aceito pelo dono.
+- [CONFIRMADO NO CÓDIGO] Sessão MCP única 7510caed-e1db-4a25-a458-ca5930902cc6, CumbiaParty_V2_Trabalho.rbxl, com modo, DataModel disponível e foco Edit. Snapshot inicial: 24/24 Sources iguais em bytes e SHA-256 ao disco e à tabela original da descartável, total 162095 bytes; 14 sem CR e dez com CR. Classes, atributos vazios, ausência de filhos dos scripts e Disabled/RunContext conferidos.
+- [CONFIRMADO NO CÓDIGO] Os 11 ancestrais coincidiram com a referência em classe, filhos e atributos; ArchitectureVersion number 3 nas três pastas CumbiaParty. ServerBootstrap e ClientBootstrap habilitados, um por lado; UnitTestRunner e CumbiaPartyFestivalFX desabilitados, todos RunContext.Legacy. As 13 raízes totalizam 10736 objetos, mesmas contagens da referência.
+- [CONFIRMADO NO CÓDIGO] Snapshot estrutural detalhado reconstruído em memória por lotes de até 150 registros, com caminho, classe e quantidade de filhos. Os hashes desta etapa usam JSON.stringify de objetos com chaves na ordem path, class, children, ordenados no Studio por caminho/classe; esta serialização é explicitada para comparação antes/depois e não presume igualdade com hashes históricos de outra serialização.
+- [CONFIRMADO NO CÓDIGO] Escrita restrita ao manifesto, plano e backlog; CURRENT_STATE.md preservado pela restrição específica. Nenhuma escrita direta no Studio, require, alteração para Tropical, syncback, gravação .rbxl ou commit. O nome do projeto existente no JSON é CumbiaParty_V2_Descartavel; arquivo preservado conforme escopo, com alvo confirmado pela sessão MCP.
+- [NÃO ENCONTRADO] Sincronização, prévia, comparação pós-sync e Play desta etapa ainda NÃO TESTADOS; execução aguardará prévia analisável e declaração do dono “aceitei”. Persistência do place salvo e propriedades/Sources completos dos objetos externos NÃO TESTADOS.
+
+- [CONFIRMADO NO CÓDIGO] Rojo 7.7.1 iniciado com `serve default.project.json --address 127.0.0.1 --port 34872`; anunciou localhost:34872. PID 28076, executável `C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe`, início 2026-10-25T18:52:29.0394169Z (14:52:29 em America/New_York), sessão de comando 56148. Antes de iniciar, consulta elevada não encontrou rojo.exe nem listener na porta 34872; a primeira consulta CIM no sandbox retornou Access denied. Processo permanece ativo aguardando condução manual do dono e prévia, sem aceite do agente.
+
+### Interrupção após aceite da prévia pelo dono
+
+- [SUPOSIÇÃO] Dono apresentou captura da prévia com os dez scripts da lista fechada de CR e uma edição adicional na raiz CumbiaParty_V2_Trabalho.rbxl (lápis e contador 1). O detalhe das propriedades não estava visível. Após o agente solicitar que não aceitasse até esclarecer a raiz, o dono informou “aceitei”. Isso registra a ação relatada, sem presumir aprovação específica de alteração adicional na raiz.
+- [CONFIRMADO NO CÓDIGO] Leitura MCP posterior: sessão única 7510caed-e1db-4a25-a458-ca5930902cc6 continua identificada como CumbiaParty_V2_Trabalho.rbxl, em Edit; game.Name retornou CumbiaParty_V2_Descartavel, classe DataModel e atributos vazios. As três pastas CumbiaParty mantêm ArchitectureVersion number 3. O nome da sessão/arquivo e o nome atual do DataModel são distintos.
+- [SUPOSIÇÃO] A edição indicada na raiz provavelmente corresponde ao nome do projeto existente em default.project.json. Não foi capturado game.Name diretamente no snapshot anterior; a propriedade exata proposta na prévia não foi disponibilizada, portanto a causa e o antes/depois dessa propriedade não estão comprovados por duas leituras MCP.
+- [CONFIRMADO NO CÓDIGO] Fluxo interrompido para esclarecer a alteração adicional da raiz, conforme regra de parar diante de divergência ou dúvida. Nenhum Play, correção direta, edição de configuração ou salvamento foi executado pelo agente.
+- [NÃO ENCONTRADO] Comparação completa pós-sync dos 24 Sources e estrutura, rodada funcional da -7 e persistência do place salvo permanecem NÃO TESTADAS. Encerramento do Rojo ainda não realizado; aguardando desconexão informada pelo dono para reconferir PID, executável e horário antes de encerrar exclusivamente o processo desta etapa.
+
+### Encerramento do processo após interrupção
+
+- [SUPOSIÇÃO] Dono informou que desconectou o Rojo e fechou o place sem salvar; autorizou encerrar o PID 28076. O fechamento sem salvar é relato do dono, não verificação independente do arquivo em disco.
+- [CONFIRMADO NO CÓDIGO] Antes de encerrar, Get-Process confirmou PID 28076, executável C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe e início UTC 2026-10-25T18:52:29.0394169Z, iguais à identidade registrada ao iniciar. Stop-Process recebeu somente esse objeto de processo; WaitForExit(5000) retornou True e a consulta posterior não encontrou o PID. Nenhum outro processo foi encerrado.
+- [SUPOSIÇÃO] CP2-000e-7 permanece INTERROMPIDA, sem conclusão ou aceite final, pela alteração adicional da raiz não esclarecida. CP2-000e-8 continua PENDENTE. Uma retomada exige novo snapshot da cópia de trabalho e decisão sobre a alteração da raiz, respeitando o escopo autorizado.
+- [NÃO ENCONTRADO] Permanecem NÃO TESTADOS: comparação completa pós-sync, Play da -7, persistência do place salvo e confirmação independente do fechamento sem salvar; preservadas as lacunas aceitas da -6. Nenhum salvamento ou commit pelo agente.
+
+## CP2-000e-7a — Diagnóstico registrado; decisão do name pendente (25/10/2026)
+
+- [SUPOSIÇÃO] Dono aprovou o registro do diagnóstico somente nos três documentos. [Evidências CP2-000e-7a](../TECH/MIGRATION_MANIFEST.md#cp2-000e-7a--diagnóstico-do-nome-do-datamodel-25102026). CP2-000e-7 continua INTERROMPIDA; CP2-000e-8 PENDENTE.
+- [CONFIRMADO NO CÓDIGO] Sessão única V2_Trabalho em Edit; arquivo informado pelo MCP CumbiaParty_V2_Trabalho.rbxl. Baseline recapturado antes do JSON, em 2026-10-25T22:13:20Z (18:13:20 America/New_York): game.Name CumbiaParty_V2_Trabalho.rbxl. JSON:2 contém name CumbiaParty_V2_Descartavel.
+- [NÃO ENCONTRADO] Nenhum uso direto do nome nos padrões pesquisados em src/ e nos 24 Sources; sem arquivo/linha de ocorrência. Nome exato da raiz da prévia histórica da descartável não encontrado nos registros consultados.
+- [SUPOSIÇÃO] Documentação oficial v7 não constitui prova do renome na 7.7.1; relação entre name do projeto e alteração observada de game.Name permanece hipótese, conforme limites e fontes do manifesto.
+- [SUPOSIÇÃO] PENDENTE — decisão do dono sobre name: manter CumbiaParty_V2_Descartavel ou trocar para CumbiaParty_V2_Trabalho. A opção de troca ainda difere do baseline pela extensão e exige nova prova autorizada da configuração; nenhuma mudança no JSON aprovada/aplicada neste registro.
+- [SUPOSIÇÃO] PENDENTE — capturar game.Name imediatamente antes e depois da próxima sincronização autorizada, com horário/sessão, mantendo separados nome do arquivo, name do JSON e detalhe da prévia. Novo snapshot e decisão da raiz são requisitos de retomada da -7.
+- [CONFIRMADO NO CÓDIGO] Somente os três documentos aprovados foram escritos; nenhum comando Rojo, escrita no Studio, salvamento do place ou commit.
+- [NÃO ENCONTRADO] NÃO TESTADO: sincronização/renome na 7.7.1, configuração alternativa, comparação completa pós-sync/Play da -7, persistência e dependências indiretas. Aprovação do registro não equivale a aceite da -7 nem autorização da -8.

@@ -934,3 +934,64 @@
 - [CONFIRMADO NO CÓDIGO] Antes de encerrar, Get-Process confirmou PID 2576, caminho exato C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe e início 2026-10-27T02:13:10.5552627Z. Stop-Process -Id 2576 encerrou exclusivamente esse processo; consulta imediata confirmou ausência do PID.
 - [CONFIRMADO NO CÓDIGO] Nenhum salvamento do place, commit, syncback, escrita direta no Studio ou alteração de ActiveProfileId foi executado pelo agente. CP2-000e-7 permanece INTERROMPIDA; CP2-000e-8 PENDENTE. A prova -7b concluiu somente o efeito de name na descartável e seu roteiro funcional.
 - [NÃO ENCONTRADO] Persistência do .rbxl salvo e comprovação independente do fechamento sem salvar continuam NÃO TESTADOS.
+
+
+## CP2-000e-7 — Retomada na cópia de trabalho (27/10/2026)
+
+- [SUPOSIÇÃO] Dono aprovou plano e execução somente em CumbiaParty_V2_Trabalho.rbxl; -6 aceita em 25/10 com lacunas, sem cópia pre-rojo, retorno pre-migracao NÃO TESTADO e anterior ao V2_Trabalho, risco aceito. -7b concluída; -8 permanece PENDENTE. Sem salvamento, commit, syncback, escrita direta no Studio ou troca de ActiveProfileId para Tropical.
+- [CONFIRMADO NO CÓDIGO] Sessão MCP única 41426914-7cf1-401e-b517-c0560dceb223 identificada por arquivo CumbiaParty_V2_Trabalho.rbxl, em Edit. game.Name ANTES, texto exato: `CumbiaParty_V2_Trabalho.rbxl`, em 2026-10-27T04:37:58Z (27/10/2026 00:37:58 America/New_York), reconfirmado em 2026-10-27T04:40:15Z antes de Connect/aceite.
+- [CONFIRMADO NO CÓDIGO] 24/24 SHA-256 dos Sources ANTES iguais ao disco e à tabela original da descartável: 162095 bytes, 14 sem CR e dez com CR. Classes corretas, atributos vazios, zero filhos nos 24 scripts. Os 11 ancestrais coincidem em classe, contagem e atributos com o baseline; ArchitectureVersion number 3 nas três pastas. Um bootstrap habilitado por lado de execução; UnitTestRunner e CumbiaPartyFestivalFX desabilitados, todos Legacy; cópias em ServerStorage inventariadas separadamente.
+- [CONFIRMADO NO CÓDIGO] Estrutura recapturada em lotes: 10736 registros nas 13 raízes, caminhos/classes/contagens conservados em memória. Contagens iguais à referência original e hashes com serialização path,class,children iguais à tabela ANTES da -7b. Transferências ao buffer que excederam o limite de 64000 bytes foram rejeitadas; concluídas em lotes menores e consolidação conferida. Nenhum Source executado/requerido.
+- [CONFIRMADO NO CÓDIGO] JSON somente lido, name CumbiaParty_V2_Trabalho, SHA-256 79a3bdce9457c0a2f71797eb6b785e590f81cc33acff3573c552d3f7122f9024. Rojo iniciado: PID 36684; executável C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe; início 2026-10-27T04:40:14.9876543Z (27/10/2026 00:40:14 America/New_York); serve default.project.json --address 127.0.0.1 --port 34872.
+- [NÃO ENCONTRADO] Aguardando prévia do dono e “aceitei”: esperado Name da raiz + dez Sources. game.Name DEPOIS ainda não capturado. NÃO TESTADO nesta retomada: pós-sync, Play, propriedades completas externas, persistência do place, respawn, saída de fila, múltiplos humanos, UnitTest, mobile, segurança e desempenho. Desconexão e encerramento do PID ainda pendentes.
+
+### SHA-256 ANTES desta retomada
+
+| Estado | Caminho | Bytes | SHA-256 |
+|---|---|---:|---|
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.ArenaController | 5663 | 4848a77f8cc666fac73f912dcec04c05e7f7267a357455581db0d31ef3694fa5 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattleHUD | 10500 | 11ec855fb26b6f2182cbd7de180b50a6582f5c63c683e5a4b9595072a0290019 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.BattlePresentationView | 10430 | 743535107a5a906784b9e5a94eb2348e566e2d4feace4644542f9d3db5dd22d6 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.CompetitorPortrait | 1605 | 5bce4720c123a800d2ecb52b6dfe271ae49b858877fb83ef9eaae3e70f3f7adc |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.InputController | 6263 | 0933aaa503e55abd7e0938b3d0925f4e78100f952d4d7dcda56b1f50320140e8 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.LobbyController | 4329 | cdc30647bcfc85a7ee4f59aeaf50308f716f6218d847f422ff20b68da7c8d1f7 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.TournamentController | 8500 | 3db4187efd8e172795c7121ebcad077a37329203762df6665de3dcb2d0caf28f |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.Controllers.UIController | 14409 | 19dda8ca889b241c230c971fac8da728758ee8e47178c0af252477be09d0a1e4 |
+| [CONFIRMADO NO CÓDIGO] | StarterPlayer.StarterPlayerScripts.CumbiaParty.ClientBootstrap | 6188 | 67568128d427f254e4dc30a40d979b550d33bbf4473820e27bc818929941dd21 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.ArenaService | 12216 | 7f6629b1b9529189e8ab9ed0163be43405ea39e5983364863066e81587a2e142 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.BattleService | 10446 | b2384aa78986b30f26443c933e4112d26300b92b90a929c1baf98eb18dd039ca |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.BotService | 2779 | c8542295c0f28d08a1c17d0af1741a844edd8e3d0c01e8f5667b4dc0e1a58c47 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.CompetitorService | 2029 | d58bfb6bf98266dd9c02f087757ecdfcb81cb9adc53df6834eb21de5d829eba8 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.LobbyService | 6171 | 73c5b253ef261abd6c51085f4f75601fd81d5a40685db540608465d0c00de272 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.RhythmService | 9122 | 5fc8494c77a5178ce2735c8d901b6bbf39be20e8401eaaff2cae72a2bbf95f86 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.TournamentService | 14884 | 650eb4ca3294ef8bdfcfdf5e30e920bd537fdcd788406fcd24098e5ba7dac23d |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.WaveGenerator | 2227 | 3670f60acbc001852c7f3c860d87c52ab121fe4e50962764c901eff4e6031093 |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Services.WorldBindings | 10877 | edd7233145490ef190041c7516aef14d0d21357861a3f122ee3e2537ce0857bc |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.Validation.NoteValidator | 1978 | 5399120305f12d3ca7673802101635204860c2242c5b8d289734bf3cf8696b3e |
+| [CONFIRMADO NO CÓDIGO] | ServerScriptService.CumbiaParty.ServerBootstrap | 4375 | 1baa4e9f146362bd92fbe38c9e77fabb260acdf3a7a99a6acf6d90c84bd60771 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.BattlePresentationConfig | 1414 | f9276d6ed30d91fb79bce7844d1964bfbc7c36cdd421556e81ef8b33e03e1ae3 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.GameConfig | 4449 | 7e55816a5e52454aeb339a12812e963765114d9116f1be593761a03d133fca09 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.NetworkTypes | 2430 | 3d1b601b16332855d11807054c05c8da5cbdf8eeb2f988d30782a74c3d4d8ba6 |
+| [CONFIRMADO NO CÓDIGO] | ReplicatedStorage.CumbiaParty.Shared.WorldConfig | 8811 | 242b3caee54351343f174163d588ca8283a132317131b6448bf1d5f36225fd69 |
+
+### CP2-000e-7 — Aceite e conferência DEPOIS (27/10/2026)
+
+- [SUPOSIÇÃO] Dono forneceu captura parcial da prévia, confirmou que todos os scripts mostravam Source e declarou “aceitei”. Captura mostrou Name Current CumbiaParty_V2_Trabalho.rbxl → Incoming CumbiaParty_V2_Trabalho e Source em NetworkTypes; os demais detalhes de Source são relato do dono. A imagem não mostrava integralmente o final da lista.
+- [CONFIRMADO NO CÓDIGO] Sessão única manteve arquivo CumbiaParty_V2_Trabalho.rbxl e Edit. game.Name DEPOIS, texto exato: `CumbiaParty_V2_Trabalho`, em 2026-10-27T04:43:36Z (27/10/2026 00:43:36 America/New_York). ANTES: `CumbiaParty_V2_Trabalho.rbxl`.
+- [CONFIRMADO NO CÓDIGO] 14/24 SHA-256 exatos; dez Sources iguais após remover CR do ANTES, nos mesmos caminhos e com hashes DEPOIS iguais à -5a/-7b. Classes, atributos, filhos e execução dos scripts preservados. Os 11 ancestrais e inventário de execução coincidem; ArchitectureVersion number 3 nas três pastas, um bootstrap por lado, runner e FX desabilitados. Comparação integral dos 10736 registros nas 13 raízes confirmou igualdade de caminho, classe e contagem de filhos, inclusive fora do mapa Rojo.
+
+### CP2-000e-7 — Play curto e pendência de desconexão (27/10/2026)
+
+- [CONFIRMADO NO CÓDIGO] Play iniciado e parado via MCP; retorno a Edit confirmado. Servidor apresentou um jogador e nove filhos em Remotes. Output consultado mostrou as duas mensagens de bootstraps prontos e três avisos ContentId rbxassetid://203785492 de tipo incompatível, iguais aos registros -6/-7b; nenhum erro adicional observado no Output consultado.
+- [CONFIRMADO NO CÓDIGO] TORNEIO abriu painel; Join mudou fila de 0/8 para 1/8 com contagem. Batalha iniciou com câmera Scriptable. Entradas D/F/J/K enviadas; leituras mostraram Miss e Broken Hold, zero pontos e nenhum acerto confirmado nesta rodada. Torneio chegou a TORNEIO CONCLUÍDO • 8 competidores, campeã bot Luna Sol, jogador eliminado e resumo Encerramento: KO na onda 7. VOLTAR fechou painel, exibiu LobbyHUD e restaurou câmera Custom.
+- [SUPOSIÇÃO] Comparação com -6/-7b: nenhuma regressão observada no roteiro executado; onda 7 coincide com rodada A da -6, enquanto B/-7b registraram onda 8. Diferenças de campeão, onda e notas não demonstram equivalência nem regressão de julgamento, pois entradas não tiveram tempo controlado. Resultado interno do servidor não foi validado.
+- [NÃO ENCONTRADO] NÃO TESTADO: persistência do .rbxl/renome salvo, propriedades completas dos objetos externos, respawn, saída antecipada da fila, múltiplos humanos, notas em tempo controlado, validação interna dos bots/resultados, UnitTest, mobile, segurança, desempenho e memória. Output pode não incluir mensagens fora de sua retenção. Desconexão pelo dono e encerramento exclusivo do PID 36684 ainda PENDENTES; -8 continua PENDENTE.
+- [CONFIRMADO NO CÓDIGO] Agente não salvou place, não fez commit/syncback/escrita direta no Studio e não alterou ActiveProfileId. Somente os três documentos autorizados foram editados.
+
+### CP2-000e-7 — Encerramento da execução (27/10/2026)
+
+- [SUPOSIÇÃO] Dono informou “desconectei”. Desconexão registrada como relato do dono, sem verificação independente do painel Rojo.
+- [CONFIRMADO NO CÓDIGO] Antes de encerrar, Get-Process confirmou PID 36684, executável C:\Users\Thiago-PC1\.rokit\tool-storage\rojo-rbx\rojo\7.7.1\rojo.exe e início exato 2026-10-27T04:40:14.9876543Z. Stop-Process -Id 36684 encerrou exclusivamente esse processo; consulta imediata confirmou ausência do PID em 2026-10-27T04:49:49.3849086Z (27/10/2026 00:49:49 America/New_York).
+- [CONFIRMADO NO CÓDIGO] Execução autorizada da -7 encerrada após comparação ANTES/DEPOIS e Play curto, com retorno a Edit. Agente não salvou o place, não fez commit e não operou o painel Rojo. Escrita restrita aos três documentos autorizados.
+- [SUPOSIÇÃO] Aceite final da transferência continua decisão do dono; CP2-000e-8 permanece PENDENTE. Registros históricos de -7 interrompida e pendências de desconexão acima descrevem momentos anteriores e são sucedidos por esta execução.
+- [NÃO ENCONTRADO] NÃO TESTADO: persistência do place/renome salvo, comprovação independente de ausência de salvamento pelo dono, propriedades completas externas, respawn, saída antecipada da fila, múltiplos humanos, julgamento controlado e resultados internos, UnitTest, mobile, segurança, desempenho e memória.

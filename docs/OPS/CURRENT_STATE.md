@@ -1,59 +1,29 @@
-# Estado atual — RASCUNHO
+# Estado atual — pós-migração CP2-000e (27/10/2026)
 
-## Decisões da V2 (definidas pelo dono)
-- MVP: Torneio X1 (batalha 1x1, vence quem zerar o HP do adversário).
-- Três minigames: X1, Dança das Cadeiras, Sobrevivência.
-- Teclas dos minigames de ritmo: A/S/D/F (a V1 usava D/F/J/K).
-- Visual: Underground (base: greybox CumbiaBattleWorld). O cenário
-  tropical da V1 NÃO faz parte da V2.
-- Fora do escopo por ora: loja, roleta, cosméticos, monetização,
-  progresso persistente, espectador, minigame 4.
-- Regras completas em docs/PRODUCT/GAME_DESIGN.md.
+## Produto e decisões
 
-## Estado do repositório V2
-- [CONFIRMADO] Existem docs/PRODUCT (VISION, GAME_DESIGN), a auditoria
-  da V1 (V1_INVENTORY, V1_DEPENDENCIES, V1_CLASSIFICATION), ARCHITECTURE,
-  NETWORK_CONTRACTS e BACKLOG.
-- [NÃO ENCONTRADO] Implementação em src/ e tests/ (pastas vazias).
-  A V1 vive no Studio, sem vínculo com commits.
-- V1 congelada (não editar): C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V1_2026-10-22.rbxl
-- Cópia de trabalho: C:\Users\Thiago-PC1\CumbiaParty-Arquivos\CumbiaParty_V2_Trabalho.rbxl
-- [CONFIRMADO] MCP aponta para a cópia de trabalho (23/10/2026): 12
-  scripts listados em ServerScriptService, batendo com o inventário.
+- [SUPOSIÇÃO] O dono definiu Torneio X1 como MVP, Dança das Cadeiras e Sobrevivência como os outros minigames, visual Underground e A/S/D/F como teclas de ritmo da V2. A base migrada ainda usa D/F/J/K; a mudança pertence à CP2-001, NÃO INICIADA. Regras em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
+- [SUPOSIÇÃO] O servidor deve decidir notas, pontos, dano, eliminação e prêmios. A migração foi mecânica e não prova que todas as decisões existentes já respeitam essa regra. R1–R7 e demais mudanças de gameplay continuam em tickets próprios.
+- [SUPOSIÇÃO] Não trocar `ActiveProfileId` para Tropical. O perfil ativo registrado no código é Underground; referências Tropical ausentes foram documentadas na CP2-000e-3a.
+- [SUPOSIÇÃO] Continuam pendentes decisões de produto sobre empate quando a música do X1 acaba, dano, estamina, parada da música, dificuldade dos bots, dispositivos e latência. Confirmar os termos de uso de áudio de referência do Mureka antes de publicar; ver GAME_DESIGN.
 
-## O que existe na V1 (segundo a auditoria)
-- [SUPOSIÇÃO] Ritmo solo (RhythmService, NoteValidator), X1 com HP
-  (BattleService), ondas (WaveGenerator), competidores/bots e torneio
-  de oito vagas (CompetitorService, BotService, TournamentService).
-- [SUPOSIÇÃO] LobbyService, WorldBindings e ArenaService ligam retorno,
-  respawn e arenas ao mapa CumbiaBattleWorld. Interface via
-  ClientBootstrap e controllers; nove RemoteEvents.
-- [SUPOSIÇÃO] Cenário tropical, ferramentas de autoria e versões antigas
-  estão preservados na V1 (não entram na V2).
+## Estado técnico
 
-## O que parece funcionar (pela estrutura, não testado)
-- [SUPOSIÇÃO] Fluxo entrada → validação → julgamento → dano → avanço da
-  chave parece coerente. Bots usam o mesmo julgador das notas.
+- [CONFIRMADO NO CÓDIGO] O repositório contém 24 Sources em `src/`: 11 do servidor, 4 compartilhados e 9 do cliente; `default.project.json` mapeia esses scripts e ancestrais necessários, com `name = CumbiaParty_V2_Trabalho`. Rojo 7.7.1 e Rokit 1.2.0 são as versões registradas nas etapas anteriores. O [manifesto](../TECH/MIGRATION_MANIFEST.md) detalha caminhos, classes, hashes e diferenças.
+- [CONFIRMADO NO CÓDIGO] Na sessão única `CumbiaParty_V2_Trabalho.rbxl` em Edit, após reabertura relatada pelo dono, 14 Sources são iguais aos arquivos em `src/` e dez são iguais após remover CR dos arquivos. Os SHA-256 dos 24 arquivos do repositório coincidem com o manifesto. Classes, atributos vazios dos scripts, `ArchitectureVersion` de tipo number e valor 3 nas três pastas CumbiaParty, e os 11 ancestrais conferidos coincidem. `ServerBootstrap` e `ClientBootstrap` estão habilitados, um por lado, com `RunContext.Legacy`; `UnitTestRunner` e `CumbiaPartyFestivalFX` estão desabilitados.
+- [CONFIRMADO NO CÓDIGO] A estrutura das 13 raízes, 10.736 objetos ao todo, tem os mesmos hashes de caminho, classe e número de filhos do snapshot da V2_Trabalho anterior à sincronização. Isso não compara todas as propriedades visuais e físicas dos objetos externos.
+- [CONFIRMADO NO CÓDIGO] Após a reabertura, `game.Name = CumbiaParty_V2_Trabalho.rbxl`. Imediatamente após a sincronização da CP2-000e-7 havia sido lido `CumbiaParty_V2_Trabalho`. A diferença observada no nome não é uma divergência de Source.
+- [SUPOSIÇÃO] O Studio pode recompor `game.Name` a partir do nome do arquivo local ao abri-lo. A [documentação oficial sobre abertura de arquivos locais](https://create.roblox.com/docs/studio/cli) confirma a abertura de `.rbxl` por caminho, mas não descreve esse efeito no `game.Name`; a causa permanece sem prova direta.
+- [SUPOSIÇÃO] O dono relatou que aplicou CP2-000e-7, salvou a V2_Trabalho depois da sincronização, fechou e reabriu o arquivo e desconectou o Rojo. A leitura da sessão reaberta comprova o estado observado nela; o histórico de salvamento e a desconexão são relatos do dono, sem verificação independente.
 
-## Frágil ou incompleto (investigar antes de migrar)
-- [SUPOSIÇÃO] R1: julgamento usa o horário enviado pelo cliente.
-- [SUPOSIÇÃO] R3–R5: lacunas de ciclo de vida (sessão não liberada ao
-  expirar X1, históricos sem poda, desconexão parcial da GUI).
-- [SUPOSIÇÃO] R6–R7: snapshots pesados e criação parcial de estado.
-- Detalhes em docs/TECH/V1_DEPENDENCIES.md.
+## Fluxo de trabalho
 
-## Não existe no código da V1 (trabalho novo)
-- Dança das Cadeiras e Sobrevivência (só há objetos no mapa).
-- Persistência, prêmios, catálogo musical e animações.
+- [SUPOSIÇÃO] Editar os 24 scripts gerenciados em `src/`, revisar as mudanças no Git e sincronizá-los para a V2_Trabalho pelo Rojo conforme `default.project.json`, conferindo a prévia antes de aceitar. Não usar alterações diretas de Source no Studio como fluxo normal nem fazer syncback automático. `src/` sozinho não reconstrói o jogo completo.
+- [CONFIRMADO NO CÓDIGO] Mapa, Terrain, GUI, Remotes e outros objetos fora dos 24 scripts mapeados permanecem no `.rbxl`; o Studio é a fonte para editar esses objetos. Backups, ferramentas de autoria e UnitTest preservados no place não foram migrados para `src/`.
+- [NÃO ENCONTRADO] `rokit.toml` no repositório. Fixar e documentar sua configuração permanece pendente; as versões registradas não equivalem a uma declaração de ferramentas no projeto.
+- [SUPOSIÇÃO] Não foi criada cópia pre-rojo por decisão do dono. O ponto de retorno indicado por ele é `CumbiaParty_V2_Trabalho_pre-migracao.rbxl`, anterior à V2_Trabalho de 23/10/2026 11:44 e NÃO TESTADO. Restaurá-lo pode perder alterações do intervalo; risco aceito pelo dono. Não descrevê-lo como restauração confiável.
 
-## Não testado
-- Gameplay, multiplayer, mobile, respawn, câmera, segurança,
-  desempenho e memória. Os oito testes inventariados não foram
-  executados.
+## Próximo ticket e limites
 
-## Pendências do dono
-1. Empate no X1: música acaba com os dois vivos (mais HP ou morte súbita?).
-2. Valores de dano, estamina, parada da música e dificuldade dos bots.
-3. Dispositivos-alvo, concorrência e tolerância de latência.
-4. Música: confirmar o que os termos do Mureka dizem sobre áudio de
-   referência (licença só vale com plano ativo; ver GAME_DESIGN.md).
+- [SUPOSIÇÃO] Próximo ticket: CP2-001, implementação e teste ponta a ponta das teclas A/S/D/F. CP2-001 NÃO INICIADA. CP2-000c continua sem conclusão suficiente segundo o backlog.
+- [NÃO ENCONTRADO] NÃO TESTADO: respawn, saída antecipada da fila, múltiplos humanos, notas em tempo controlado, resultados internos de bots/servidor, suíte UnitTest, mobile, segurança, desempenho, memória, propriedades completas dos objetos externos, abertura/restauração do pré-migração e checkout futuro dos blobs de `src/`.

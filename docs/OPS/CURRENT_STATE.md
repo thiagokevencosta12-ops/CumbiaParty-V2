@@ -20,7 +20,12 @@
 
 - [SUPOSIÇÃO] Editar os 24 scripts gerenciados em `src/`, revisar as mudanças no Git e sincronizá-los para a V2_Trabalho pelo Rojo conforme `default.project.json`, conferindo a prévia antes de aceitar. Não usar alterações diretas de Source no Studio como fluxo normal nem fazer syncback automático. `src/` sozinho não reconstrói o jogo completo.
 - [CONFIRMADO NO CÓDIGO] Mapa, Terrain, GUI, Remotes e outros objetos fora dos 24 scripts mapeados permanecem no `.rbxl`; o Studio é a fonte para editar esses objetos. Backups, ferramentas de autoria e UnitTest preservados no place não foram migrados para `src/`.
-- [NÃO ENCONTRADO] `rokit.toml` no repositório. Fixar e documentar sua configuração permanece pendente; as versões registradas não equivalem a uma declaração de ferramentas no projeto.
+- [CONFIRMADO NO CÓDIGO] CP2-000f concluída documentalmente em 27/10/2026: [rokit.toml](../../rokit.toml) criado na raiz com somente `[tools]` e `rojo = "rojo-rbx/rojo@7.7.1"`, em duas linhas com quebra final. A pendência de ausência do arquivo foi resolvida; instalação não testada.
+- [CONFIRMADO NO CÓDIGO] Leitura documental nesta sessão: [ADR-0001](../../decisions/ADR-0001.md) fixa Rojo 7.7.1, mas não escreve literalmente `rojo-rbx/rojo`; o caminho registrado na [etapa CP2-000e-1](../TECH/MIGRATION_PLAN.md#cp2-000e-1--preparar) contém esse identificador e registra Rokit 1.2.0 instalado. A instalação atual não foi reconfirmada por execução.
+- [SUPOSIÇÃO] Sintaxe baseada na seção oficial [With Rokit da release 7.7.1](https://github.com/rojo-rbx/rojo/releases/tag/v7.7.1); o [README do Rokit](https://github.com/rojo-rbx/rokit#usage) descreve `rokit install` como instalação das ferramentas do projeto. O arquivo só declara Rojo, sem declarar ou instalar Rokit.
+- [CONFIRMADO NO CÓDIGO] A regra lida em `.gitattributes`, `src/** -text`, não abrange `rokit.toml` na raiz; `git check-attr` retornou `text` e `eol` como `unspecified` para ele.
+- [SUPOSIÇÃO] Aviso LF→CRLF esperado para o arquivo na raiz, considerando `core.autocrlf=true` registrado na CP2-000e-2a; Git config não foi consultado nem alterado nesta tarefa.
+- [NÃO ENCONTRADO] NÃO TESTADO na CP2-000f: leitura de `rokit.toml` pelo Rokit, instalação e resolução efetiva de Rojo 7.7.1 por `rokit install`. Verificação reservada ao dono ou a ticket próprio com aprovação explícita; nenhum comando Rokit/Rojo executado nesta tarefa.
 - [SUPOSIÇÃO] Não foi criada cópia pre-rojo por decisão do dono. O ponto de retorno indicado por ele é `CumbiaParty_V2_Trabalho_pre-migracao.rbxl`, anterior à V2_Trabalho de 23/10/2026 11:44 e NÃO TESTADO. Restaurá-lo pode perder alterações do intervalo; risco aceito pelo dono. Não descrevê-lo como restauração confiável.
 
 ## Próximo ticket e limites

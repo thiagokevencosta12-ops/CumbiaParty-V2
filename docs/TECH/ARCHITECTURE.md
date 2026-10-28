@@ -10,7 +10,7 @@
 
 - [SUPOSIÇÃO] Requisito V2: visual Underground, com CumbiaBattleWorld como base; três minigames: X1, Dança das Cadeiras e Sobrevivência. MVP: somente Torneio X1.
 - [SUPOSIÇÃO] Fluxo: lobby → fila → oito participantes, completados por bots → chave de batalhas 1x1 → campeão → lobby; eliminado retorna ao lobby.
-- [SUPOSIÇÃO] Requisito X1: quatro colunas A/S/D/F e toque no celular; Perfect/Good/Miss; vence quem zerar o HP adversário. D/F/J/K pertence à V1.
+- [SUPOSIÇÃO] Requisito X1: quatro colunas D/F/J/K e toque no celular; Perfect/Good/Miss; vence quem zerar o HP adversário. Layout mantido por decisão do dono em 27/10/2026.
 - [SUPOSIÇÃO] Servidor decide notas, dano, HP, eliminações e campeão; cliente envia intenções e apresenta resultados. Feedback local não confirma resultado.
 
 ## Responsabilidades e aproveitamento
@@ -21,7 +21,7 @@
 | [SUPOSIÇÃO] | Servidor: BattleService, TournamentService | Controlar combate e chave; refatorar encerramento, liberação e recuperação de falha parcial. |
 | [SUPOSIÇÃO] | Servidor: CompetitorService, BotService, WaveGenerator | Referências para reservas, bots pelo mesmo julgador e geração de notas; não pressupor migração integral. |
 | [SUPOSIÇÃO] | Servidor: LobbyService, ArenaService, WorldBindings | Refatorar lobby/arenas; bindings como referência para reserva, posicionamento e restauração. |
-| [SUPOSIÇÃO] | Cliente: ClientBootstrap, UIController e controllers | Entrada A/S/D/F, HUD, câmera e navegação; refatorar coordenação, retenção e desconexão de eventos. |
+| [SUPOSIÇÃO] | Cliente: ClientBootstrap, UIController e controllers | Entrada D/F/J/K, HUD, câmera e navegação; refatorar coordenação, retenção e desconexão de eventos. |
 | [SUPOSIÇÃO] | Compartilhado: GameConfig, WorldConfig, NetworkTypes | Referências de configuração, mundo e mensagens; tipos não substituem validadores do servidor. |
 
 - [SUPOSIÇÃO] A classificação não recomenda reutilização sem ressalvas. Estrutura final de arquivos da V2 depende da prova do pipeline; os nomes acima são referências da V1, não arquivos já migrados.

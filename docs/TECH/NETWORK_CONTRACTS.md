@@ -31,7 +31,7 @@
 
 ## Aplicação à V2
 
-- [SUPOSIÇÃO] Requisito aprovado: A/S/D/F substitui D/F/J/K na entrada/apresentação; as quatro colunas continuam sendo intenções. Servidor mantém autoridade sobre todos os resultados. Ver [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
+- [SUPOSIÇÃO] Requisito aprovado: D/F/J/K permanece na entrada/apresentação dos minigames de ritmo; as quatro colunas continuam sendo intenções. Servidor mantém autoridade sobre todos os resultados. Ver [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
 - [NÃO ENCONTRADO] Contrato implementado da V2, versão final, política de latência, limites finais de payload e decisão sobre holds/Great. Protocolo 3 e tolerâncias acima descrevem a V1, não novos valores aprovados.
 - [SUPOSIÇÃO] Aceite proposto: testar payload inválido, NaN/infinito, sessão alheia, replay, duplicação, ordem, spam e tempo forjado; medir snapshots e verificar ressincronização. Planejamento em [BACKLOG](../OPS/BACKLOG.md).
 - [NÃO ENCONTRADO] Resultados desses testes, medições de tráfego e contratos de Dança das Cadeiras/Sobrevivência.

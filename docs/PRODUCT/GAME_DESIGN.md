@@ -19,14 +19,13 @@ as regras do minigame → campeão → volta ao lobby.
 - O SERVIDOR decide todos os resultados (notas, dano, pontuação,
   eliminação, quem sentou primeiro). O cliente nunca decide.
 - Eliminado volta ao lobby.
-- Teclas oficiais dos minigames de ritmo (X1 e Sobrevivência): A/S/D/F.
-  A V1 usava D/F/J/K; a mudança é um requisito novo da V2.
+- [SUPOSIÇÃO] Teclas oficiais dos minigames de ritmo (X1 e Sobrevivência): D/F/J/K, por decisão do dono em 27/10/2026. Motivo informado: pesquisa própria; detalhes não informados.
 - [PÓS-MVP] Espectador: o eliminado pode ir ao minigame assistir e
   escolher ver a tela de um jogador.
 
 ## Minigame 1: Torneio X1 (MVP)
 - Batalha de ritmo 1x1 em chave de eliminação, 8 participantes.
-- Quatro colunas (teclas A/S/D/F e toque no celular).
+- [SUPOSIÇÃO] Quatro colunas (teclas D/F/J/K e toque no celular).
 - Janelas de acerto: Perfect / Good / Miss.
 - Vence quem zerar o HP do adversário.
 - [A CONFIRMAR, vem da auditoria da V1] 100 HP por jogador, desempate
@@ -36,7 +35,7 @@ as regras do minigame → campeão → volta ao lobby.
 
 ## Minigame 2: Dança das Cadeiras
 - Jogadores correm em círculo ao redor das cadeiras, em uma só direção.
-- Controle: velocidade normal ou corridinha leve (não usa A/S/D/F).
+- [SUPOSIÇÃO] Controle: velocidade normal ou corridinha leve (não usa as teclas de ritmo D/F/J/K).
 - Corridinha usa ESTAMINA: ao esgotar, é preciso esperar recarregar.
 - O sistema escolhe a música, inverte o sentido e para a música em
   momentos aleatórios.
@@ -52,7 +51,7 @@ as regras do minigame → campeão → volta ao lobby.
 
 ## Minigame 3: Sobrevivência
 - 8 tecladistas em um octógono, todos tocam o MESMO chart ao mesmo tempo.
-- Quatro colunas (teclas A/S/D/F e toque no celular), iguais ao X1.
+- [SUPOSIÇÃO] Quatro colunas (teclas D/F/J/K e toque no celular), iguais ao X1.
 - A pontuação ZERA a cada onda.
 - Ao fim da onda, é eliminado quem MAIS ERROU. Conta como erro: nota com
   Miss e aperto de tecla fora do tempo.

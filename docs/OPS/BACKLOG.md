@@ -1,7 +1,7 @@
 # Backlog inicial — Cumbia Party V2
 
 - [SUPOSIÇÃO] Planejamento baseado em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md), [CURRENT_STATE](CURRENT_STATE.md), [V1_CLASSIFICATION](V1_CLASSIFICATION.md), [ARCHITECTURE](../TECH/ARCHITECTURE.md) e [NETWORK_CONTRACTS](../TECH/NETWORK_CONTRACTS.md). Marcações abrangem cada linha; riscos são estimativas. Esta revisão mantém a conclusão documental de CP2-000d, registra CP2-000a e CP2-000b como concluídos segundo os documentos locais e mantém CP2-000c sem conclusão; decompõe a execução futura do CP2-000e. Documentos ainda ausentes serão criados nos respectivos tickets.
-- [SUPOSIÇÃO] Testes iniciais (pipeline, A/S/D/F e R1) usam som provisório ou metrônomo. A conferência da auditoria precede qualquer implementação no jogo; a prova isolada do pipeline ocorre em projeto descartável. Nenhum ticket autoriza publicação ou alteração da base histórica.
+- [SUPOSIÇÃO] Testes iniciais (pipeline e R1) usam som provisório ou metrônomo. A conferência da auditoria precede qualquer implementação no jogo; a prova isolada do pipeline ocorre em projeto descartável. Nenhum ticket autoriza publicação ou alteração da base histórica.
 
 ## Preparação e prova inicial
 
@@ -13,7 +13,7 @@
 | [SUPOSIÇÃO] | CP2-000d — Planejar a migração — CONCLUÍDO (documental) | Entregue em [MIGRATION_PLAN](../TECH/MIGRATION_PLAN.md): lista dos 24 scripts, exclusões, atributos, extração/fidelidade, backup, prova descartável, reversão e três decisões aprovadas pelo dono em 24/10/2026. Não significa migração executada. | [SUPOSIÇÃO] baixo | [SUPOSIÇÃO] Insumos: CP2-000a, CP2-000b e CP2-000c; lista aprovada por decisão do dono em 24/10/2026; aprovações das etapas de execução continuam PENDENTES. |
 | [SUPOSIÇÃO] | CP2-000e — Executar a migração — CONCLUÍDA COM RESSALVAS em 27/10/2026 | 24 Sources transferidos e relidos na V2_Trabalho reaberta; 14 exatos, dez iguais após remover CR; estrutura e metadados conferidos. Limites e NÃO TESTADO no encerramento abaixo. | ALTO | CP2-000d; etapas -1 a -8 registradas; aceite documental do dono para -8. |
 | [CONFIRMADO NO CÓDIGO] | CP2-000f — Declarar Rojo 7.7.1 via Rokit — CONCLUÍDO DOCUMENTALMENTE em 27/10/2026 | `rokit.toml` criado na raiz com somente Rojo; sem teste de instalação. Evidências e limites na seção CP2-000f abaixo. | [SUPOSIÇÃO] baixo | [SUPOSIÇÃO] Decisão e plano aprovados pelo dono em 27/10/2026; versão do ADR-0001. |
-| [SUPOSIÇÃO] | CP2-001 — A/S/D/F ponta a ponta — NÃO INICIADA | Na cópia de trabalho, trocar D/F/J/K; testar cada coluna até resultado do servidor, rótulos e ausência de entrada por J/K; registrar evidências e alteração sincronizada no repositório. | médio | CP2-000a, CP2-000b, CP2-000c, CP2-000e. |
+| [SUPOSIÇÃO] | CP2-001 — troca para A/S/D/F — CANCELADO por decisão do dono em 27/10/2026 | Tentativa na descartável descartada; manter D/F/J/K como layout oficial das quatro colunas de ritmo e toque por coluna no celular. Motivo informado: pesquisa própria, sem detalhes adicionais. | médio (histórico) | Dependia de CP2-000a, CP2-000b, CP2-000c e CP2-000e; dependências encerradas com o cancelamento. |
 
 - [SUPOSIÇÃO] CP2-000a: [CURRENT_STATE](CURRENT_STATE.md) registra os caminhos da V1 congelada e da cópia de trabalho e a identificação da conexão em 23/10/2026; conclusão baseada nesse registro, sem nova verificação no Studio.
 - [SUPOSIÇÃO] CP2-000b: [ADR-0001](../../decisions/ADR-0001.md) registra decisão aceita por Rojo 7.7.1, alteração disco → Studio e reversão Git acompanhada pelo Studio em projeto descartável; conclusão baseada nesse registro, sem repetir a prova.
@@ -64,7 +64,7 @@
 | [SUPOSIÇÃO] | CP2-003 — DECISÃO DO DONO: dano | Aprovar dano Perfect/Good, efeito de Miss e HP inicial. | médio | Dono; valores [NÃO ENCONTRADO]. |
 | [SUPOSIÇÃO] | CP2-004 — DECISÃO DO DONO: duração | Aprovar duração/término e relação com música, ondas e turnos. | médio | Dono, CP2-002; duração [NÃO ENCONTRADO]. |
 | [SUPOSIÇÃO] | CP2-005 — DECISÃO DO DONO: bots | Aprovar habilidade e critérios verificáveis de comportamento. | médio | Dono; parâmetros [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-007a — Investigar R1, sem corrigir | Testar inputTime forjado e limites de atraso/futuro na cópia; registrar resultados, limitações e alternativas para decisão de latência, sem alterar a política. | ALTO | CP2-001; precede CP2-006. |
+| [SUPOSIÇÃO] | CP2-007a — Investigar R1, sem corrigir | Testar inputTime forjado e limites de atraso/futuro na cópia com D/F/J/K; registrar resultados, limitações e alternativas para decisão de latência, sem alterar a política. | ALTO | CP2-000e e CP2-000c; precede CP2-006. |
 | [SUPOSIÇÃO] | CP2-006 — DECISÃO DO DONO: latência | Aprovar tolerância e tratamento de entradas atrasadas/futuras com base na investigação. | alto | Dono, CP2-007a; política [NÃO ENCONTRADO]. |
 
 ## MVP X1 e preparação para publicação
@@ -75,7 +75,7 @@
 | [SUPOSIÇÃO] | CP2-008 — Combate autoritativo | Resolver Great/holds herdados conforme design e decisão do dono; testar dano/HP, KO, duração e empate aprovados; eventos repetidos não duplicam dano/conclusão. | alto | CP2-002, CP2-003, CP2-004, CP2-005, CP2-006, CP2-007b. |
 | [SUPOSIÇÃO] | CP2-009 — Fila, bots e chave | Testar oito vagas, bots só nas faltantes e pelo mesmo julgador, avanço único, desistência, campeão e ausência de reserva dupla. | alto | CP2-008. |
 | [SUPOSIÇÃO] | CP2-010 — Lobby, arena e liberação | Testar retorno, saída, respawn e falha de criação; liberar reservas/sessões/arena; repetir partidas sem callbacks duplicados. | alto | CP2-009; CumbiaBattleWorld identificado. |
-| [SUPOSIÇÃO] | CP2-011 — HUD Underground | Conferir A/S/D/F, toque, HP/resultado e câmera; testar recriação da GUI, restauração de controles e retenção limitada. | médio | CP2-010; validação final nos dispositivos de CP2-013a. |
+| [SUPOSIÇÃO] | CP2-011 — HUD Underground | Conferir D/F/J/K, toque, HP/resultado e câmera; testar recriação da GUI, restauração de controles e retenção limitada. | médio | CP2-010; validação final nos dispositivos de CP2-013a. |
 | [SUPOSIÇÃO] | CP2-012a — DECISÃO DO DONO: música | Conforme seção Música: registrar licença Mureka válida só com plano ativo e remoção/substituição antes de cancelar; confirmar termos sobre áudio de referência (conteúdo [NÃO ENCONTRADO]); aprovar trilha final por descrição de estilo, sem enviar faixas existentes; atuais só protótipo. Guardar arquivo, prompt, data, plano e termos por faixa. | alto | Dono e termos. Bloqueia somente publicação/release; CP2-012 pode usar faixas de protótipo enquanto a decisão estiver pendente, sem bloquear início do X1. |
 | [SUPOSIÇÃO] | CP2-012 — Música e chart | Implementar/testar alinhamento áudio/notas e início/fim; pode usar protótipo. Ao trocar pela trilha final, refazer chart e repetir validação antes do release. | alto | CP2-008; CP2-012a não bloqueia desenvolvimento/testes. |
 | [SUPOSIÇÃO] | CP2-013a — DECISÃO DO DONO: dispositivos/desempenho | Aprovar dispositivos-alvo, concorrência, metas mensuráveis de desempenho/memória/tráfego e condições de medição. | médio | Dono; metas [NÃO ENCONTRADO]. |
@@ -85,8 +85,8 @@
 
 | Estado | ID / objetivo | Aceite do planejamento | Risco | Dependências |
 |---|---|---|---|---|
-| [SUPOSIÇÃO] | CP2-014 — Dança das Cadeiras | Decompor corrida/estamina, música, ocupação no servidor e eliminação; listar decisões pendentes. | alto | CP2-013 e priorização do dono; parâmetros [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-015 — Sobrevivência | Decompor chart comum A/S/D/F, pontuação por onda, erros/desempate e eliminação no servidor. | alto | CP2-013 e priorização do dono; progressão/duração/bots [NÃO ENCONTRADO]. |
+| [SUPOSIÇÃO] | CP2-014 — Dança das Cadeiras | Decompor corrida/estamina, música, ocupação no servidor e eliminação; não usa teclas de ritmo; listar decisões pendentes. | alto | CP2-013 e priorização do dono; parâmetros [NÃO ENCONTRADO]. |
+| [SUPOSIÇÃO] | CP2-015 — Sobrevivência | Decompor chart comum D/F/J/K com quatro colunas e toque no celular, pontuação por onda, erros/desempate e eliminação no servidor. | alto | CP2-013 e priorização do dono; progressão/duração/bots [NÃO ENCONTRADO]. |
 
 ## CP2-000e-3a — Registro complementar (24/10/2026)
 
@@ -273,3 +273,31 @@
 - [SUPOSIÇÃO] Aviso LF→CRLF esperado para o arquivo na raiz, considerando `core.autocrlf=true` registrado na CP2-000e-2a; Git config não foi consultado nem alterado nesta tarefa.
 - [NÃO ENCONTRADO] NÃO TESTADO na CP2-000f: leitura de `rokit.toml` pelo Rokit, instalação e resolução efetiva de Rojo 7.7.1 por `rokit install`. Verificação reservada ao dono ou a ticket próprio com aprovação explícita; nenhum comando Rokit/Rojo executado nesta tarefa.
 - [CONFIRMADO NO CÓDIGO] Escrita restrita aos quatro arquivos aprovados. Nenhuma instalação, alteração de PATH, operação Studio/MCP ou commit nesta tarefa.
+
+## CP2-001 — tentativa descartada na descartável (27/10/2026)
+
+- [SUPOSIÇÃO] O dono aprovou somente a execução na descartável, corrigiu o critério para A/S/D/F nas colunas 1–4 e J/K ignoradas, e relatou que aceitou por engano a prévia do Rojo.
+- [CONFIRMADO NO CÓDIGO] Cinco arquivos de src/ foram editados: GameConfig, InputController, BattleHUD, UIController e TournamentController. Nenhum script do servidor acessa LaneKeys; o cliente continua enviando a coluna.
+- [SUPOSIÇÃO] A captura da prévia mostrou 15 alterações: os cinco Sources previstos, nove Sources de scripts não editados e uma alteração na raiz. O agente recusou a prévia antes do aceite acidental relatado pelo dono.
+- [CONFIRMADO NO CÓDIGO] Após o aceite, os cinco Sources editados coincidiram com src/ em SHA-256, removendo o único CR de BattleHUD para a comparação. Os nove Sources extras diferiram do snapshot anterior apenas pela remoção de CR. Atributos dos 24 scripts, 11 ancestrais e estrutura das 13 raízes permaneceram iguais; game.Name mudou para CumbiaParty_V2_Trabalho.
+- [CONFIRMADO NO CÓDIGO] StarterGui.CumbiaPartyGui.Main.Board ainda tinha os rótulos D/F/J/K gravados nas quatro colunas após a sincronização. Na tentativa então em curso, atualizar a GUI no .rbxl era uma pendência; UIController definia A/S/D/F somente em execução. Essa pendência deixou de existir com o cancelamento.
+- [SUPOSIÇÃO] O dono informou que desconectou e fechou a descartável sem salvar. O agente não fez Play, não salvou o place e não fez commit. O rojo.exe iniciado para esta tentativa, PID 13428, foi encerrado após conferência de executável e horário.
+- [NÃO ENCONTRADO] NÃO TESTADO nessa tentativa: persistência do .rbxl após o fechamento, entrada real A/S/D/F/J/K, toque, tempo exato das notas, fila e torneio com bots. A exigência então registrada de novo plano de sincronização foi encerrada pelo cancelamento de CP2-001.
+
+### CP2-001 — retomada com prévia de 15 itens aceita (27/10/2026)
+
+- [SUPOSIÇÃO] O dono autorizou a prévia com alteração de Name na raiz, cinco Sources editados e nove Sources com CR removido, sem projeto Rojo adicional. Informou “acabei de aceitar” depois de uma primeira mensagem “Aceitei” na qual o Studio ainda não havia mudado; a captura da prévia desta segunda conexão não foi colada.
+- [CONFIRMADO NO CÓDIGO] A sessão única da descartável estava em Edit e tinha os 24 Sources iguais ao snapshot anterior antes do sync. Depois do aceite efetivo, mudaram exatamente os 14 Sources esperados: cinco editados e nove apenas com CR removido. game.Name passou a CumbiaParty_V2_Trabalho; atributos, classes, execução, 11 ancestrais e estrutura das 13 raízes permaneceram iguais. Os cinco Sources resultantes eram integralmente iguais aos Sources com SHA-256 já registrados na primeira tentativa.
+- [CONFIRMADO NO CÓDIGO] Play A: GUI e hint mostraram A/S/D/F; ContextActionService vinculou Lane1=A, Lane2=S, Lane3=D e Lane4=F. Entradas J/K e A/S/D/F foram enviadas via MCP. Solo terminou com Great 1, 700 pontos e Miss 47, sem identificação da tecla que gerou o Great.
+- [CONFIRMADO NO CÓDIGO] Fila: 0/8 → 1/8 com contagem; torneio exibiu oito competidores, alternou turnos, avançou pelas ondas observadas 3, 5 e 7 e terminou com campeão Iris Nova, Encerramento: KO na onda 7. VOLTAR AO LOBBY restaurou LobbyHUD, câmera Custom e controle inativo. Play A foi parado em Edit.
+- [CONFIRMADO NO CÓDIGO] Play B curto: J/K e A foram enviados durante solo; os Misses automáticos do chart impediram isolar a resposta visual dessas teclas. Play B foi parado em Edit. Output consultado no Play A mostrou os dois bootstraps e três avisos do asset rbxassetid://203785492; nenhum erro adicional apareceu nessa leitura.
+- [NÃO ENCONTRADO] NÃO TESTADO nessa tentativa: toque físico/mobile, atribuição individual de notas a A/S/D/F, ausência de efeito de J/K por observação isolada, tempo exato das notas e resultados internos do servidor/bots. A GUI do .rbxl tinha D/F/J/K gravados; UIController trocava os rótulos em execução. A pendência então registrada de alterar a GUI deixou de existir com o cancelamento. Desconexão, fechamento sem salvar e encerramento do PID 14016 ainda não tinham sido registrados naquele momento.
+
+## CP2-001a — decisão do dono e cancelamento (27/10/2026)
+
+- [SUPOSIÇÃO] O dono decidiu manter D/F/J/K como layout oficial do Torneio X1 e da Sobrevivência, com quatro colunas e toque por coluna no celular; CP2-001 foi CANCELADO. Motivo informado: pesquisa própria; detalhes adicionais não foram fornecidos. Dança das Cadeiras não usa teclas de ritmo.
+- [SUPOSIÇÃO] O dono relatou que descartou as edições de `src/` da CP2-001 com `git restore` e fechou a descartável sem salvar. Os registros das duas execuções acima permanecem como tentativa descartada, não como implementação vigente.
+- [CONFIRMADO NO CÓDIGO] Leitura local em CP2-001a: `src/client/Controllers/InputController.luau` declara D/F/J/K; `git status --short` inicial listou somente BACKLOG, CURRENT_STATE e MIGRATION_MANIFEST como modificados.
+- [SUPOSIÇÃO] Os rótulos D/F/J/K persistidos na GUI do `.rbxl` deixam de ser pendência de troca por causa da decisão; o place não foi relido nesta tarefa.
+- [SUPOSIÇÃO] CP2-005 em diante e os ADRs não dependem da troca para A/S/D/F. CP2-007a era o único ticket com dependência direta de CP2-001 encontrada no backlog; sua dependência passa a CP2-000e e CP2-000c, preservando CP2-006 como etapa posterior.
+- [NÃO ENCONTRADO] NÃO TESTADO em CP2-001a: Studio, Rojo, `.rbxl` persistido, toque mobile, notas individuais, julgamento e resultados internos do servidor/bots. Nenhum commit ou teste de gameplay foi executado.

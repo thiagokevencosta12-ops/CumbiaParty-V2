@@ -2,7 +2,7 @@
 
 ## Produto e decisões
 
-- [SUPOSIÇÃO] O dono definiu Torneio X1 como MVP, Dança das Cadeiras e Sobrevivência como os outros minigames, visual Underground e A/S/D/F como teclas de ritmo da V2. A base migrada ainda usa D/F/J/K; a mudança pertence à CP2-001, NÃO INICIADA. Regras em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
+- [SUPOSIÇÃO] O dono definiu Torneio X1 como MVP, Dança das Cadeiras e Sobrevivência como os outros minigames, visual Underground e D/F/J/K como teclas oficiais de ritmo do X1 e da Sobrevivência em decisão de 27/10/2026. O toque por quatro colunas permanece; Dança das Cadeiras não usa teclas de ritmo. Regras em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
 - [SUPOSIÇÃO] O servidor deve decidir notas, pontos, dano, eliminação e prêmios. A migração foi mecânica e não prova que todas as decisões existentes já respeitam essa regra. R1–R7 e demais mudanças de gameplay continuam em tickets próprios.
 - [SUPOSIÇÃO] Não trocar `ActiveProfileId` para Tropical. O perfil ativo registrado no código é Underground; referências Tropical ausentes foram documentadas na CP2-000e-3a.
 - [SUPOSIÇÃO] Continuam pendentes decisões de produto sobre empate quando a música do X1 acaba, dano, estamina, parada da música, dificuldade dos bots, dispositivos e latência. Confirmar os termos de uso de áudio de referência do Mureka antes de publicar; ver GAME_DESIGN.
@@ -30,5 +30,28 @@
 
 ## Próximo ticket e limites
 
-- [SUPOSIÇÃO] Próximo ticket: CP2-001, implementação e teste ponta a ponta das teclas A/S/D/F. CP2-001 NÃO INICIADA. CP2-000c continua sem conclusão suficiente segundo o backlog.
+- [SUPOSIÇÃO] CP2-001 CANCELADO por decisão do dono em 27/10/2026; o Play parcial na descartável foi uma tentativa descartada. CP2-000c continua sem conclusão suficiente segundo o backlog.
 - [NÃO ENCONTRADO] NÃO TESTADO: respawn, saída antecipada da fila, múltiplos humanos, notas em tempo controlado, resultados internos de bots/servidor, suíte UnitTest, mobile, segurança, desempenho, memória, propriedades completas dos objetos externos, abertura/restauração do pré-migração e checkout futuro dos blobs de `src/`.
+
+## CP2-001 — histórico da primeira tentativa descartada (27/10/2026)
+
+- [CONFIRMADO NO CÓDIGO] Na primeira tentativa, o disco continha A/S/D/F nas colunas 1–4 nos cinco arquivos de src/ então editados. Nenhum script do servidor lia LaneKeys. A árvore StarterGui da sessão tinha D/F/J/K gravados nos rótulos de Lane1–Lane4; a atualização persistente da GUI no .rbxl era pendência daquela tentativa, encerrada pelo cancelamento.
+- [SUPOSIÇÃO] O dono relatou aceite acidental da prévia de 15 itens, seguido de desconexão e fechamento da descartável sem salvar. O agente não salvou o place.
+- [CONFIRMADO NO CÓDIGO] Antes do fechamento, o MCP viu os cinco Sources editados iguais ao disco (BattleHUD após remover um CR), nove Sources extras com apenas CR removidos, atributos e estrutura preservados, e game.Name alterado para CumbiaParty_V2_Trabalho. O PID 13428 do Rojo foi encerrado com executável e horário conferidos.
+- [NÃO ENCONTRADO] NÃO TESTADO na primeira tentativa: conteúdo persistido do .rbxl após fechar, Play, teclado real, toque, acertos em tempo controlado, fila e torneio com bots. A necessidade então registrada de novo procedimento de sincronização foi encerrada pelo cancelamento.
+
+## CP2-001 — histórico da retomada descartada e Play parcial (27/10/2026)
+
+- [SUPOSIÇÃO] O dono aceitou a prévia de 15 itens, incluindo Name da raiz, cinco Sources editados e nove Sources com CR removido. A captura da prévia desta segunda conexão não foi colada; a leitura pós-sync do Studio confirmou o efeito.
+- [CONFIRMADO NO CÓDIGO] Os 24 Sources pré-sync repetiram o snapshot da descartável. Pós-sync, cinco Sources editados e nove apenas sem CR foram as únicas alterações de Source; game.Name mudou para CumbiaParty_V2_Trabalho. Classes, atributos, estado de execução, 11 ancestrais e estrutura de 10.736 objetos permaneceram iguais.
+- [CONFIRMADO NO CÓDIGO] Em Play, GUI e CAS mapearam A/S/D/F às colunas 1–4. Teclas J/K e A/S/D/F foram enviadas; solo terminou com Great 1 e 700 pontos, sem atribuição de nota a tecla específica. A fila passou a 1/8, o torneio exibiu oito competidores e terminou com KO na onda 7; voltar restaurou lobby e câmera Custom. Dois Plays foram parados e o Studio voltou a Edit.
+- [NÃO ENCONTRADO] NÃO TESTADO nessa retomada: toque mobile, nota individual em tempo controlado por tecla, prova visual isolada de J/K ignoradas e resultados internos de bots/servidor. Os rótulos D/F/J/K persistiam na GUI do .rbxl; o cliente os substituía em runtime. A pendência de alterar esses rótulos foi encerrada pelo cancelamento. Fechamento sem salvar e parada do Rojo ainda não tinham sido registrados naquele momento.
+
+## CP2-001a — decisão vigente e limites (27/10/2026)
+
+- [SUPOSIÇÃO] Decisão do dono: D/F/J/K permanece layout oficial das quatro colunas de ritmo no Torneio X1 e na Sobrevivência; toque por coluna mantido. Dança das Cadeiras não usa teclas de ritmo. CP2-001 foi CANCELADO. Motivo informado pelo dono: pesquisa própria; nenhum detalhe adicional foi fornecido.
+- [SUPOSIÇÃO] O dono relatou que descartou com `git restore` as edições de `src/` da CP2-001 e fechou a descartável sem salvar. As execuções acima são histórico de tentativa descartada.
+- [CONFIRMADO NO CÓDIGO] Leitura local de CP2-001a encontrou D/F/J/K em `src/client/Controllers/InputController.luau` e somente os três documentos da CP2-001 modificados no `git status --short` inicial.
+- [SUPOSIÇÃO] Rótulos D/F/J/K persistidos na GUI do `.rbxl` deixam de ser pendência de troca; o `.rbxl` não foi relido nesta tarefa.
+- [SUPOSIÇÃO] CP2-005 em diante e os ADRs não dependem de A/S/D/F. No backlog, CP2-007a era o único ticket com dependência direta de CP2-001; a dependência passa a CP2-000e e CP2-000c. As referências vigentes a A/S/D/F foram corrigidas nos documentos autorizados; registros históricos da migração e da tentativa descartada permanecem históricos.
+- [NÃO ENCONTRADO] NÃO TESTADO em CP2-001a: Studio, Rojo, persistência do `.rbxl`, toque mobile, notas individuais, julgamento e resultados internos do servidor/bots. Nenhum teste de gameplay foi executado.

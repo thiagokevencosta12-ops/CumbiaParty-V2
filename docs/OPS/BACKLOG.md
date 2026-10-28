@@ -58,12 +58,16 @@
 
 ## Decisões e investigação — bloqueiam combate
 
+- [CONFIRMADO NO CÓDIGO] CP2-002a — Levantamento documental dos valores de combate herdados: leitura textual de `src/` registrada em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md), com valores, arquivos e linhas. Nenhum módulo foi executado; a conferência independente com a V1 congelada continua pendente no CP2-000c.
+- [SUPOSIÇÃO] CP2-002a — Propostas **PROVISÓRIAS**, aguardando decisão do dono: empate/fim regular, dano/HP, duração e bots. Great e holds seguem como decisão aberta do CP2-008; janelas finais dependem de R1, CP2-007a e CP2-006. Este registro não aprova implementação.
+- [NÃO ENCONTRADO] CP2-002a — NÃO TESTADO: gameplay, simulação, latência, segurança do horário informado pelo cliente, taxas de vitória e equivalência independente com a V1 congelada.
+
 | Estado | ID / objetivo | Aceite | Risco | Dependências |
 |---|---|---|---|---|
-| [SUPOSIÇÃO] | CP2-002 — DECISÃO DO DONO: empate | Aprovar regra para fim da música com ambos vivos, incluindo HP igual. | médio | Dono; regra [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-003 — DECISÃO DO DONO: dano | Aprovar dano Perfect/Good, efeito de Miss e HP inicial. | médio | Dono; valores [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-004 — DECISÃO DO DONO: duração | Aprovar duração/término e relação com música, ondas e turnos. | médio | Dono, CP2-002; duração [NÃO ENCONTRADO]. |
-| [SUPOSIÇÃO] | CP2-005 — DECISÃO DO DONO: bots | Aprovar habilidade e critérios verificáveis de comportamento. | médio | Dono; parâmetros [NÃO ENCONTRADO]. |
+| [SUPOSIÇÃO] | CP2-002 — DECISÃO DO DONO: empate — proposta PROVISÓRIA, aguardando decisão do dono | Escolher entre morte súbita, mais HP ou qualidade média/sorteio para fim regular com ambos vivos; efeitos em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md). | médio | Dono; CP2-002a documentado. |
+| [SUPOSIÇÃO] | CP2-003 — DECISÃO DO DONO: dano — proposta PROVISÓRIA, aguardando decisão do dono | Aprovar dano Perfect/Good, efeito de Miss e HP inicial; Great/holds são decisão aberta do CP2-008. Valores herdados e propostas em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md). | médio | Dono; CP2-002a documentado. |
+| [SUPOSIÇÃO] | CP2-004 — DECISÃO DO DONO: duração — proposta PROVISÓRIA, aguardando decisão do dono | Aprovar duração regular/término e relação com música, ondas, turnos e desempate; proposta em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md). | médio | Dono, CP2-002; CP2-002a documentado. |
+| [SUPOSIÇÃO] | CP2-005 — DECISÃO DO DONO: bots — proposta PROVISÓRIA, aguardando decisão do dono | Aprovar habilidade e critérios verificáveis por perfil e fase; proposta em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md). | médio | Dono; CP2-002a documentado. |
 | [SUPOSIÇÃO] | CP2-007a — Investigar R1, sem corrigir | Testar inputTime forjado e limites de atraso/futuro na cópia com D/F/J/K; registrar resultados, limitações e alternativas para decisão de latência, sem alterar a política. | ALTO | CP2-000e e CP2-000c; precede CP2-006. |
 | [SUPOSIÇÃO] | CP2-006 — DECISÃO DO DONO: latência | Aprovar tolerância e tratamento de entradas atrasadas/futuras com base na investigação. | alto | Dono, CP2-007a; política [NÃO ENCONTRADO]. |
 

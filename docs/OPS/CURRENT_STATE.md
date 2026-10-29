@@ -5,7 +5,16 @@
 - [SUPOSIÇÃO] O dono definiu Torneio X1 como MVP, Dança das Cadeiras e Sobrevivência como os outros minigames, visual Underground e D/F/J/K como teclas oficiais de ritmo do X1 e da Sobrevivência em decisão de 27/10/2026. O toque por quatro colunas permanece; Dança das Cadeiras não usa teclas de ritmo. Regras em [GAME_DESIGN](../PRODUCT/GAME_DESIGN.md).
 - [SUPOSIÇÃO] O servidor deve decidir notas, pontos, dano, eliminação e prêmios. A migração foi mecânica e não prova que todas as decisões existentes já respeitam essa regra. R1–R7 e demais mudanças de gameplay continuam em tickets próprios.
 - [SUPOSIÇÃO] Não trocar `ActiveProfileId` para Tropical. O perfil ativo registrado no código é Underground; referências Tropical ausentes foram documentadas na CP2-000e-3a.
-- [SUPOSIÇÃO] Continuam pendentes decisões de produto sobre empate quando a música do X1 acaba, dano, estamina, parada da música, dificuldade dos bots, dispositivos e latência. Confirmar os termos de uso de áudio de referência do Mureka antes de publicar; ver GAME_DESIGN.
+- [SUPOSIÇÃO] As decisões de combate do dono em 28/10/2026 estão registradas abaixo e em [COMBAT_VALUES](../PRODUCT/COMBAT_VALUES.md); ainda pendem detalhes da morte súbita, Great, holds e janelas finais. Fora do X1, continuam pendentes estamina, parada da música, dispositivos e latência. Confirmar os termos de uso de áudio de referência do Mureka antes de publicar; ver GAME_DESIGN.
+
+## CP2-002b — decisões de combate (28/10/2026)
+
+- [SUPOSIÇÃO] **APROVADO:** 100 HP iniciais. **APROVADO provisoriamente:** dano Perfect 3, Good 1, Miss 0. **MANTIDO:** bônus de combo herdado de 0,035 por nota, teto 0,35.
+- [SUPOSIÇÃO] **APROVADO temporariamente:** fase regular de até 12 ondas / 180 s. **APROVADO como linha de base:** quatro perfis e faixas herdadas de bots, perfil fixo, chave de 8 e bots só nas vagas sem humanos.
+- [SUPOSIÇÃO] **APROVADO:** morte súbita somente na final. Nas quartas e semifinal, desempate por maior HP, depois qualidade média, depois sorteio, aprovado após esclarecimento do dono neste ticket.
+- [SUPOSIÇÃO] **ABERTO no CP2-008:** Great e holds; turnos alternados ou simultâneos, limite de segurança e caso de ambos zerarem HP na mesma onda da morte súbita. Todas as janelas de tempo permanecem PROVISÓRIAS até resolver R1, CP2-007a e CP2-006; CP2-008 também depende de CP2-007b para as janelas finais.
+- [SUPOSIÇÃO] HP/dano base, combo, duração regular, regra de desempate por rodada e bots já não bloqueiam a definição da linha de base do CP2-008. Os pontos ABERTOS acima e a política de entrada/latência ainda bloqueiam sua conclusão.
+- [NÃO ENCONTRADO] NÃO TESTADO no CP2-002b: gameplay, simulação, latência, segurança do horário informado pelo cliente, taxa de vitória dos bots e implementação das decisões. Registro somente documental; nenhuma execução de módulos.
 
 ## Estado técnico
 
